@@ -18,4 +18,10 @@ l = list(map(int, input().split()))
 その他
 https://qiita.com/jamjamjam/items/e066b8c7bc85487c0785
 """
-
+l = list(map(int, input().split()))
+k = int(input())
+sorted_l = sorted(l, reverse=True)
+for _i in range(k):
+    _max = sorted_l[0]
+    sorted_l[0] = _max * 2
+print(sum(sorted_l))
