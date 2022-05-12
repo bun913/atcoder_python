@@ -19,3 +19,11 @@ l = list(map(int, input().split()))
 https://qiita.com/jamjamjam/items/e066b8c7bc85487c0785
 """
 
+a, b, c = list(map(str, input().split()))
+is_a_kaibun = a[-1] == b[0]
+is_b_kaibun = b[-1] == c[0]
+
+result = "NO"
+if is_a_kaibun is True and is_b_kaibun is True:
+    result = "YES"
+print(result)
