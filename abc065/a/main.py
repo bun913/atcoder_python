@@ -19,3 +19,11 @@ l = list(map(int, input().split()))
 https://qiita.com/jamjamjam/items/e066b8c7bc85487c0785
 """
 
+X, A, B = map(int, input().split())
+
+if B <= A:
+    print('delicious')
+elif B-A <= X:
+    print('safe')
+else:
+    print('dangerous')
