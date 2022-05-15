@@ -18,4 +18,15 @@ l = list(map(int, input().split()))
 その他
 https://qiita.com/jamjamjam/items/e066b8c7bc85487c0785
 """
+x = int(input())
+a = int(input())
+b = int(input())
 
+ans = x - a
+
+while True:
+    if ans - b >= 0:
+        ans -= b
+    else:
+        break
+print(ans)
