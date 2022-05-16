@@ -19,3 +19,15 @@ l = list(map(int, input().split()))
 https://qiita.com/jamjamjam/items/e066b8c7bc85487c0785
 """
 
+N = int(input())
+l = [2, 1]
+for i in range(2,N+1):
+    n = l[i-1] + l[i-2]
+    l.append(n)
+if N <= 1:
+    if N == 1:
+        print(1)
+    else:
+        print(2)
+else:
+    print(l[-1])
