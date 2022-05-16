@@ -18,4 +18,10 @@ l = list(map(int, input().split()))
 その他
 https://qiita.com/jamjamjam/items/e066b8c7bc85487c0785
 """
-
+l = list(input())
+if l[0] == l[1] and l[1] == l[2]:
+    print("Yes")
+elif l[1] == l[2] and l[2] == l[3]:
+    print("Yes")
+else:
+    print("No")
