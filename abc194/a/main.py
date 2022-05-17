@@ -19,3 +19,15 @@ l = list(map(int, input().split()))
 https://qiita.com/jamjamjam/items/e066b8c7bc85487c0785
 """
 
+A, B = list(map(int, input().split()))
+s = A + B
+
+ans = 4
+
+if s >= 15 and B >= 8:
+    ans = 1
+elif s >= 10 and B >= 3:
+    ans = 2
+elif s >= 3:
+    ans = 3
+print(ans)
