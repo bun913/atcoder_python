@@ -19,3 +19,24 @@ l = list(map(int, input().split()))
 https://qiita.com/jamjamjam/items/e066b8c7bc85487c0785
 """
 
+N = int(input())
+al = []
+bl = []
+
+for _ in range(N):
+    a, b = list(map(int, input().split()))
+    al.append(a)
+    bl.append(b)
+
+ans = 10**6
+for ai in range(N):
+    for bi in range(N):
+        a = al[ai]
+        b = bl[bi]
+        if ai == bi:
+            if a+b <= ans:
+                ans = a+b
+            continue
+        if max(a, b) <= ans:
+            ans = max(a, b)
+print(ans)
