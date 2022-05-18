@@ -19,3 +19,8 @@ l = list(map(int, input().split()))
 https://qiita.com/jamjamjam/items/e066b8c7bc85487c0785
 """
 
+M, H = list(map(int, input().split()))
+ans = "No"
+if H % M == 0:
+    ans = "Yes"
+print(ans)
