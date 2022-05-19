@@ -19,3 +19,11 @@ l = list(map(int, input().split()))
 https://qiita.com/jamjamjam/items/e066b8c7bc85487c0785
 """
 
+n = input()
+ans = "No"
+for i in range(len(n)+1):
+    s = ("0" * i) + n
+    if s == s[::-1]:
+        ans = "Yes"
+        break
+print(ans)

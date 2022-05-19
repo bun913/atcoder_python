@@ -25,3 +25,9 @@ ref: https://github.com/bun913/go_atcoder
 
 - Solving typical Atcoder 100~200 questions.
   - https://qiita.com/drken/items/fd4e5e3630d0f5859067#%E3%81%93%E3%81%93%E3%81%BE%E3%81%A7%E8%A7%A3%E3%81%84%E3%81%9F%E3%82%89
+
+## Kinds of Ploblems
+
+| Kinds | Ploblems  |
+| - | - | 
+| Grid  | [ABC 075 B](https://atcoder.jp/contests/abc075/tasks/abc075_b),[ABC 096 C](https://atcoder.jp/contests/abc096/tasks/abc096_c),[ABC 197 B](https://atcoder.jp/contests/abc197/tasks/abc197_b) | 
