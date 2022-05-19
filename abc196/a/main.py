@@ -19,3 +19,7 @@ l = list(map(int, input().split()))
 https://qiita.com/jamjamjam/items/e066b8c7bc85487c0785
 """
 
+a, b = list(map(int, input().split()))
+c, d = list(map(int, input().split()))
+
+print(b-c)
