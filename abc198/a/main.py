@@ -18,4 +18,10 @@ l = list(map(int, input().split()))
 その他
 https://qiita.com/jamjamjam/items/e066b8c7bc85487c0785
 """
+ans = 0
+n = int(input())
 
+if n <= 1:
+    print(ans)
+    exit()
+print(n-1)
