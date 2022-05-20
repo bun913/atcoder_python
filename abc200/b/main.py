@@ -19,3 +19,11 @@ l = list(map(int, input().split()))
 https://qiita.com/jamjamjam/items/e066b8c7bc85487c0785
 """
 
+n, k = list(map(int, input().split()))
+
+for i in range(k):
+    if n % 200 == 0:
+        n = n // 200
+    else:
+        n = int(str(n) + "200")
+print(n)
