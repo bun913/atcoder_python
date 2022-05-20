@@ -18,4 +18,13 @@ l = list(map(int, input().split()))
 その他
 https://qiita.com/jamjamjam/items/e066b8c7bc85487c0785
 """
-
+n = int(input())
+sl = []
+tl = []
+for _ in range(n):
+    s, t = input().split(" ")
+    sl.append(s)
+    tl.append(int(t))
+second = sorted(tl, reverse=True)[1]
+i = tl.index(second)
+print(sl[i])
