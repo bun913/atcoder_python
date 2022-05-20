@@ -19,3 +19,11 @@ l = list(map(int, input().split()))
 https://qiita.com/jamjamjam/items/e066b8c7bc85487c0785
 """
 
+n = int(input())
+_div = n // 100
+_mod = n % 100
+
+ans = _div + 1
+if _mod == 0:
+    ans = _div
+print(ans)
