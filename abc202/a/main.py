@@ -19,3 +19,5 @@ l = list(map(int, input().split()))
 https://qiita.com/jamjamjam/items/e066b8c7bc85487c0785
 """
 
+l = list(map(lambda i: 7 - int(i), input().split()))
+print(sum(l))
