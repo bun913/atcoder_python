@@ -18,4 +18,14 @@ l = list(map(int, input().split()))
 その他
 https://qiita.com/jamjamjam/items/e066b8c7bc85487c0785
 """
+l = list(input())
+ans = ""
 
+for s in reversed(l):
+    _s = s
+    if s == "6":
+        _s = "9"
+    elif s == "9":
+        _s = "6"
+    ans += _s
+print(ans)
