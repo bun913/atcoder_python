@@ -19,3 +19,12 @@ l = list(map(int, input().split()))
 https://qiita.com/jamjamjam/items/e066b8c7bc85487c0785
 """
 
+l = list(map(int, input().split()))
+sort_l = sorted(l)
+
+ans = 0
+if sort_l[0] == sort_l[1]:
+    ans = sort_l[2]
+elif sort_l[1] == sort_l[2]:
+    ans = sort_l[0]
+print(ans)
