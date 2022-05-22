@@ -19,3 +19,14 @@ l = list(map(int, input().split()))
 https://qiita.com/jamjamjam/items/e066b8c7bc85487c0785
 """
 
+x, y = list(map(int, input().split()))
+ans = x
+if x != y:
+    l = [x, y]
+    if 0 not in l:
+        ans = 0
+    if 1 not in l:
+        ans = 1
+    if 2 not in l:
+        ans = 2
+print(ans)
