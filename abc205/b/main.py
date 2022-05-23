@@ -18,4 +18,12 @@ l = list(map(int, input().split()))
 その他
 https://qiita.com/jamjamjam/items/e066b8c7bc85487c0785
 """
-
+n = int(input())
+l = list(map(int, input().split()))
+_sorted = sorted(l)
+ans = "Yes"
+for i in range(1, len(l)):
+    if i != _sorted[i-1]:
+        ans = "No"
+        break
+print(ans)
