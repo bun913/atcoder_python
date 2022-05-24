@@ -18,4 +18,20 @@ l = list(map(int, input().split()))
 その他
 https://qiita.com/jamjamjam/items/e066b8c7bc85487c0785
 """
+import math
 
+p = int(input())
+n = 10
+s = 0
+i = 0
+while True:
+    a = math.factorial(n)
+    if s == p:
+        print(i)
+        break
+    # 大きい場合は数を小さくする
+    if s + a > p:
+        n -= 1
+        continue
+    s += a
+    i += 1
