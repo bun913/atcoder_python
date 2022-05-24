@@ -18,4 +18,9 @@ l = list(map(int, input().split()))
 その他
 https://qiita.com/jamjamjam/items/e066b8c7bc85487c0785
 """
-
+a, b = list(map(int, input().split()))
+ans = "No"
+# 6*aまでの値なら出せる。ただし、a*1(全部1)がb以下でないといけない
+if 6*a >= b and a*1 <= b:
+    ans = "Yes"
+print(ans)
