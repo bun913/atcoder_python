@@ -19,3 +19,9 @@ l = list(map(int, input().split()))
 https://qiita.com/jamjamjam/items/e066b8c7bc85487c0785
 """
 
+a, b = list(map(int, input().split()))
+
+ans = b-a + 1
+if ans <= 0:
+    ans = 0
+print(ans)
