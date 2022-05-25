@@ -19,3 +19,11 @@ l = list(map(int, input().split()))
 https://qiita.com/jamjamjam/items/e066b8c7bc85487c0785
 """
 
+n, a, x, y = list(map(int, input().split()))
+ans = 0
+for i in range(1, n+1):
+    price = x
+    if i > a:
+        price = y
+    ans += price
+print(ans)
