@@ -19,3 +19,18 @@ l = list(map(int, input().split()))
 https://qiita.com/jamjamjam/items/e066b8c7bc85487c0785
 """
 
+n, x = list(map(int, input().split()))
+l = list(map(int, input().split()))
+
+s = 0
+
+for i in range(n):
+    fee = l[i]
+    if (i+1) % 2 == 0:
+        s += fee - 1
+        continue
+    s += fee
+ans = "No"
+if x >= s:
+    ans = "Yes"
+print(ans)
