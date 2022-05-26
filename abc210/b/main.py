@@ -18,4 +18,15 @@ l = list(map(int, input().split()))
 その他
 https://qiita.com/jamjamjam/items/e066b8c7bc85487c0785
 """
+n = int(input())
+strings = input()
+ans = "Takahashi"
 
+for i in range(1, len(strings)+1):
+    if strings[i-1] == "1":
+        if i % 2 == 0:
+            ans = "Aoki"
+        else:
+            ans = "Takahashi"
+        print(ans)
+        exit()
