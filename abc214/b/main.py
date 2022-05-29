@@ -18,4 +18,14 @@ l = list(map(int, input().split()))
 その他
 https://qiita.com/jamjamjam/items/e066b8c7bc85487c0785
 """
+s, t = list(map(int, input().split()))
 
+count = 0
+for a in range(s+1):
+    for b in range(s+1):
+        for c in range(s+1):
+            is_s = (a+b+c) <= s
+            is_t = (a*b*c) <= t
+            if is_s and is_t:
+                count += 1
+print(count)
