@@ -18,4 +18,10 @@ l = list(map(int, input().split()))
 その他
 https://qiita.com/jamjamjam/items/e066b8c7bc85487c0785
 """
-
+n = int(input())
+ans = 8
+if 1 <= n <= 125:
+    ans = 4
+elif 126 <= n <= 211:
+    ans = 6
+print(ans)
