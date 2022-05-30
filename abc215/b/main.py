@@ -18,4 +18,13 @@ l = list(map(int, input().split()))
 その他
 https://qiita.com/jamjamjam/items/e066b8c7bc85487c0785
 """
+import math
 
+n = int(input())
+ans = 0
+k = 1
+while k <= n:
+    k *= 2
+    ans += 1
+ans -= 1
+print(ans)
