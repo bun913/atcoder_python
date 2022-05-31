@@ -18,4 +18,13 @@ l = list(map(int, input().split()))
 その他
 https://qiita.com/jamjamjam/items/e066b8c7bc85487c0785
 """
+s = input()
+y = int(s.split(".")[1])
+x = s.split(".")[0]
 
+if 0 <= y <= 2:
+    print(x + "-")
+elif 3 <= y <= 6:
+    print(x)
+elif 7 <= y <= 9:
+    print(x + "+")
