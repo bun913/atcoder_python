@@ -18,4 +18,12 @@ l = list(map(int, input().split()))
 その他
 https://qiita.com/jamjamjam/items/e066b8c7bc85487c0785
 """
-
+n = int(input())
+_set = set()
+for i in range(n):
+    st = input()
+    if st in _set:
+        print("Yes")
+        exit()
+    _set.add(st)
+print("No")
