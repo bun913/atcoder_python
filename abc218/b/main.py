@@ -18,4 +18,10 @@ l = list(map(int, input().split()))
 その他
 https://qiita.com/jamjamjam/items/e066b8c7bc85487c0785
 """
-
+org = [chr(ord("a")+i) for i in range(26)]
+l = input().split(" ")
+ans = ""
+for s in l:
+    n = int(s)
+    ans += org[n-1]
+print(ans)
