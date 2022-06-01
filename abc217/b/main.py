@@ -18,4 +18,10 @@ l = list(map(int, input().split()))
 その他
 https://qiita.com/jamjamjam/items/e066b8c7bc85487c0785
 """
-
+_all = set(["ABC", "ARC", "AGC", "AHC"])
+_comp = set()
+for _ in range(3):
+    s = input()
+    _comp.add(s)
+dif = _all.symmetric_difference(_comp)
+print(list(dif)[0])
