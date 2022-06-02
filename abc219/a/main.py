@@ -18,4 +18,12 @@ l = list(map(int, input().split()))
 その他
 https://qiita.com/jamjamjam/items/e066b8c7bc85487c0785
 """
-
+x = int(input())
+ans = "expert"
+if x < 40:
+    ans = 40-x
+elif x < 70:
+    ans = 70-x
+elif x < 90:
+    ans = 90-x
+print(ans)
