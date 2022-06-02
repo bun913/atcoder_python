@@ -37,3 +37,4 @@ ref: https://github.com/bun913/go_atcoder
 | Grid  | [ABC 075 B](https://atcoder.jp/contests/abc075/tasks/abc075_b),[ABC 096 C](https://atcoder.jp/contests/abc096/tasks/abc096_c),[ABC 197 B](https://atcoder.jp/contests/abc197/tasks/abc197_b) | 
 | Process to find the overlap of intervals  | [ABC 070 B](https://atcoder.jp/contests/abc070/tasks/abc070_b),[ABC 199 B](https://atcoder.jp/contests/abc199/tasks/abc199_b) | 
 | Bit Full Search  | [ABC 079 C](https://atcoder.jp/contests/abc079/tasks/abc079_c)| 
+| Prime Number etc  | [mat014](https://atcoder.jp/contests/math-and-algorithm/tasks/math_and_algorithm_n),[mat013](https://atcoder.jp/contests/math-and-algorithm/tasks/math_and_algorithm_m)| 
