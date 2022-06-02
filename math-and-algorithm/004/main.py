@@ -18,4 +18,7 @@ l = list(map(int, input().split()))
 その他
 https://qiita.com/jamjamjam/items/e066b8c7bc85487c0785
 """
-
+from functools import reduce
+l = list(map(int, input().split(" ")))
+ans = reduce(lambda pre, n: pre * n, l, 1)
+print(ans)
