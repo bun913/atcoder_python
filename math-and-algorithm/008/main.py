@@ -18,4 +18,10 @@ l = list(map(int, input().split()))
 その他
 https://qiita.com/jamjamjam/items/e066b8c7bc85487c0785
 """
-
+n, s = list(map(int, input().split(" ")))
+ans = 0
+for i in range(1, n+1):
+    for k in range(1, n+1):
+        if i + k <= s:
+            ans += 1
+print(ans)

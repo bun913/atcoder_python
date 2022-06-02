@@ -19,3 +19,18 @@ l = list(map(int, input().split()))
 https://qiita.com/jamjamjam/items/e066b8c7bc85487c0785
 """
 
+
+def is_prime_number(n: int) -> bool:
+    for i in range(2, n+1):
+        if n % i == 0 and i != n:
+            return False
+    return True
+
+
+n = int(input())
+ans = []
+for i in range(2, n+1):
+    is_prime = is_prime_number(i)
+    if is_prime:
+        ans.append(str(i))
+print(" ".join(ans))
