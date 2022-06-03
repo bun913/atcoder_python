@@ -43,3 +43,10 @@ def permutation(n, r):
 
 def combination(n, r):
     return permutation(n, r) // math.factorial(r)
+
+
+k = int(input())
+a, b = list(input().split(" "))
+
+ans = int(a, k) * int(b, k)
+print(ans)
