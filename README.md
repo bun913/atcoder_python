@@ -32,6 +32,8 @@ ref: https://github.com/bun913/go_atcoder
 
 ## Kinds of Ploblems
 
+I'll solve these ploblems again later.
+
 | Kinds | Ploblems  |
 | - | - | 
 | Grid  | [ABC 075 B](https://atcoder.jp/contests/abc075/tasks/abc075_b),[ABC 096 C](https://atcoder.jp/contests/abc096/tasks/abc096_c),[ABC 197 B](https://atcoder.jp/contests/abc197/tasks/abc197_b) | 
@@ -39,3 +41,4 @@ ref: https://github.com/bun913/go_atcoder
 | Bit Full Search  | [ABC 079 C](https://atcoder.jp/contests/abc079/tasks/abc079_c)| 
 | Prime Number etc  | [mat014](https://atcoder.jp/contests/math-and-algorithm/tasks/math_and_algorithm_n),[mat013](https://atcoder.jp/contests/math-and-algorithm/tasks/math_and_algorithm_m)| 
 | GCD(Euclidean algo)  | [mat016](https://atcoder.jp/contests/math-and-algorithm/tasks/math_and_algorithm_p)| 
+| Combination, Permutaion  | [mat019](https://atcoder.jp/contests/math-and-algorithm/tasks/math_and_algorithm_s) [mat020](https://atcoder.jp/contests/math-and-algorithm/tasks/math_and_algorithm_t)| 
