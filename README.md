@@ -38,3 +38,4 @@ ref: https://github.com/bun913/go_atcoder
 | Process to find the overlap of intervals  | [ABC 070 B](https://atcoder.jp/contests/abc070/tasks/abc070_b),[ABC 199 B](https://atcoder.jp/contests/abc199/tasks/abc199_b) | 
 | Bit Full Search  | [ABC 079 C](https://atcoder.jp/contests/abc079/tasks/abc079_c)| 
 | Prime Number etc  | [mat014](https://atcoder.jp/contests/math-and-algorithm/tasks/math_and_algorithm_n),[mat013](https://atcoder.jp/contests/math-and-algorithm/tasks/math_and_algorithm_m)| 
+| GCD(Euclidean algo)  | [mat016](https://atcoder.jp/contests/math-and-algorithm/tasks/math_and_algorithm_p)| 
