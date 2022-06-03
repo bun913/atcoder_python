@@ -18,4 +18,17 @@ l = list(map(int, input().split()))
 その他
 https://qiita.com/jamjamjam/items/e066b8c7bc85487c0785
 """
+import math
 
+
+def permutation(n, r):
+    return math.factorial(n) // math.factorial(n-r)
+
+
+def combination(n, r):
+    return permutation(n, r) // math.factorial(r)
+
+
+n, r = list(map(int, input().split(" ")))
+ans = combination(n, r)
+print(ans)
