@@ -43,3 +43,7 @@ def permutation(n, r):
 
 def combination(n, r):
     return permutation(n, r) // math.factorial(r)
+
+
+a, b = list(map(int, input().split()))
+print(32 ** (a-b))
