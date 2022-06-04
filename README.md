@@ -42,3 +42,4 @@ I'll solve these ploblems again later.
 | Prime Number etc  | [mat014](https://atcoder.jp/contests/math-and-algorithm/tasks/math_and_algorithm_n),[mat013](https://atcoder.jp/contests/math-and-algorithm/tasks/math_and_algorithm_m)| 
 | GCD(Euclidean algo)  | [mat016](https://atcoder.jp/contests/math-and-algorithm/tasks/math_and_algorithm_p)| 
 | Combination, Permutaion  | [mat019](https://atcoder.jp/contests/math-and-algorithm/tasks/math_and_algorithm_s) [mat020](https://atcoder.jp/contests/math-and-algorithm/tasks/math_and_algorithm_t)| 
+
