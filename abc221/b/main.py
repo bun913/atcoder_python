@@ -43,3 +43,25 @@ def permutation(n, r):
 
 def combination(n, r):
     return permutation(n, r) // math.factorial(r)
+
+
+s = input()
+l = list(s)
+t = input()
+
+for i in range(len(s)):
+    if i + 1 > len(s) - 1:
+        break
+    before = l[i]
+    after = l[i+1]
+    tmp = l[::]
+    tmp[i] = after
+    tmp[i+1] = before
+    if "".join(tmp) == t:
+        print("Yes")
+        exit()
+
+if s == t:
+    print("Yes")
+else:
+    print("No")
