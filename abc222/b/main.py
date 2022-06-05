@@ -43,3 +43,9 @@ def permutation(n, r):
 
 def combination(n, r):
     return permutation(n, r) // math.factorial(r)
+
+
+n, p = list(map(int, input().split()))
+l = list(map(int, input().split()))
+filterd = list(filter(lambda x: x < p, l))
+print(len(filterd))
