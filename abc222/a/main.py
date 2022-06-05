@@ -43,3 +43,7 @@ def permutation(n, r):
 
 def combination(n, r):
     return permutation(n, r) // math.factorial(r)
+
+
+n = input()
+print(n.zfill(4))
