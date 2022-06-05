@@ -43,3 +43,10 @@ def permutation(n, r):
 
 def combination(n, r):
     return permutation(n, r) // math.factorial(r)
+
+
+x = int(input())
+if x % 100 == 0 and x >= 100:
+    print("Yes")
+    exit()
+print("No")
