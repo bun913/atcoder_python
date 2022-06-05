@@ -18,4 +18,15 @@ l = list(map(int, input().split()))
 その他
 https://qiita.com/jamjamjam/items/e066b8c7bc85487c0785
 """
-
+n = int(input())
+bl = list(map(int, input().split()))
+rl = list(map(int, input().split()))
+ans = 0
+for i in range(n):
+    # 期待値の和 = 和の期待値を求めれば良い
+    # 1つ1つの和が出る組み合わせを列挙して、確率を求めるのではない
+    b = bl[i]
+    r = rl[i]
+    # b+rが和 で今回は和*1が得点となるから・・
+    ans += (b + r) * 1.0 / n
+print(ans)
