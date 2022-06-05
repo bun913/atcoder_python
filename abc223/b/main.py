@@ -43,3 +43,21 @@ def permutation(n, r):
 
 def combination(n, r):
     return permutation(n, r) // math.factorial(r)
+
+
+s = input()
+_min = s[:]
+_max = s[:]
+l = list(s)
+for _ in range(len(s)-1):
+    # 今回は右シフトだけを考える(先頭を最後尾に送る)
+    first = l.pop(0)
+    l.append(first)
+    tmp = "".join(l)
+    if tmp < _min:
+        _min = tmp
+    elif tmp > _max:
+        _max = tmp
+
+print(_min)
+print(_max)
