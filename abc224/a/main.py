@@ -43,3 +43,10 @@ def permutation(n, r):
 
 def combination(n, r):
     return permutation(n, r) // math.factorial(r)
+
+
+s = input()
+ans = "er"
+if s.endswith("ist"):
+    ans = "ist"
+print(ans)
