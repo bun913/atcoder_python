@@ -47,4 +47,9 @@ def combination(n, r):
 
 
 x = input()
-print(Decimal(x).quantize(0))
+
+ans = int(x.split(".")[0])
+n = int(x.split(".")[1][0])
+if n >= 5:
+    ans += 1
+print(ans)
