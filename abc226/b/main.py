@@ -43,3 +43,12 @@ def permutation(n, r):
 
 def combination(n, r):
     return permutation(n, r) // math.factorial(r)
+
+
+n = int(input())
+ans_set = set()
+
+for i in range(n):
+    s = input()
+    ans_set.add(s)
+print(len(ans_set))
