@@ -26,6 +26,7 @@ list(combinations(l, 2))
 from functools import reduce
 from itertools import combinations
 import math
+from decimal import Decimal
 
 # 素数判定
 
@@ -43,3 +44,7 @@ def permutation(n, r):
 
 def combination(n, r):
     return permutation(n, r) // math.factorial(r)
+
+
+x = input()
+print(Decimal(x).quantize(0))
