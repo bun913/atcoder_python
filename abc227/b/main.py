@@ -43,3 +43,25 @@ def permutation(n, r):
 
 def combination(n, r):
     return permutation(n, r) // math.factorial(r)
+
+
+n = int(input())
+l = list(map(int, input().split()))
+ok = 0
+break_flag = False
+
+# ここのa,bをどこまで探索するかには課題がある
+# sが1000までなので式を考慮すると333でも多いくらいの探索
+for i in range(n):
+    s = l[i]
+    for a in range(1, 333):
+        if break_flag:
+            # 初期化
+            break_flag = False
+            break
+        for b in range(1, 333):
+            if (4*a*b) + (3*a) + (3*b) == s:
+                break_flag = True
+                ok += 1
+                break
+print(n-ok)
