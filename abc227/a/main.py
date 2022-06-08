@@ -43,3 +43,15 @@ def permutation(n, r):
 
 def combination(n, r):
     return permutation(n, r) // math.factorial(r)
+
+
+n, k, a = list(map(int, input().split()))
+now = a
+for i in range(k):
+    if i == 0:
+        continue
+    if now + 1 <= n:
+        now += 1
+    else:
+        now = 1
+print(now)
