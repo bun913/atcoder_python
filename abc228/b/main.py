@@ -43,3 +43,15 @@ def permutation(n, r):
 
 def combination(n, r):
     return permutation(n, r) // math.factorial(r)
+
+
+n, x = list(map(int, input().split()))
+l = list(map(int, input().split()))
+_set = set(l)
+ind = x-1
+s = set([x])
+for i in range(n):
+    informed_friend = l[ind]
+    s.add(informed_friend)
+    ind = informed_friend-1
+print(len(s))
