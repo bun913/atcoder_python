@@ -43,3 +43,19 @@ def permutation(n, r):
 
 def combination(n, r):
     return permutation(n, r) // math.factorial(r)
+
+
+s, t, x = list(map(int, input().split()))
+if s < t:
+    if s <= x and x < t:
+        print('Yes')
+    else:
+        print('No')
+else:
+    # こちらの場合 xがtより小さいか、s以上であればOK
+    # なぜならすでにtの方がsより小さい ex:23 ~ 5のような
+    # この場合開始時刻以上、または終了時刻以下であれば良い（xは30分なので)
+    if x < t or s <= x:
+        print('Yes')
+    else:
+        print('No')
