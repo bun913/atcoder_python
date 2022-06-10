@@ -43,3 +43,20 @@ def permutation(n, r):
 
 def combination(n, r):
     return permutation(n, r) // math.factorial(r)
+
+
+l = [list(input()) for _ in range(2)]
+dxy = [(-1, 0), (1, 0), (0, -1), (0, 1)]
+for i in range(2):
+    for j in range(2):
+        black_count = 0
+        for dx, dy in dxy:
+            if l[i][j] == '#':
+                if i + dx < 0 or i + dx > 1 or j + dy < 0 or j + dy > 1:
+                    continue
+                if l[i+dx][j+dy] == '#':
+                    black_count += 1
+        if l[i][j] == '#' and black_count == 0:
+            print('No')
+            exit()
+print('Yes')
