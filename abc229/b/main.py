@@ -43,3 +43,16 @@ def permutation(n, r):
 
 def combination(n, r):
     return permutation(n, r) // math.factorial(r)
+
+
+a, b = list(map(str, input().split()))
+ra = a[::-1]
+rb = b[::-1]
+for x in range(len(a)):
+    lenb = len(b)
+    if x > len(b) - 1:
+        continue
+    if int(ra[x]) + int(rb[x]) >= 10:
+        print('Hard')
+        exit()
+print('Easy')
