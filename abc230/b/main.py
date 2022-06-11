@@ -43,3 +43,11 @@ def permutation(n, r):
 
 def combination(n, r):
     return permutation(n, r) // math.factorial(r)
+
+
+s = input()
+t = "oxx" * (10**5)
+ans = 'No'
+if s in t:
+    ans = 'Yes'
+print(ans)
