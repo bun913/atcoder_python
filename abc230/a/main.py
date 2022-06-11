@@ -43,3 +43,9 @@ def permutation(n, r):
 
 def combination(n, r):
     return permutation(n, r) // math.factorial(r)
+
+
+n = int(input())
+if n >= 42:
+    n += 1
+print("AGC{}".format(str(n).zfill(3)))
