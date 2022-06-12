@@ -43,3 +43,7 @@ def permutation(n, r):
 
 def combination(n, r):
     return permutation(n, r) // math.factorial(r)
+
+
+D = int(input())
+print(D / 100)
