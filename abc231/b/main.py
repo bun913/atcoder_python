@@ -43,3 +43,15 @@ def permutation(n, r):
 
 def combination(n, r):
     return permutation(n, r) // math.factorial(r)
+
+
+N = int(input())
+S = [input() for _ in range(N)]
+dic = {}
+for s in S:
+    if dic.get(s) is None:
+        dic[s] = 0
+    else:
+        dic[s] += 1
+_sorted = sorted(dic.items(), key=lambda x: x[1], reverse=True)
+print(_sorted[0][0])
