@@ -73,3 +73,10 @@ def derot_n(s, n) -> str:
         answer += chr(ord('Z') - (ord('Z')-ord(letter)+n) % 26)
 
     return answer
+
+
+N = int(input())
+if (2 ** 31) * -1 <= N and N < (2) ** 31:
+    print('Yes')
+else:
+    print("No")
