@@ -18,34 +18,30 @@ l = list(map(int, input().split()))
 その他
 https://qiita.com/jamjamjam/items/e066b8c7bc85487c0785
 """
-import copy
-
 H, W = list(map(int, input().split()))
-
-inputs = []
-# 2次元配列で入力を受け取る
-for h in range(H):
-    l = list(input())
-    inputs.append(l)
-ans = copy.deepcopy(inputs)
-# xを横、yを縦の変数と考える
-# 近接八方向を表すための数字の組み
-dxy = [(-1,-1),(-1,0),(-1,1),(0,1),(1,1),(1,0),(1,-1),(0,-1)]
-for h in range(H):
-    for w in range(W):
-        cur_col = ans[h][w]
-        # #の場合はそのまま出力
-        if cur_col == "#":
+S = [list(input()) for _ in range(H)]
+# 8方向
+dxy = [
+    (-1, 0), (1, 0),
+    (0, -1), (0, 1),
+    (-1, 1), (1, 1),
+    (-1, -1), (1, -1)
+]
+for x in range(H):
+    for y in range(W):
+        now = S[x][y]
+        if now == '#':
             continue
+        # 8方向を確認する
         count = 0
-        # 近隣8マスを確認
         for dx, dy in dxy:
-            # インデックス0を下回る、インデックス最大値を上回る場合はスキップ
-            if w + dx < 0 or w + dx > W-1 or h + dy < 0 or h + dy > H - 1:
+            plux = x + dx
+            pluy = y + dy
+            if plux < 0 or plux >= H or pluy < 0 or pluy >= W:
                 continue
-            target_col = inputs[h+dy][w+dx]
-            if target_col == "#":
+            if S[plux][pluy] == '#':
                 count += 1
-        ans[h][w] = str(count)
-for l in ans:
-    print("".join(l))
+        S[x][y] = str(count)
+for i in range(H):
+    s = ''.join(S[i])
+    print(s)
