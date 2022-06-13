@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Atcoderの問題解く用
+Atcodeの問題解く用
 
 1行1列データ
 
@@ -73,3 +73,11 @@ def derot_n(s, n) -> str:
         answer += chr(ord('Z') - (ord('Z')-ord(letter)+n) % 26)
 
     return answer
+
+
+X, Y = list(map(int, input().split()))
+ans = 0
+while X < Y:
+    ans += 1
+    X += 10
+print(ans)
