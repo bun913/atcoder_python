@@ -34,15 +34,15 @@ ref: https://github.com/bun913/go_atcoder
 
 I'll solve these ploblems again later.
 
-| Kinds | Ploblems  |
-| - | - | 
-| Grid  | [ABC 075 B](https://atcoder.jp/contests/abc075/tasks/abc075_b),[ABC 096 C](https://atcoder.jp/contests/abc096/tasks/abc096_c),[ABC 197 B](https://atcoder.jp/contests/abc197/tasks/abc197_b), [ABC 224 B](https://atcoder.jp/contests/abc224/tasks/abc224_b) | 
-| Process to find the overlap of intervals  | [ABC 070 B](https://atcoder.jp/contests/abc070/tasks/abc070_b),[ABC 199 B](https://atcoder.jp/contests/abc199/tasks/abc199_b) | 
-| Bit Full Search  | [ABC 079 C](https://atcoder.jp/contests/abc079/tasks/abc079_c)| 
-| Prime Number etc  | [mat014](https://atcoder.jp/contests/math-and-algorithm/tasks/math_and_algorithm_n),[mat013](https://atcoder.jp/contests/math-and-algorithm/tasks/math_and_algorithm_m)| 
+| Kinds | Ploblems  | Remarks |
+| - | - |  - |
+| Grid  | [ABC 075 B](https://atcoder.jp/contests/abc075/tasks/abc075_b),[ABC 096 C](https://atcoder.jp/contests/abc096/tasks/abc096_c),[ABC 197 B](https://atcoder.jp/contests/abc197/tasks/abc197_b), [ABC 224 B](https://atcoder.jp/contests/abc224/tasks/abc224_b) | resolve(2022/06/13) |
+| Process to find the overlap of intervals  | [ABC 070 B](https://atcoder.jp/contests/abc070/tasks/abc070_b),[ABC 199 B](https://atcoder.jp/contests/abc199/tasks/abc199_b) |  |
+| Bit Full Search  | [ABC 079 C](https://atcoder.jp/contests/abc079/tasks/abc079_c)| |
+| Prime Number etc  | [mat014](https://atcoder.jp/contests/math-and-algorithm/tasks/math_and_algorithm_n),[mat013](https://atcoder.jp/contests/math-and-algorithm/tasks/math_and_algorithm_m)|  |
 | GCD(Euclidean algo)  | [mat016](https://atcoder.jp/contests/math-and-algorithm/tasks/math_and_algorithm_p)| 
 | Combination, Permutaion  | [mat019](https://atcoder.jp/contests/math-and-algorithm/tasks/math_and_algorithm_s) [mat020](https://atcoder.jp/contests/math-and-algorithm/tasks/math_and_algorithm_t), [mat022](https://atcoder.jp/contests/math-and-algorithm/tasks/math_and_algorithm_v)| 
-| Probablillty and expcted value  | [mat023](https://atcoder.jp/contests/math-and-algorithm/tasks/math_and_algorithm_w), [mat026](https://atcoder.jp/contests/math-and-algorithm/tasks/math_and_algorithm_z) | 
-| Time | [ABC228 A](https://atcoder.jp/contests/abc228/tasks/abc228_a) | 
-| DP | [mat009](https://atcoder.jp/contests/math-and-algorithm/tasks/math_and_algorithm_i),[mat031](https://atcoder.jp/contests/math-and-algorithm/tasks/math_and_algorithm_ac) | 
+| Probablillty and expcted value  | [mat023](https://atcoder.jp/contests/math-and-algorithm/tasks/math_and_algorithm_w), [mat026](https://atcoder.jp/contests/math-and-algorithm/tasks/math_and_algorithm_z) |  |
+| Time | [ABC228 A](https://atcoder.jp/contests/abc228/tasks/abc228_a) |  | 
+| DP | [mat009](https://atcoder.jp/contests/math-and-algorithm/tasks/math_and_algorithm_i),[mat031](https://atcoder.jp/contests/math-and-algorithm/tasks/math_and_algorithm_ac) | |
 
