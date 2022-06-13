@@ -43,3 +43,24 @@ def permutation(n, r):
 
 def combination(n, r):
     return permutation(n, r) // math.factorial(r)
+
+
+def rot_n(s, n) -> str:
+    """
+    アルファベットsをn文字分ずらす
+    """
+    answer = ''
+    for letter in s:
+        answer += chr(ord('A') + (ord(letter)-ord('A')+n) % 26)
+    return answer
+
+
+S = input()
+T = input()
+
+for n in range(1, 27):
+    changed = rot_n(S, n).lower()
+    if changed == T:
+        print('Yes')
+        exit()
+print('No')

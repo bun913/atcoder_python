@@ -43,3 +43,9 @@ def permutation(n, r):
 
 def combination(n, r):
     return permutation(n, r) // math.factorial(r)
+
+
+s = input()
+left = int(s[0])
+right = int(s[2])
+print(left * right)
