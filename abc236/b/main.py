@@ -73,3 +73,15 @@ def derot_n(s, n) -> str:
         answer += chr(ord('Z') - (ord('Z')-ord(letter)+n) % 26)
 
     return answer
+
+
+N = int(input())
+A = list(map(int, input().split()))
+
+dic = {}
+for a in A:
+    if a in dic:
+        dic[a] += 1
+    else:
+        dic[a] = 1
+print(min(dic, key=dic.get))
