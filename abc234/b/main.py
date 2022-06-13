@@ -73,3 +73,20 @@ def derot_n(s, n) -> str:
         answer += chr(ord('Z') - (ord('Z')-ord(letter)+n) % 26)
 
     return answer
+
+
+N = int(input())
+A = [list(map(int, input().split())) for _ in range(N)]
+
+_max = -1
+for i1 in range(N):
+    for i2 in range(1, N):
+        x1, y1 = A[i1]
+        x2, y2 = A[i2]
+        absx = abs(x1-x2)
+        absy = abs(y1-y2)
+        sqr = (absx ** 2) + (absy ** 2)
+        m = math.sqrt(sqr)
+        if m > _max:
+            _max = m
+print(_max)
