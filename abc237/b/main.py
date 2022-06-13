@@ -73,3 +73,10 @@ def derot_n(s, n) -> str:
         answer += chr(ord('Z') - (ord('Z')-ord(letter)+n) % 26)
 
     return answer
+
+
+H, W = list(map(int, input().split()))
+A = [list(map(str, input().split())) for _ in range(H)]
+at = [list(x) for x in zip(*A)]
+for row in at:
+    print(' '.join(row))
