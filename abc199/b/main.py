@@ -18,11 +18,16 @@ l = list(map(int, input().split()))
 その他
 https://qiita.com/jamjamjam/items/e066b8c7bc85487c0785
 """
-n = int(input())
-a_list = list(map(int, input().split()))
-b_list = list(map(int, input().split()))
+N = int(input())
+ans = set([i for i in range(1, 1001)])
+A = list(map(int, input().split()))
+B = list(map(int, input().split()))
 
-ans = min(b_list) - max(a_list) + 1
-if ans < 0:
-    ans = 0
-print(ans)
+for i in range(N):
+    a = A[i]
+    b = B[i]
+    s = set()
+    for j in range(a, b+1):
+        s.add(j)
+    ans = ans.intersection(s)
+print(len(ans))
