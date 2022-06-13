@@ -73,3 +73,17 @@ def derot_n(s, n) -> str:
         answer += chr(ord('Z') - (ord('Z')-ord(letter)+n) % 26)
 
     return answer
+
+
+N = int(input())
+H = list(map(int, input().split()))
+
+for i in range(N-1):
+    now = H[i]
+    _next = H[i+1]
+    if _next > now:
+        continue
+    else:
+        print(now)
+        exit()
+print(H[-1])
