@@ -73,3 +73,11 @@ def derot_n(s, n) -> str:
         answer += chr(ord('Z') - (ord('Z')-ord(letter)+n) % 26)
 
     return answer
+
+
+L, R = list(map(int, input().split()))
+S = input()
+before = S[:L-1]
+middle = S[L-1:R][::-1]
+after = S[R:]
+print(before + middle + after)
