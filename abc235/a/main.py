@@ -4,11 +4,11 @@ Atcoderの問題解く用
 
 1行1列データ
 
-#str型で受け取るとき
+# str型で受け取るとき
 s = input()
-#int型で受け取るとき
+# int型で受け取るとき
 s = int(input())
-#float型　(小数)で受け取るとき
+# float型　(小数)で受け取るとき
 s = float(input())
 
 (1,N)行列データ
@@ -73,3 +73,8 @@ def derot_n(s, n) -> str:
         answer += chr(ord('Z') - (ord('Z')-ord(letter)+n) % 26)
 
     return answer
+
+
+a, b, c = list(input())
+ans = int(a + b + c) + int(b + c + a) + int(c + a + b)
+print(ans)
