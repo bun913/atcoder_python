@@ -18,25 +18,21 @@ l = list(map(int, input().split()))
 その他
 https://qiita.com/jamjamjam/items/e066b8c7bc85487c0785
 """
-n = int(input())
-l = list(map(int, input().split(" ")))
 
 
-def gcd(a: int, b: int) -> int:
-    if a == 0 or b == 0:
-        return max(a, b)
-    big = max(a, b)
-    small = min(a, b)
-    mod = big % small
-    return gcd(mod, small)
+def gcd(i: int, j: int) -> int:
+    _max = max(i, j)
+    _min = min(i, j)
+    if _min == 0:
+        return _max
+    else:
+        return gcd(_min, _max % _min)
 
 
-# 順番はどうでも良いのでスタックっぽく出し入れを行う
-while True:
-    if len(l) <= 1:
-        print(l[0])
-        exit()
-    a = l.pop()
-    b = l.pop()
-    g = gcd(a, b)
-    l.append(g)
+N = int(input())
+A = list(map(int, input().split()))
+n = A[0]
+for i in range(1, len(A)):
+    _next = A[i]
+    n = gcd(n, _next)
+print(n)
