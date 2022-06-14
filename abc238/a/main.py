@@ -12,3 +12,10 @@ if ((i >> j) & 1)
 from functools import reduce
 from itertools import combinations
 import math
+
+n = int(input())
+
+ans = 'Yes'
+if n in [4, 3, 2]:
+    ans = 'No'
+print(ans)
