@@ -19,25 +19,23 @@ l = list(map(int, input().split()))
 https://qiita.com/jamjamjam/items/e066b8c7bc85487c0785
 """
 import math
-n = int(input())
-sqr = int(math.sqrt(n))
 
-# 約数
-# 整数の性質上、a*b = N とするなら
-# a or b もしくはその両方が Nの平方根以下となる
-# 例えば36なら 6*6が最大 1*36,2*18のようにa,bの少なくとも片方はnの平方根以下
-# そのため平方根まで約数をみていけば最後まで割り算をする必要がないので
-# 最大でも 10**6の計算ですむ
+N = int(input())
+n = N
+sqr = int(math.sqrt(N))
+
+# 全探索ではなく平方根までの検索を行う
+# なぜなら N = a * b と考えた時、aとbの両方が平方根より大きくなることはないため
+# 25とかで考えるとわかりやすい
 ans = []
-i = 2
-while True:
-    if i >= sqr:
-        break
-    if n % i == 0:
-        n //= i
-        ans.append(str(i))
-    else:
-        i += 1
+for i in range(2, sqr+1):
+    # iで割続けられるうちは続ける
+    while True:
+        if n % i == 0:
+            ans.append(str(i))
+            n = n // i
+        else:
+            break
 if n != 1:
     ans.append(str(n))
-print(" ".join(ans))
+print(' '.join(ans))

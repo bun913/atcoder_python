@@ -38,8 +38,8 @@ I'll solve these ploblems again later.
 | - | - |  - |
 | Grid  | [ABC 075 B](https://atcoder.jp/contests/abc075/tasks/abc075_b),[ABC 096 C](https://atcoder.jp/contests/abc096/tasks/abc096_c),[ABC 197 B](https://atcoder.jp/contests/abc197/tasks/abc197_b), [ABC 224 B](https://atcoder.jp/contests/abc224/tasks/abc224_b) | resolve(2022/06/13) |
 | Process to find the overlap of intervals  | [ABC 070 B](https://atcoder.jp/contests/abc070/tasks/abc070_b),[ABC 199 B](https://atcoder.jp/contests/abc199/tasks/abc199_b) | resolve(2022/06/14) |
-| Bit Full Search  | [ABC 079 C](https://atcoder.jp/contests/abc079/tasks/abc079_c)| |
-| Prime Number etc  | [mat014](https://atcoder.jp/contests/math-and-algorithm/tasks/math_and_algorithm_n),[mat013](https://atcoder.jp/contests/math-and-algorithm/tasks/math_and_algorithm_m)|  |
+| Bit Full Search  | [ABC 079 C](https://atcoder.jp/contests/abc079/tasks/abc079_c)| resolve(2022/06/14) |
+| Prime Number etc  | [mat014](https://atcoder.jp/contests/math-and-algorithm/tasks/math_and_algorithm_n),[mat013](https://atcoder.jp/contests/math-and-algorithm/tasks/math_and_algorithm_m)| resolve(2022/06/14) |
 | GCD(Euclidean algo)  | [mat016](https://atcoder.jp/contests/math-and-algorithm/tasks/math_and_algorithm_p)| 
 | Combination, Permutaion  | [mat019](https://atcoder.jp/contests/math-and-algorithm/tasks/math_and_algorithm_s) [mat020](https://atcoder.jp/contests/math-and-algorithm/tasks/math_and_algorithm_t), [mat022](https://atcoder.jp/contests/math-and-algorithm/tasks/math_and_algorithm_v)| 
 | Probablillty and expcted value  | [mat023](https://atcoder.jp/contests/math-and-algorithm/tasks/math_and_algorithm_w), [mat026](https://atcoder.jp/contests/math-and-algorithm/tasks/math_and_algorithm_z) |  |
