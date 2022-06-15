@@ -12,3 +12,10 @@ if ((i >> j) & 1)
 from functools import reduce
 from itertools import combinations
 import math
+from decimal import *
+
+X = input()
+dec = Decimal(X)
+div = dec / Decimal(10)
+ans = div.quantize(Decimal('0'), ROUND_FLOOR)
+print(ans)
