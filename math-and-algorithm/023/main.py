@@ -18,15 +18,20 @@ l = list(map(int, input().split()))
 その他
 https://qiita.com/jamjamjam/items/e066b8c7bc85487c0785
 """
-n = int(input())
-bl = list(map(int, input().split()))
-rl = list(map(int, input().split()))
-ans = 0
-for i in range(n):
-    # 期待値の和 = 和の期待値を求めれば良い
-    # 1つ1つの和が出る組み合わせを列挙して、確率を求めるのではない
-    b = bl[i]
-    r = rl[i]
-    # b+rが和 で今回は和*1が得点となるから・・
-    ans += (b + r) * 1.0 / n
-print(ans)
+
+N = int(input())
+B = list(map(int, input().split()))
+R = list(map(int, input().split()))
+
+s = 0
+
+# 二重ループはできない
+# 期待値の線形性を使う
+# 2つを同時に降った時の期待値が知りたければ
+# ここのサイコロでの期待値を出して、それを足し合わせればなぜか2つのサイコロを同時に投げた期待値が出てくる
+
+for i in range(N):
+    s += B[i] / N
+    s += R[i] / N
+
+print(s)
