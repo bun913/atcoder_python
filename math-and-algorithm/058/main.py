@@ -18,4 +18,12 @@ l = list(map(int, input().split()))
 その他
 https://qiita.com/jamjamjam/items/e066b8c7bc85487c0785
 """
+# 実際に1回でいける数、2回で行ける数と考えてみる
+# 市松模様に色を塗ってみると偶数奇数で行けるところが限られてくるとはっきりわかる
+N, X, Y = list(map(int, input().split()))
 
+ans = 'No'
+if abs(X) + abs(Y) <= N and (abs(X) + abs(Y)) % 2 == N % 2:
+    ans = 'Yes'
+
+print(ans)
