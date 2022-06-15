@@ -20,17 +20,18 @@ https://qiita.com/jamjamjam/items/e066b8c7bc85487c0785
 """
 N = int(input())
 A = list(map(int, input().split()))
-dp_study = [0 for _ in range(N+1)]
-dp_no_study = [0 for _ in range(N+1)]
-# i日目に勉強した場合と勉強しない場合を分けて考える
-# これでi日目までの最大値を求める
+dp1 = [0 for _ in range(N+1)]
+dp2 = [0 for _ in range(N+1)]
+# dp1をi日目に勉強した場合の最適値
+# dp2をi日目に勉強しなかった場合の最適値を保持するリストとする
+
 for i in range(1, N+1):
-    # i日目に勉強する場合の最大値
-    # 2日続けて勉強はできないので、昨日勉強しなかった場合の実力のアップ値を使う
-    dp_study[i] = dp_no_study[i-1] + A[i-1]  # iは1始まりなので-1
-    # i日目に勉強しない場合の最大値
-    # 単純に昨日までの勉強しない場合と、勉強する場合の最大値を比べれば良い
-    no_study = dp_no_study[i-1]
-    study = dp_study[i-1]
-    dp_no_study[i] = max(no_study, study)
-print(max(dp_study[-1], dp_no_study[-1]))
+    # 勉強しなかった場合
+    no = max(dp1[i-1], dp2[i-1])
+    # 勉強した場合
+    study = dp2[i-1] + A[i-1]
+    dp1[i] = study
+    dp2[i] = no
+# print(dp1)
+# print(dp2)
+print(max(dp1[-1], dp2[-1]))
