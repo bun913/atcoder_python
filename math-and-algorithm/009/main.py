@@ -18,29 +18,29 @@ l = list(map(int, input().split()))
 その他
 https://qiita.com/jamjamjam/items/e066b8c7bc85487c0785
 """
+# Nが最大60なので全探索は無理(2**60)でタイムアウト
+# 1こだけ使う場合,2こだけ使う場合・・と最適解を求め続けていく必要がある
+# そこでDPですよ（表的計算法ですよ)
 N, S = list(map(int, input().split()))
 A = list(map(int, input().split()))
-# DPで解くため1行あたり10,000までの値を持つ二次元配列を用意
-limit = S+1
-dp = [[None] * (S + 1) for i in range(N + 1)]
+dp = [[False for _ in range(S+1)] for _ in range(N+1)]
 dp[0][0] = True
 
-# 数字がvになるような値が作れるか作れないか見れば良いだけ
-# 今引いているカードが
 for i in range(1, N+1):
-    for j in range(0, limit):
-        now = A[i-1]
-        # 現在のカードを使えない時(vが現在引いているカードの値より低い)
-        if j < now:
-            dp[i][j] = dp[i-1][j]
-        else:
-            no_use = dp[i-1][j]
-            use = dp[i-1][j-now]
-            if no_use is True or use is True:
-                dp[i][j] = True
-            else:
-                dp[i][j] = False
-ans = 'No'
+    v = A[i-1]
+    for j in range(0, S+1):
+        # 横からj番目の数が現在のカードの値に満たない場合はそのカードを使えない
+        # なので１個前の結果（１個前までの最適な結果)から持ってくるしかない
+        no_use = dp[i-1][j]
+        if j < v:
+            dp[i][j] = no_use
+            continue
+        # 今回のカードを使う場合
+        # 単純にj-vを引いた列がTrueならjの組み合わせがあり得るということ
+        # 例: 今4にできるか考えている時に、v(カードの値)が3なら、4-3=1の組み合わせがあり得るなら当然1に3を足した4も出せるだろうということ
+        use = dp[i-1][j-v]
+        dp[i][j] = any([use, no_use])
 if dp[N][S] is True:
-    ans = 'Yes'
-print(ans)
+    print('Yes')
+    exit()
+print('No')
