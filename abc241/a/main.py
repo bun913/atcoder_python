@@ -12,3 +12,9 @@ if ((i >> j) & 1)
 from functools import reduce
 from itertools import combinations
 import math
+
+A = list(map(int, input().split()))
+n = 0
+for a in range(3):
+    n = A[n]
+print(n)

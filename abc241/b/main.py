@@ -12,3 +12,22 @@ if ((i >> j) & 1)
 from functools import reduce
 from itertools import combinations
 import math
+
+N, M = list(map(int, input().split()))
+# Aの内容を辞書に
+A = list(map(int, input().split()))
+dic = {}
+for a in A:
+    if a in dic:
+        dic[a] += 1
+    else:
+        dic[a] = 1
+B = list(map(int, input().split()))
+
+for b in B:
+    if b in dic and dic[b] > 0:
+        dic[b] -= 1
+    else:
+        print('No')
+        exit()
+print('Yes')
