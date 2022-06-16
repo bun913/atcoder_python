@@ -12,3 +12,8 @@ if ((i >> j) & 1)
 from functools import reduce
 from itertools import combinations
 import math
+
+N = int(input())
+A = list(map(int, input().split()))
+_set = set(A)
+print(len(_set))
