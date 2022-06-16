@@ -47,7 +47,7 @@ I'll solve these ploblems again later.
 | Time | [ABC228 A](https://atcoder.jp/contests/abc228/tasks/abc228_a) | resolve(2022/06/15) | 
 | DP | [mat009](https://atcoder.jp/contests/math-and-algorithm/tasks/math_and_algorithm_i),[mat031](https://atcoder.jp/contests/math-and-algorithm/tasks/math_and_algorithm_ac) | resolve(2022/06/14) |
 | Regularity | [mat061](https://atcoder.jp/contests/math-and-algorithm/tasks/math_and_algorithm_ba),[mat062](https://atcoder.jp/contests/math-and-algorithm/tasks/abc167_d) |  |
-| odd, even number | [mat064](https://atcoder.jp/contests/math-and-algorithm/tasks/math_and_algorithm_bc) |  |
+| odd, even number | [mat064](https://atcoder.jp/contests/math-and-algorithm/tasks/math_and_algorithm_bc) [mat065](https://atcoder.jp/contests/math-and-algorithm/tasks/panasonic2020_b) |  |
 
 
 ### Ploblems need to solve again
