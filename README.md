@@ -48,6 +48,7 @@ I'll solve these ploblems again later.
 | DP | [mat009](https://atcoder.jp/contests/math-and-algorithm/tasks/math_and_algorithm_i),[mat031](https://atcoder.jp/contests/math-and-algorithm/tasks/math_and_algorithm_ac) | resolve(2022/06/14) |
 | Regularity | [mat061](https://atcoder.jp/contests/math-and-algorithm/tasks/math_and_algorithm_ba),[mat062](https://atcoder.jp/contests/math-and-algorithm/tasks/abc167_d) |  |
 | odd, even number | [mat064](https://atcoder.jp/contests/math-and-algorithm/tasks/math_and_algorithm_bc) [mat065](https://atcoder.jp/contests/math-and-algorithm/tasks/panasonic2020_b) |  |
+| The nature of the set | [mat066](https://atcoder.jp/contests/math-and-algorithm/tasks/math_and_algorithm_bd) |  |
 
 
 ### Ploblems need to solve again
