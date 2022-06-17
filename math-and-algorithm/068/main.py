@@ -4,9 +4,9 @@ Atcoderの問題解く用
 1行1列データ
 
 #str型で受け取るとき
-s = input() 
+s = input()
 #int型で受け取るとき
-s = int(input()) 
+s = int(input())
 #float型　(小数)で受け取るとき
 s = float(input())
 
@@ -18,4 +18,4 @@ l = list(map(int, input().split()))
 その他
 https://qiita.com/jamjamjam/items/e066b8c7bc85487c0785
 """
-
+# 解説見てもわからなかったのでまた今度解く
