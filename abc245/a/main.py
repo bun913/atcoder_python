@@ -12,3 +12,11 @@ if ((i >> j) & 1)
 from functools import reduce
 from itertools import combinations
 import math
+
+a, b, c, d = list(map(int, input().split()))
+ta = a + (b / 60)
+ao = c + (d / 60) + 1 / 3600
+if ta < ao:
+    print('Takahashi')
+else:
+    print('Aoki')
