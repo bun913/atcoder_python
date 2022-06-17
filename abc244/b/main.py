@@ -12,3 +12,31 @@ if ((i >> j) & 1)
 from functools import reduce
 from itertools import combinations
 import math
+
+N = int(input())
+T = input()
+
+x, y = 0, 0
+dr = 'E'
+
+for i in range(N):
+    t = T[i]
+    if t == 'R':
+        if dr == 'E':
+            dr = 'S'
+        elif dr == 'S':
+            dr = 'W'
+        elif dr == 'W':
+            dr = 'N'
+        elif dr == 'N':
+            dr = 'E'
+    else:
+        if dr == 'E':
+            x += 1
+        elif dr == 'W':
+            x -= 1
+        elif dr == 'N':
+            y += 1
+        else:
+            y -= 1
+print('{} {}'.format(x, y))
