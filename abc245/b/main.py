@@ -12,3 +12,11 @@ if ((i >> j) & 1)
 from functools import reduce
 from itertools import combinations
 import math
+
+N = int(input())
+A = set(map(int, input().split()))
+
+for i in range(2000+1):
+    if i not in A:
+        print(i)
+        exit()
