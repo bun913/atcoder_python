@@ -12,3 +12,14 @@ if ((i >> j) & 1)
 from functools import reduce
 from itertools import combinations
 import math
+
+A, B, C, X = list(map(int, input().split()))
+if X <= A:
+    print(1.0)
+    exit()
+elif A+1 <= X and X <= B:
+    mon = (B-A+1) - 1
+    print(C / mon)
+    exit()
+else:
+    print(0.0)
