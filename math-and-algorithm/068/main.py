@@ -43,6 +43,9 @@ N, K = map(int, input().split())
 V = list(map(int, input().split()))
 
 # ビット全探索で答えを出す
+# この問題で出すべきはいずれかの数という点に注意
+# だから、極端な話Nを周回できるなら全部の倍数をとって、そこから和集合 - 積集合としてやるのが良い
+# ただNが途方もないのでとても全ての倍数を列挙することはできない
 ans = 0
 for i in range(1, 1 << K):
     cnt = 0
@@ -54,9 +57,10 @@ for i in range(1, 1 << K):
             # だから例えば選んだ組み合わせが2の場合は、その数は1つだけ選んだ数に含まれていることになるので差し引いてやる
             lcm = LCM(lcm, V[j])
     mutliple = N // lcm
+    print("lcm: {}, cnt:{}, multiple: {}".format(lcm, cnt, mutliple))
     if cnt % 2 == 1:
         ans += mutliple
     else:
         ans -= mutliple
 # 出力
-print(ans)
+# print(ans)
