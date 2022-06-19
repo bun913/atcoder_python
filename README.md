@@ -49,6 +49,8 @@ I'll solve these ploblems again later.
 | Regularity | [mat061](https://atcoder.jp/contests/math-and-algorithm/tasks/math_and_algorithm_ba),[mat062](https://atcoder.jp/contests/math-and-algorithm/tasks/abc167_d) |  |
 | odd, even number | [mat064](https://atcoder.jp/contests/math-and-algorithm/tasks/math_and_algorithm_bc) [mat065](https://atcoder.jp/contests/math-and-algorithm/tasks/panasonic2020_b) |  |
 | The nature of the set | [mat066](https://atcoder.jp/contests/math-and-algorithm/tasks/math_and_algorithm_bd) |  |
+| print multile lines | [abc250 b](https://atcoder.jp/contests/abc250/tasks/abc250_b) |  |
+
 
 
 ### Ploblems need to solve again
@@ -60,3 +62,4 @@ I'll solve these ploblems again later.
 ### Ploblems can't solve
 
 - [068 - Number of Multiples 2](https://atcoder.jp/contests/math-and-algorithm/tasks/math_and_algorithm_be)
+- [abc250 b](https://atcoder.jp/contests/abc250/tasks/abc250_b)
