@@ -12,3 +12,14 @@ if ((i >> j) & 1)
 from functools import reduce
 from itertools import combinations
 import math
+
+H, W = list(map(int, input().split()))
+R, C = list(map(int, input().split()))
+
+ans = 0
+for i in range(H):
+    for j in range(W):
+        is_ok = abs(i+1-R) + abs(j+1-C) == 1
+        if is_ok:
+            ans += 1
+print(ans)
