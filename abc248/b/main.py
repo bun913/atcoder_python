@@ -12,3 +12,13 @@ if ((i >> j) & 1)
 from functools import reduce
 from itertools import combinations
 import math
+
+A, B, K = list(map(int, input().split()))
+
+ans = 0
+while True:
+    if A >= B:
+        print(ans)
+        exit()
+    ans += 1
+    A *= K
