@@ -36,25 +36,24 @@ for a in range(N):
             print(len(ans))
             exit()
         for c in range(b+1, N):
-            # ここから3種類をbit全探索
-            for i in range(8):
-                uses = []
-                for j in range(3):
-                    if ((i >> j) & 1):
-                        uses.append(True)
-                    else:
-                        uses.append(False)
-                # 全く使わないパターンは想定しない
-                if True not in uses:
-                    continue
+            # TLEになるため、素直に5パターン分の組み合わせを手で作る
+            uses = [
+                (True, True, True),
+                (True, True, False),
+                (True, False, True),
+                (True, False, False),
+                (False, True, True),
+                (False, True, False),
+                (False, False, True),
+            ]
+            for use in uses:
                 s = 0
-                if uses[0]:
+                if use[0]:
                     s += A[a]
-                if uses[1]:
+                if use[1]:
                     s += A[b]
-                if uses[2]:
+                if use[2]:
                     s += A[c]
                 if s <= W:
                     ans.add(s)
-# print(ans)
 print(len(ans))
