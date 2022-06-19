@@ -12,3 +12,8 @@ if ((i >> j) & 1)
 from functools import reduce
 from itertools import combinations
 import math
+
+S = input()
+mul = 6 // len(S)
+
+print(S * mul)
