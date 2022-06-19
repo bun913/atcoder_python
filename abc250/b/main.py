@@ -12,3 +12,17 @@ if ((i >> j) & 1)
 from functools import reduce
 from itertools import combinations
 import math
+
+N, A, B = list(map(int, input().split()))
+# N * N のここのタイルがある
+tiles = []
+for i in range(N * A):
+    row = []
+    for j in range(N * B):
+        a = (i // A)
+        b = (j // B)
+        if (a+b) % 2 == 0:
+            row.append('.')
+        else:
+            row.append('#')
+    print(*row, sep="")
