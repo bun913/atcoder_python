@@ -12,3 +12,9 @@ if ((i >> j) & 1)
 from functools import reduce
 from itertools import combinations
 import math
+
+S = set(list(input()))
+
+for i in range(10):
+    if str(i) not in S:
+        print(i)
