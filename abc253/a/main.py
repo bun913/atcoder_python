@@ -12,3 +12,9 @@ if ((i >> j) & 1)
 from functools import reduce
 from itertools import combinations
 import math
+
+l = list(map(int, input().split()))
+ans = 'No'
+if sorted(l)[1] == l[1]:
+    ans = 'Yes'
+print(ans)
