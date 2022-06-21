@@ -12,3 +12,13 @@ if ((i >> j) & 1)
 from functools import reduce
 from itertools import combinations
 import math
+
+A, B, C, K = list(map(int, input().split()))
+s = 0
+
+# Kの値が10**9まであり得るので1ループでもできない
+# O(N)で求められるようにする必要がありそう
+a = K if A >= K else A
+b = K-a if B >= K-a else B
+c = K - (a+b)
+print(a+(b*0)+(c*-1))
