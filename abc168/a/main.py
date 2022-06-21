@@ -12,3 +12,13 @@ if ((i >> j) & 1)
 from functools import reduce
 from itertools import combinations
 import math
+
+N = input()
+s = int(N[-1])
+
+if s in [2, 4, 5, 7, 9]:
+    print('hon')
+elif s in [0, 1, 6, 8]:
+    print('pon')
+else:
+    print('bon')
