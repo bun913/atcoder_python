@@ -55,8 +55,6 @@ I'll solve these ploblems again later.
 
 ### Ploblems need to solve again
 
-- [022 - Choose Cards 3](https://atcoder.jp/contests/math-and-algorithm/tasks/math_and_algorithm_v)
-  - It is important to understand expected value linearity
 - [mat009](https://atcoder.jp/contests/math-and-algorithm/tasks/math_and_algorithm_i)
 
 ### Ploblems can't solve
