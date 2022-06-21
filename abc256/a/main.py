@@ -12,3 +12,6 @@ if ((i >> j) & 1)
 from functools import reduce
 from itertools import combinations
 import math
+
+N = int(input())
+print(2**N)
