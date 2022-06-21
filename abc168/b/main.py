@@ -12,3 +12,12 @@ if ((i >> j) & 1)
 from functools import reduce
 from itertools import combinations
 import math
+
+K = int(input())
+S = input()
+
+ans = S
+if len(S) > K:
+    ans = S[:K]
+    ans += '...'
+print(ans)
