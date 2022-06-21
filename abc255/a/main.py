@@ -12,3 +12,8 @@ if ((i >> j) & 1)
 from functools import reduce
 from itertools import combinations
 import math
+
+r, c = list(map(int, input().split()))
+A = [list(map(int, input().split())) for _ in range(2)]
+
+print(A[r-1][c-1])
