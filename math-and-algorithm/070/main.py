@@ -18,46 +18,47 @@ l = list(map(int, input().split()))
 その他
 https://qiita.com/jamjamjam/items/e066b8c7bc85487c0785
 """
+# 辺はx, y軸と並行
+# 最小の正方形の可能性を考えてみる
+# 最小となり得る正方形の条件は、各辺上に点が1個存在する状態のはず
+# ↑だって、どこかの辺に点が接していないと、まだ縮められるじゃんってなるから
+# 左上端、右下端...と点を列挙していって、考えていけば良い
 
-# これは現時点では考え方だけわかっておけば良い
-# 水色diffの問題だからわけわからんで正解
-# ただ、辺に1点以上が接している必要があるということと
-# 与えられた座標力なんこのNが含まれているかという数え方だけ理解しておくこと
+# 入力
+N, K = list(map(int, input().split()))
+xl = []
+yl = []
+
+for i in range(N):
+    x, y = list(map(int, input().split()))
+    xl.append(x)
+    yl.append(y)
 
 
-def check_numpoints(N, X, Y, lx, rx, ly, ry):
+def count_in_box(lx, ly, rx, ry):
+    # 点が何個長方形に含まれるか数え上げ
     cnt = 0
     for i in range(N):
-        # 点 (X[i], Y[i]) が長方形に含まれているかどうかを判定する
-        if lx <= X[i] and X[i] <= rx and ly <= Y[i] and Y[i] <= ry:
+        if lx <= xl[i] and ly <= yl[i] and xl[i] <= rx and yl[i] <= ry:
             cnt += 1
     return cnt
 
 
-# 入力
-N, K = map(int, input().split())
-X = [None] * N
-Y = [None] * N
-for i in range(N):
-    X[i], Y[i] = map(int, input().split())
-
-# 左端 x、右端 x、下端 y、上端 y を全探索（それぞれの番号が i, j, k, l）
-answer = 10 ** 19  # あり得ない値に設定
-for i in range(N):
-    for j in range(N):
-        for k in range(N):
-            for l in range(N):
-                # cl <= x <= cr, dl <= y <= dr の長方形
-                # 長方形を作るためには、cl < cr, dl < dr である必要がある
-                cl, cr, dl, dr = X[i], X[j], Y[k], Y[l]
-                if cl < cr and dl < dr:
-                    if check_numpoints(N, X, Y, cl, cr, dl, dr) >= K:
-                        area = (cr - cl) * (dr - dl)
-                        answer = min(answer, area)
-
-# 答えの出力
-print(answer)
-
-# この問題は実行時間制限が厳しく、コード 5.5.2 の書き方をすると PyPy3 でも最大 2.5 秒程度の実行がかかり、AtCoder に提出すると TLE となります。
-# しかし、「cl < cr」と「dl < dr」を満たすものに限定して探索すると、探索する長方形の数がおよそ 1/4 になります。
-# これを利用したプログラムを PyPy3 で提出すると、1 秒以内に実行が終わり、正解 (AC) が得られます。
+ans = float('inf')
+for a in range(N):
+    for b in range(N):
+        for c in range(N):
+            for d in range(N):
+                # 左端のx座標
+                lx = xl[a]
+                # 左端のy座標
+                ly = yl[b]
+                # 右端辺のx座標
+                rx = xl[c]
+                # 右端のy座標
+                ry = yl[d]
+                count_dot = count_in_box(lx, ly, rx, ry)
+                if count_dot >= K:
+                    area = (rx-lx) * (ry-ly)
+                    ans = min(ans, area)
+print(ans)
