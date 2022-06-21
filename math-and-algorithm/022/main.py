@@ -18,40 +18,30 @@ l = list(map(int, input().split()))
 その他
 https://qiita.com/jamjamjam/items/e066b8c7bc85487c0785
 """
-from operator import mul
-from functools import reduce
-
-
-def cmb(n, r):
-    r = min(n-r, r)
-    if r == 0:
-        return 1
-    elif r < 0:
-        return 0
-    over = reduce(mul, range(n, n - r, -1))
-    under = reduce(mul, range(1, r + 1))
-    return over // under
-
 
 N = int(input())
 A = list(map(int, input().split()))
-
-memo = dict([(k, 0) for k in range(1, 100001)])
-
+# 2枚選んで100,000になる組み合わせを数え上げるだけ
+dic = {}
 for a in A:
-    memo[a] += 1
-
-ans = 0
-
-for i in range(1, 50001):
-    left = memo[i]
-    right = memo[100000-i]
-    # print(i, left, right)
-    conb = 0
+    if a in dic:
+        dic[a] += 1
+    else:
+        dic[a] = 1
+s = 0
+for i in range(1, 50000+1):
+    if i not in dic:
+        continue
+    left = dic[i]
+    if 100000-i not in dic:
+        continue
+    right = dic[100000-i]
+    c = 0
     if i == 50000:
         if left >= 2:
-            conb = cmb(left, 2)
+            c = ((left) * (left-1)) // 2
+    # ただ50,000の場合はnC2とする
     else:
-        conb = left * right
-    ans += conb
-print(ans)
+        c = left * right
+    s += c
+print(s)
