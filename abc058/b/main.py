@@ -10,5 +10,13 @@ bit全探索でフラグが立っているかチェックする
 if ((i >> j) & 1)
 """
 from functools import reduce
-from itertools import combinations
+from itertools import combinations, zip_longest
 import math
+
+O = list(input())
+E = list(input())
+
+s = ''
+for o, e in zip_longest(O, E, fillvalue=''):
+    s += "{}{}".format(o, e)
+print(s)
