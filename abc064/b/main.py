@@ -12,3 +12,9 @@ if ((i >> j) & 1)
 from functools import reduce
 from itertools import combinations
 import math
+
+N = int(input())
+A = list(map(int, input().split()))
+a = sorted(A)
+
+print(a[-1] - a[0])
