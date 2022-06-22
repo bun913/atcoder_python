@@ -12,3 +12,10 @@ if ((i >> j) & 1)
 from functools import reduce
 from itertools import combinations
 import math
+
+S = input()
+
+if S == 'ARC':
+    print('ABC')
+else:
+    print('ARC')
