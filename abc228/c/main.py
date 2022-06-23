@@ -25,21 +25,20 @@ list(combinations(l, 2))
 """
 from functools import reduce
 from itertools import combinations
+import itertools
 import math
 
-# 素数判定
-
-
-def is_prime(n: int) -> bool:
-    for i in range(2, int(math.sqrt(n))+1):
-        if n % i == 0:
-            return False
-    return True
-
-
-def permutation(n, r):
-    return math.factorial(n) // math.factorial(n-r)
-
-
-def combination(n, r):
-    return permutation(n, r) // math.factorial(r)
+N, K = list(map(int, input().split()))
+P = []
+scores = []
+for _ in range(N):
+    l = list(map(int, input().split()))
+    scores.append(sum(l))
+    P.append(l)
+scores = sorted(scores, reverse=True)
+for i in range(N):
+    now = sum(P[i])
+    if now + 300 >= scores[K-1]:
+        print('Yes')
+        continue
+    print('No')
