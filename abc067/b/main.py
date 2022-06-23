@@ -12,3 +12,8 @@ if ((i >> j) & 1)
 from functools import reduce
 from itertools import combinations
 import math
+
+N, K = list(map(int, input().split()))
+l = list(map(int, input().split()))
+s = sorted(l, reverse=True)
+print(sum(s[:K]))
