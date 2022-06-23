@@ -12,3 +12,7 @@ if ((i >> j) & 1)
 from functools import reduce
 from itertools import combinations
 import math
+
+A, B = list(map(str, input().split()))
+C = A + B
+print(int(C) * 2)
