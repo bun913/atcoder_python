@@ -12,3 +12,12 @@ if ((i >> j) & 1)
 from functools import reduce
 from itertools import combinations
 import math
+
+K = int(input())
+A, B = list(map(int, input().split()))
+
+for n in range(A, B+1):
+    if n % K == 0:
+        print('OK')
+        exit()
+print('NG')
