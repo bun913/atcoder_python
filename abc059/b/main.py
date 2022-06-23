@@ -12,3 +12,14 @@ if ((i >> j) & 1)
 from functools import reduce
 from itertools import combinations
 import math
+from decimal import Decimal
+
+A = Decimal(input())
+B = Decimal(input())
+
+if A > B:
+    print('GREATER')
+elif A < B:
+    print('LESS')
+else:
+    print('EQUAL')
