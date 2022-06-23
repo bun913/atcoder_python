@@ -11,4 +11,15 @@ if ((i >> j) & 1)
 """
 from functools import reduce
 from itertools import combinations
-import math
+
+i = 0
+s = 100
+X = int(input())
+
+while True:
+    if s >= X:
+        break
+    r = s * 1 // 100
+    s += r
+    i += 1
+print(i)
