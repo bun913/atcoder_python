@@ -12,3 +12,9 @@ if ((i >> j) & 1)
 from functools import reduce
 from itertools import combinations
 import math
+
+S = input()
+ans = 'No'
+if S.startswith('YAKI'):
+    ans = 'Yes'
+print(ans)
