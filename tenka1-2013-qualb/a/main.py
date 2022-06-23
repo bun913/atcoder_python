@@ -12,3 +12,8 @@ if ((i >> j) & 1)
 from functools import reduce
 from itertools import combinations
 import math
+import sys
+
+lines = sys.stdin.readlines()
+sort = sorted(lines)
+print(sort[6])
