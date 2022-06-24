@@ -12,3 +12,6 @@ if ((i >> j) & 1)
 from functools import reduce
 from itertools import combinations
 import math
+
+X, Y, Z = list(map(int, input().split()))
+print(Z, X, Y)
