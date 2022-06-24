@@ -12,3 +12,14 @@ if ((i >> j) & 1)
 from functools import reduce
 from itertools import combinations
 import math
+
+A, B = list(map(int, input().split()))
+# 何階分の階段を上必要があるか
+# 地下1回の上は1回(0階がない)
+
+if A > 0 and B > 0:
+    print(B-A)
+if A < 0 and B > 0:
+    print(B-A-1)
+if A < 0 and B < 0:
+    print(B-A)
