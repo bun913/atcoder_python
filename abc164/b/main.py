@@ -12,3 +12,19 @@ if ((i >> j) & 1)
 from functools import reduce
 from itertools import combinations
 import math
+
+A, B, C, D = list(map(int, input().split()))
+
+ans = 'No'
+
+while True:
+    C -= B
+    # 高橋の攻撃で青木が沈む
+    if C <= 0:
+        ans = 'Yes'
+        break
+    # 青木の攻撃で高橋が沈む
+    A -= D
+    if A <= 0:
+        break
+print(ans)
