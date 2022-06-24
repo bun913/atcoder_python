@@ -12,3 +12,19 @@ if ((i >> j) & 1)
 from functools import reduce
 from itertools import combinations
 import math
+
+N = int(input())
+T, A = list(map(int, input().split()))
+H = list(map(int, input().split()))
+
+ans = 0
+abs_min = float('inf')
+
+for i in range(N):
+    h = H[i]
+    ave = T - (h * 6 / 1000)
+    ab = abs(A-ave)
+    if ab == min(abs_min, ab):
+        abs_min = ab
+        ans = i + 1
+print(ans)
