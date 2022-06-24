@@ -12,3 +12,11 @@ if ((i >> j) & 1)
 from functools import reduce
 from itertools import combinations
 import math
+
+N = int(input())
+T = []
+for _ in range(N):
+    t = int(input())
+    T.append(t)
+_sorted = sorted(T)
+print(_sorted[0])
