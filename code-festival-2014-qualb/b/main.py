@@ -12,3 +12,12 @@ if ((i >> j) & 1)
 from functools import reduce
 from itertools import combinations
 import math
+
+N, K = list(map(int, input().split()))
+s = 0
+for i in range(N):
+    a = int(input())
+    s += a
+    if s >= K:
+        print(i+1)
+        exit()
