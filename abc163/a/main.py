@@ -12,3 +12,7 @@ if ((i >> j) & 1)
 from functools import reduce
 from itertools import combinations
 import math
+
+R = int(input())
+
+print(2 * R * math.pi)
