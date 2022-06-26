@@ -12,3 +12,11 @@ if ((i >> j) & 1)
 from functools import reduce
 from itertools import combinations
 import math
+
+ab = input().replace(' ', '')
+n = int(ab)
+ans = (math.sqrt(n).is_integer())
+if ans is True:
+    print('Yes')
+    exit()
+print('No')
