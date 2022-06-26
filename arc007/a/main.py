@@ -12,3 +12,12 @@ if ((i >> j) & 1)
 from functools import reduce
 from itertools import combinations
 import math
+
+X = input()
+s = input()
+
+ans = s
+
+for x in X:
+    ans = ans.replace(x, '')
+print(ans)
