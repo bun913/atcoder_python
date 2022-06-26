@@ -12,3 +12,12 @@ if ((i >> j) & 1)
 from functools import reduce
 from itertools import combinations
 import math
+
+N, X = list(map(int, input().split()))
+
+s = ''
+for i in range(97, 123):
+    lower = chr(i)
+    upp = lower.upper()
+    s += upp * N
+print(s[X-1])
