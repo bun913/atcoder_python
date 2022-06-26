@@ -12,3 +12,13 @@ if ((i >> j) & 1)
 from functools import reduce
 from itertools import combinations
 import math
+
+N, M = list(map(int, input().split()))
+A = list(map(int, input().split()))
+
+s = sum(A)
+
+ans = -1
+if min(N, s) == s:
+    ans = N-s
+print(ans)
