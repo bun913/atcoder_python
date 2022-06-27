@@ -12,3 +12,11 @@ if ((i >> j) & 1)
 from functools import reduce
 from itertools import combinations
 import math
+
+
+N = input()
+
+ans = 'No'
+if '7' in N:
+    ans = 'Yes'
+print(ans)
