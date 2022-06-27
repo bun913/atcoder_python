@@ -12,3 +12,13 @@ if ((i >> j) & 1)
 from functools import reduce
 from itertools import combinations
 import math
+
+a = set([chr(i) for i in range(97, 123)])
+S = input()
+s = set(list(S))
+
+dif = a.difference(s)
+if len(dif) < 1:
+    print("None")
+    exit()
+print(sorted(list(dif))[0])
