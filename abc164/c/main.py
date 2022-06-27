@@ -12,3 +12,11 @@ if ((i >> j) & 1)
 from functools import reduce
 from itertools import combinations
 import math
+
+N = int(input())
+ans = set()
+
+for i in range(N):
+    s = input()
+    ans.add(s)
+print(len(ans))
