@@ -28,6 +28,7 @@ ans = abs(A[0] - A[N-1])
 # あとはiからスタート地点までの距離、スタート地点からiまでの距離を合算しておけば良い
 for i in range(N):
     i_to_start = K - A[i]
+    # i-1までの距離を取ることで全部の家に訪問する
     start_to_i = A[i-1]
     ans = min(ans, i_to_start + start_to_i)
 print(ans)
