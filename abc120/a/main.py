@@ -12,3 +12,7 @@ if ((i >> j) & 1)
 from functools import reduce
 from itertools import combinations
 import math
+
+A, B, C = list(map(int, input().split()))
+ans = B // A
+print(min(ans, C))
