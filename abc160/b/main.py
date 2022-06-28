@@ -12,3 +12,12 @@ if ((i >> j) & 1)
 from functools import reduce
 from itertools import combinations
 import math
+
+X = int(input())
+yen500 = X // 500
+yen5 = 0
+rest = X - (yen500 * 500)
+
+if rest > 0:
+    yen5 = rest // 5
+print((yen500 * 1000) + yen5 * 5)
