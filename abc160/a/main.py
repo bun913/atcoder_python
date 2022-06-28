@@ -12,3 +12,9 @@ if ((i >> j) & 1)
 from functools import reduce
 from itertools import combinations
 import math
+
+S = input()
+if S[2] == S[3] and S[4] == S[5]:
+    print('Yes')
+    exit()
+print('No')
