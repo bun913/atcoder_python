@@ -12,3 +12,10 @@ if ((i >> j) & 1)
 from functools import reduce
 from itertools import combinations
 import math
+
+N, M = list(map(int, input().split()))
+
+all_cnt = (N + M) * (N + M - 1) // 2
+odd_cnt = N * M
+ans = all_cnt - odd_cnt
+print(ans)
