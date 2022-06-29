@@ -12,3 +12,8 @@ if ((i >> j) & 1)
 from functools import reduce
 from itertools import combinations
 import math
+
+L = int(input())
+
+ans = (L ** 3) / 27
+print(ans)
