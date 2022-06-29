@@ -12,3 +12,15 @@ if ((i >> j) & 1)
 from functools import reduce
 from itertools import combinations
 import math
+
+N, T = list(map(int, input().split()))
+ans = 2000
+
+for i in range(N):
+    c, t = list(map(int, input().split()))
+    if t > T:
+        continue
+    ans = min(c, ans)
+if ans == 2000:
+    ans = 'TLE'
+print(ans)
