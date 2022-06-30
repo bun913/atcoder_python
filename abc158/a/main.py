@@ -12,3 +12,11 @@ if ((i >> j) & 1)
 from functools import reduce
 from itertools import combinations
 import math
+
+S = list(input())
+s = set(S)
+
+ans = 'No'
+if len(s) == 2:
+    ans = 'Yes'
+print(ans)
