@@ -12,3 +12,7 @@ if ((i >> j) & 1)
 from functools import reduce
 from itertools import combinations
 import math
+
+N = int(input())
+ans = math.ceil(N / 2)
+print(ans)
