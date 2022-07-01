@@ -12,3 +12,10 @@ if ((i >> j) & 1)
 from functools import reduce
 from itertools import combinations
 import math
+
+# 普通に変換しても良いけどどNが10**9まであるので、2真数とかすごい桁になる
+# K真数で桁が上がるタイミングは、Kの冪乗が1上がったタイミング
+# 例えば2真数なら、Kが2,4,8のタイミングで桁が増えるのでlog計算で一発では？
+N, K = list(map(int, input().split()))
+log = math.log(N, K)
+print(int(log) + 1)
