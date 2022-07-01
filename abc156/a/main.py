@@ -12,3 +12,11 @@ if ((i >> j) & 1)
 from functools import reduce
 from itertools import combinations
 import math
+
+N, R = list(map(int, input().split()))
+
+if N >= 10:
+    print(R)
+    exit()
+ans = R + (100 * (10 - N))
+print(ans)
