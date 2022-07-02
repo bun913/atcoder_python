@@ -12,3 +12,18 @@ if ((i >> j) & 1)
 from functools import reduce, lru_cache
 from itertools import combinations
 import math
+
+# 偶数の数字が3か5で割り切れるかどうか
+ans = 'APPROVED'
+N = int(input())
+A = list(map(int, input().split()))
+
+for a in A:
+    if a % 2 != 0:
+        continue
+    if a % 3 == 0 or a % 5 ==0:
+        continue
+    print('DENIED')
+    exit()
+
+print(ans)
