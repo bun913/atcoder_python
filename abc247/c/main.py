@@ -13,12 +13,15 @@ from functools import reduce
 from itertools import combinations
 import math
 
-# Nはたかだか16でたかだか65,536文字にしかならないから全部一から計算しても問題なさそう
-
 N = int(input())
+
+memo = {}
 
 
 def calc_s(n: int):
+    # メモ化再起にしてみたバージョン
+    if n in memo:
+        return memo[n]
     if n == 1:
         return [1]
     return calc_s(n-1) + [n] + calc_s(n-1)
