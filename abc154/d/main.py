@@ -26,15 +26,35 @@ P = list(map(int, input().split()))
 
 ans = 0
 
-_max = -1
-
+# 最大値を求めるforをネストさせない
+# 合計が最大となる区間を探して、その区間の期待値を求める方向にする
+_max_sum = -1
+max_dist = []
 for i in range(N-K+1):
     l = P[i:i+K]
-    expect_sum = 0.0
-    for a in l:
-        s = (a * (1 + a)) / 2
-        e = s / a
-        expect_sum += e
-    _max = max(_max, expect_sum)
+    s = sum(l)
+    if s > _max_sum:
+        _max_sum = s
+        max_dist = l
 
-print(_max)
+ans = 0
+for a in max_dist:
+    s = (a * (1 + a)) / 2
+    e = s / a
+    ans += e
+print(ans)
+
+# for i in range(N-K+1):
+#     l = P[i:i+K]
+#     expect_sum = 0.0
+#     for a in l:
+#         if a not in memo:
+#             s = (a * (1 + a)) / 2
+#             e = s / a
+#             expect_sum += e
+#             memo[a] = e
+#         else:
+#             expect_sum += memo[a]
+#     _max = max(_max, expect_sum)
+
+# print(_max)
