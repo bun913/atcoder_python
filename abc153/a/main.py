@@ -12,3 +12,10 @@ if ((i >> j) & 1)
 from functools import reduce, lru_cache
 from itertools import combinations
 import math
+
+H, A = list(map(int, input().split()))
+mod = H % A
+if mod > 0:
+    print(H // A + 1)
+    exit()
+print(H // A)
