@@ -12,3 +12,12 @@ if ((i >> j) & 1)
 from functools import reduce, lru_cache
 from itertools import combinations
 import math
+
+H, N = list(map(int, input().split()))
+A = list(map(int, input().split()))
+s = sum(A)
+
+if s >= H:
+    print('Yes')
+    exit()
+print('No')
