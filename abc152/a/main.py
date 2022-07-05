@@ -12,3 +12,9 @@ if ((i >> j) & 1)
 from functools import reduce, lru_cache
 from itertools import combinations
 import math
+
+N, M = list(map(int, input().split()))
+if N == M:
+    print('Yes')
+    exit()
+print('No')
