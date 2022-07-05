@@ -12,3 +12,10 @@ if ((i >> j) & 1)
 from functools import reduce, lru_cache
 from itertools import combinations
 import math
+
+a, b = list(map(int, input().split()))
+ab = str(a) * b
+ba = str(b) * a
+
+ans = sorted([ab, ba])[0]
+print(ans)
