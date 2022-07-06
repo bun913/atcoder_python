@@ -12,3 +12,7 @@ if ((i >> j) & 1)
 from functools import reduce, lru_cache
 from itertools import combinations
 import math
+
+C = input()
+o = ord(C)
+print(chr(o+1))
