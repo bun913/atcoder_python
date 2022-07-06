@@ -12,3 +12,17 @@ if ((i >> j) & 1)
 from functools import reduce, lru_cache
 from itertools import combinations
 import math
+
+N, K, M = list(map(int, input().split()))
+A = list(map(int, input().split()))
+s = sum(A)
+
+ans = -1
+
+for i in range(K+1):
+    _sum = s + i
+    avg = _sum / N
+    if avg >= M:
+        ans = i
+        break
+print(ans)
