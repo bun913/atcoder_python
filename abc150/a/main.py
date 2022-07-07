@@ -12,3 +12,9 @@ if ((i >> j) & 1)
 from functools import reduce, lru_cache
 from itertools import combinations
 import math
+
+K, X = list(map(int, input().split()))
+ans = 'No'
+if K * 500 >= X:
+    ans = 'Yes'
+print(ans)
