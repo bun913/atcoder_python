@@ -12,3 +12,9 @@ if ((i >> j) & 1)
 from functools import reduce, lru_cache
 from itertools import combinations
 import math
+
+N = int(input())
+S = input()
+
+ans = S.count('ABC')
+print(ans)
