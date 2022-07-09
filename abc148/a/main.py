@@ -12,3 +12,11 @@ if ((i >> j) & 1)
 from functools import reduce, lru_cache
 from itertools import combinations
 import math
+
+A = int(input())
+B = int(input())
+s = set([A, B])
+all_set = set([1, 2, 3])
+
+dif = all_set.difference(s)
+print(list(dif)[0])
