@@ -12,3 +12,15 @@ if ((i >> j) & 1)
 from functools import reduce, lru_cache
 from itertools import combinations
 import math
+
+S = input()
+R = S[::-1]
+
+
+cnt = 0
+for i in range(len(S)):
+    s = S[i]
+    r = R[i]
+    if s != r:
+        cnt += 1
+print(cnt // 2)
