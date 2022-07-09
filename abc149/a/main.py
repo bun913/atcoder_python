@@ -12,3 +12,6 @@ if ((i >> j) & 1)
 from functools import reduce, lru_cache
 from itertools import combinations
 import math
+
+S, T = input().split(' ')
+print(T, S, sep='')
