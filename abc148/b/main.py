@@ -10,5 +10,15 @@ bit全探索でフラグが立っているかチェックする
 if ((i >> j) & 1)
 """
 from functools import reduce, lru_cache
-from itertools import combinations
+from itertools import combinations, chain
 import math
+
+# 普通にforだと面白くないのでzipを使ってみよう
+N = int(input())
+S, T = input().split(' ')
+s = list(S)
+t = list(T)
+
+zipped = zip(s, t)
+flatten = list(chain.from_iterable(zipped))
+print(*flatten, sep='')
