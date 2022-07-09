@@ -12,3 +12,12 @@ if ((i >> j) & 1)
 from functools import reduce, lru_cache
 from itertools import combinations
 import math
+
+K = int(input())
+
+if K <= 59:
+    print("21:{}".format(str(K).zfill(2)))
+    exit()
+rest = K % 60
+ans = '22:' + str(rest).zfill(2)
+print(ans)
