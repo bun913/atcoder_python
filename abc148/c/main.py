@@ -11,4 +11,9 @@ if ((i >> j) & 1)
 """
 from functools import reduce, lru_cache
 from itertools import combinations
-import math
+from math import gcd
+
+A, B = list(map(int, input().split()))
+_gcd = gcd(A, B)
+lcm = _gcd * (A // _gcd) * (B // _gcd)
+print(lcm)
