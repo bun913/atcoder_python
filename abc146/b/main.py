@@ -12,3 +12,21 @@ if ((i >> j) & 1)
 from functools import reduce, lru_cache
 from itertools import combinations
 import math
+
+N = int(input())
+S = input()
+
+
+def rot_n(s, n) -> str:
+    """
+    アルファベットsをn文字分後にずらす
+    """
+    answer = ''
+    for letter in s:
+        answer += chr(ord('A') + (ord(letter)-ord('A')+n) % 26)
+    return answer
+
+
+ans = rot_n(S, N)
+
+print(ans)
