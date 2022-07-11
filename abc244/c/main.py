@@ -9,6 +9,21 @@ list(combinations(l, 2))
 bit全探索でフラグが立っているかチェックする
 if ((i >> j) & 1)
 """
-from functools import reduce
-from itertools import combinations
-import math
+from sys import stdout
+
+N = int(input())
+cand = set([i for i in range(1, 2*N + 2)])
+
+# 最初の出力
+print(cand.pop())
+stdout.flush()
+
+# あとは繰り返し
+while True:
+    a = int(input())
+    if a == 0:
+        break
+    cand.remove(a)
+    t = cand.pop()
+    print(t)
+    stdout.flush()
