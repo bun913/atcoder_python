@@ -1,14 +1,27 @@
 # -*- coding: utf-8 -*-
-"""
-Atcoderの問題解く用
+from itertools import permutations
+from math import sqrt
+from statistics import mean
 
-全ての組み合わせを列挙する方法
-list(0...8)から2つを抜き出す
-list(combinations(l, 2))
+N = int(input())
+XY = [tuple(map(int, input().split())) for _ in range(N)]
+# Nがたかだか8なので順列の全列挙でなんとかなりそう
+t = [i for i in range(N)]
+orders = list(permutations(t))
+dists = []
 
-bit全探索でフラグが立っているかチェックする
-if ((i >> j) & 1)
-"""
-from functools import reduce, lru_cache
-from itertools import combinations
-import math
+for order in orders:
+    dist = 0
+    for j in range(1, N):
+        bef = order[j-1]
+        cur = order[j]
+        curx = XY[cur][0]
+        cury = XY[cur][1]
+        befx = XY[bef][0]
+        befy = XY[bef][1]
+        d = sqrt((curx-befx) ** 2 + (cury - befy) ** 2)
+        dist += d
+    dists.append(dist)
+
+ans = mean(dists)
+print(ans)
