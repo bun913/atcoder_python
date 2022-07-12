@@ -12,3 +12,11 @@ if ((i >> j) & 1)
 from functools import reduce, lru_cache
 from itertools import combinations
 import math
+
+A, B = list(map(int, input().split()))
+
+if A > 9 or B > 9:
+    print(-1)
+    exit()
+
+print(A * B)
