@@ -1,14 +1,20 @@
 # -*- coding: utf-8 -*-
 """
-Atcoderの問題解く用
-
-全ての組み合わせを列挙する方法
-list(0...8)から2つを抜き出す
-list(combinations(l, 2))
-
-bit全探索でフラグが立っているかチェックする
-if ((i >> j) & 1)
+Nが最大で10 **5
+1から順にAのindex番号+1を出力してやれば良いだけだが、毎回Aのリストを探すのは遅い
+Aの順とindex番号を辞書化しておいてやればよいだけかな
 """
-from functools import reduce, lru_cache
-from itertools import combinations
-import math
+
+N = int(input())
+A = list(map(int, input().split()))
+
+memo = dict([(A[i], i+1) for i in range(N)])
+
+
+ans = []
+
+for i in range(N):
+    key = i + 1
+    ans.append(memo[key])
+
+print(*ans)
