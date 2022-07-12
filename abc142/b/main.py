@@ -9,6 +9,12 @@ list(combinations(l, 2))
 bit全探索でフラグが立っているかチェックする
 if ((i >> j) & 1)
 """
-from functools import reduce, lru_cache
-from itertools import combinations
-import math
+from functools import reduce
+
+N, K = list(map(int, input().split()))
+H = list(map(int, input().split()))
+
+filterd = [h for h in H if h >= K]
+ans = len(filterd)
+
+print(ans)
