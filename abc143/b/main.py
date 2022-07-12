@@ -12,3 +12,15 @@ if ((i >> j) & 1)
 from functools import reduce, lru_cache
 from itertools import combinations
 import math
+
+# Nが最大で50
+N = int(input())
+D = list(map(int, input().split()))
+com_list = list(combinations([i for i in range(N)], 2))
+
+ans = 0
+for i, j in com_list:
+    x = D[i]
+    y = D[j]
+    ans += x * y
+print(ans)
