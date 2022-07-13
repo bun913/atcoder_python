@@ -1,14 +1,28 @@
 # -*- coding: utf-8 -*-
 """
-Atcoderの問題解く用
+解く前のメモ
 
-全ての組み合わせを列挙する方法
-list(0...8)から2つを抜き出す
-list(combinations(l, 2))
-
-bit全探索でフラグが立っているかチェックする
-if ((i >> j) & 1)
+Nこの要素を持つ値がわからない整数列A
+N-1の要素を持つBが与えられる
+Bi >= max(Ai, Ai+1)である
+Aの要素の総和として考えられる値の最大値を求める
 """
-from functools import reduce, lru_cache
-from itertools import combinations
-import math
+
+N = int(input())
+B = list(map(int, input().split()))
+
+A = [-1 for _ in range(N)]
+
+for i in range(N):
+    # 最初の場合
+    if i == 0:
+        A[i] = B[i]
+        continue
+    # Aが最後の場合
+    if i == N-1:
+        A[i] = B[i-1]
+        break
+    cur = B[i]
+    bef = B[i-1]
+    A[i] = min(cur, bef)
+print(sum(A))
