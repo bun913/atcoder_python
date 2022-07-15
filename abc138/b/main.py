@@ -9,6 +9,12 @@ list(combinations(l, 2))
 bit全探索でフラグが立っているかチェックする
 if ((i >> j) & 1)
 """
-from functools import reduce, lru_cache
-from itertools import combinations
-import math
+N = int(input())
+A = list(map(int, input().split()))
+
+r_sum = 0
+
+for i in range(N):
+    a = A[i]
+    r_sum += (1/a)
+print(1/r_sum)
