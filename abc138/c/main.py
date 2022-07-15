@@ -1,14 +1,20 @@
 # -*- coding: utf-8 -*-
 """
-Atcoderの問題解く用
+解く前のメモ
 
-全ての組み合わせを列挙する方法
-list(0...8)から2つを抜き出す
-list(combinations(l, 2))
+価値のあるやつを最後に残した方が良さそう
+基本的に価値の低いものからpopして合成すればよさそう
 
-bit全探索でフラグが立っているかチェックする
-if ((i >> j) & 1)
+毎回sortしないといけないわけだが、sort自体がlognの計算でできるはずなので間に合うはず
 """
-from functools import reduce, lru_cache
-from itertools import combinations
-import math
+
+N = int(input())
+V = list(map(int, input().split()))
+
+_sorted = sorted(V)
+while not len(_sorted) == 1:
+    a = _sorted.pop(0)
+    b = _sorted.pop(0)
+    c = (a+b) / 2
+    _sorted = sorted(_sorted + [c])
+print(_sorted[0])
