@@ -1,14 +1,10 @@
 # -*- coding: utf-8 -*-
 """
-Atcoderの問題解く用
-
-全ての組み合わせを列挙する方法
-list(0...8)から2つを抜き出す
-list(combinations(l, 2))
-
-bit全探索でフラグが立っているかチェックする
-if ((i >> j) & 1)
+連続するK個の石が黒
+Xにある石は黒で塗られている
 """
-from functools import reduce, lru_cache
-from itertools import combinations
-import math
+
+K, X = list(map(int, input().split()))
+left = X - (K-1)
+right = X + (K-1)
+print(*list(range(left, right+1)))
