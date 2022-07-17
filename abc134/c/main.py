@@ -1,14 +1,19 @@
 # -*- coding: utf-8 -*-
 """
-Atcoderの問題解く用
+解く前のメモ
 
-全ての組み合わせを列挙する方法
-list(0...8)から2つを抜き出す
-list(combinations(l, 2))
-
-bit全探索でフラグが立っているかチェックする
-if ((i >> j) & 1)
+自分意外の要素で最大のものを出力せよということ
+てことは、大きい順にメモをしておいて、基本的に最大のものを出力する
+でも、もし自分が最大のものだったら次の要素をみるっていうだけの話では
 """
-from functools import reduce, lru_cache
-from itertools import combinations
-import math
+# 数列中のAiを除くN-1個の要素のうちの最大値
+N = int(input())
+A = [int(input()) for _ in range(N)]
+_sorted = sorted(A, reverse=True)
+_max = _sorted[0]
+
+for i in range(N):
+    ans = _max
+    if A[i] == _max:
+        ans = _sorted[1]
+    print(ans)
