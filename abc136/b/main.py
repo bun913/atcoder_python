@@ -9,6 +9,15 @@ list(combinations(l, 2))
 bit全探索でフラグが立っているかチェックする
 if ((i >> j) & 1)
 """
-from functools import reduce, lru_cache
-from itertools import combinations
-import math
+
+# Nが10 ** 5 なのでループで求めるか
+
+N = int(input())
+
+ans = 0
+
+for n in range(1, N+1):
+    le = len(str(n))
+    if le % 2 != 0:
+        ans += 1
+print(ans)
