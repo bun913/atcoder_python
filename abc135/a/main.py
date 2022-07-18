@@ -9,6 +9,13 @@ list(combinations(l, 2))
 bit全探索でフラグが立っているかチェックする
 if ((i >> j) & 1)
 """
-from functools import reduce, lru_cache
-from itertools import combinations
-import math
+
+A, B = list(map(int, input().split()))
+
+# 地道に4パターン調べるか
+# と思ったが、AとBが互いに違うことがわかっているので2パターンしかない
+cand = (A+B) // 2
+if abs(A-cand) == abs(B-cand):
+    print(cand)
+    exit()
+print('IMPOSSIBLE')
