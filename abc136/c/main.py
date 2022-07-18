@@ -1,14 +1,29 @@
 # -*- coding: utf-8 -*-
 """
-Atcoderの問題解く用
+解く前のメモ
 
-全ての組み合わせを列挙する方法
-list(0...8)から2つを抜き出す
-list(combinations(l, 2))
-
-bit全探索でフラグが立っているかチェックする
-if ((i >> j) & 1)
+これまでの処理をした場合の最大値を持っていて、自分-1がそれより大きければアウト
 """
-from functools import reduce, lru_cache
-from itertools import combinations
-import math
+
+_max = -1
+N = int(input())
+A = list(map(int, input().split()))
+
+R = A[::-1]
+_min = R[0]
+
+for i in range(N):
+    cur = R[i]
+    # これまでの最小値以下だったら気にせずによい
+    if cur <= _min:
+        _min = cur
+        continue
+    # 1引いてこれまでの最小値と同じだったら気にせずよいがminを更新
+    if cur - 1 <= _min:
+        _min = cur-1
+        continue
+    # 1引いてもこれまでの最小値より大きかったらアウト
+    if cur - 1 > _min:
+        print('No')
+        exit()
+print('Yes')
