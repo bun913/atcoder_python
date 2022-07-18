@@ -9,6 +9,27 @@ list(combinations(l, 2))
 bit全探索でフラグが立っているかチェックする
 if ((i >> j) & 1)
 """
-from functools import reduce, lru_cache
-from itertools import combinations
-import math
+
+S = input()
+memo = {}
+
+for s in S:
+    if s in memo:
+        memo[s] += 1
+        continue
+    memo[s] = 1
+
+kinds = len(memo)
+is_two = True
+
+for v in memo.values():
+    if v != 2:
+        is_two = False
+        break
+
+ans = 'No'
+
+if kinds == 2 and is_two is True:
+    ans = 'Yes'
+
+print(ans)
