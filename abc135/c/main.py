@@ -1,14 +1,32 @@
 # -*- coding: utf-8 -*-
 """
-Atcoderの問題解く用
+解く前に考えたこと
 
-全ての組み合わせを列挙する方法
-list(0...8)から2つを抜き出す
-list(combinations(l, 2))
-
-bit全探索でフラグが立っているかチェックする
-if ((i >> j) & 1)
+どうもこうも今の街の数を減らし切って、余ったら次の街の数を減らすだけなのでは
 """
-from functools import reduce, lru_cache
-from itertools import combinations
-import math
+
+N = int(input())
+A = list(map(int, input().split()))
+B = list(map(int, input().split()))
+
+ans = 0
+for i in range(N):
+    cur_town = A[i]
+    nex_town = A[i+1]
+    attack = B[i]
+    if cur_town >= attack:
+        ans += attack
+        A[i] -= attack
+        continue
+    ans += cur_town
+    rest = attack - cur_town
+    A[i] = 0
+    if nex_town >= rest:
+        ans += rest
+        A[i+1] -= rest
+        continue
+    ans += nex_town
+    A[i+1] -= nex_town
+
+# 数え上げ
+print(ans)
