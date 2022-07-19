@@ -8,7 +8,7 @@ A以上B以下の整数のうちCでもDでも割り切れないものの個数�
 
 ベン図を書けば一発だった。
 A以上B以下の数を集合の全体として
-(c or bで割れるもの -  c and d で割れるもの)
+(c or bで割れるもの -  cとdの最小公倍数 で割れるもの)
 ↑を全体から引いてやれば残りの数が答え
 """
 from math import gcd
@@ -23,9 +23,9 @@ A, B, C, D = list(map(int, input().split()))
 
 # 集合を求める
 set_all = (B-A) + 1
-# CとDでたまたま同じ数が出ることがある
 set_c = (B // C) - ((A-1) // C)
 set_d = (B // D) - ((A-1) // D)
+# 最小公倍数で割り切れるもの
 lc = lcm(C, D)
 set_c_and_d = (B // lc) - ((A-1) // lc)
 
