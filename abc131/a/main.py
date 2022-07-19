@@ -9,6 +9,12 @@ list(combinations(l, 2))
 bit全探索でフラグが立っているかチェックする
 if ((i >> j) & 1)
 """
-from functools import reduce, lru_cache
-from itertools import combinations
-import math
+from itertools import groupby
+
+S = input()
+l = [(k, list(g)) for k, g in groupby(S)]
+
+if len(l) < 4:
+    print('Bad')
+    exit()
+print('Good')
