@@ -1,21 +1,20 @@
 """
-Atcoderの問題解く用
+合計120回いないの魔法で箱の中のボールの数をちょうどN個にする方法
+最初はAをするしかない
 
-1行1列データ
-
-#str型で受け取るとき
-s = input() 
-#int型で受け取るとき
-s = int(input()) 
-#float型　(小数)で受け取るとき
-s = float(input())
-
-(1,N)行列データ
-s = input().split()
-# listで整数で受け取る
-l = list(map(int, input().split()))
-
-その他
-https://qiita.com/jamjamjam/items/e066b8c7bc85487c0785
+Nを逆から見ていて、2で割れるならBをする。
+そうではないならAの処理をしてやる。
+というふうにNをどんどん小さくしていく
 """
 
+N = int(input())
+cur = N
+ans = []
+while not cur == 0:
+    if cur % 2 == 0:
+        cur = cur // 2
+        ans.append('B')
+        continue
+    cur -= 1
+    ans.append('A')
+print(''.join(ans[::-1]))
