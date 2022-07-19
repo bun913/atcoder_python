@@ -1,14 +1,25 @@
 # -*- coding: utf-8 -*-
 """
-Atcoderの問題解く用
+解く前のメモ
 
-全ての組み合わせを列挙する方法
-list(0...8)から2つを抜き出す
-list(combinations(l, 2))
+1個りんごを食べた
+N個のりんごを全て材料にした時の味と
+N-1個のりんごを材料としてできるものの味の差の絶対値ができるだけ小さくする
 
-bit全探索でフラグが立っているかチェックする
-if ((i >> j) & 1)
+食べるりんごを一つ選ぶわけだが、単純に絶対値が最も小さい値を選べば良いみたい
 """
-from functools import reduce, lru_cache
-from itertools import combinations
-import math
+
+N, L = list(map(int, input().split()))
+A = [L + i for i in range(N)]
+
+abs_min = float('inf')
+eat_target = -202
+for i in range(N):
+    a = A[i]
+    absa = abs(a)
+    abs_min = min(absa, abs_min)
+    if abs_min == absa:
+        eat_target = i
+copy = A[:]
+copy.pop(eat_target)
+print(sum(copy))
