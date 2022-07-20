@@ -9,6 +9,16 @@ list(combinations(l, 2))
 bit全探索でフラグが立っているかチェックする
 if ((i >> j) & 1)
 """
-from functools import reduce, lru_cache
-from itertools import combinations
-import math
+# ボールが跳ねる回数
+# Xが10,000が最大なので素直にループで数え上
+
+N, X = list(map(int, input().split()))
+L = list(map(int, input().split()))
+# 跳ねるポイントを配列で持っておく
+D = [0]
+for i in range(1, len(L)+1):
+    d = D[i-1] + L[i-1]
+    D.append(d)
+
+ans_list = [d for d in D if d <= X]
+print(len(ans_list))
