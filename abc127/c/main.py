@@ -1,14 +1,29 @@
 # -*- coding: utf-8 -*-
 """
-Atcoderの問題解く用
+解く前のメモ
 
-全ての組み合わせを列挙する方法
-list(0...8)から2つを抜き出す
-list(combinations(l, 2))
+N枚のIDカードとM個のゲート
+i番目のゲートは、Li,Li+1,Ri番目のIDカードのうちどれか1枚で通過できる
 
-bit全探索でフラグが立っているかチェックする
-if ((i >> j) & 1)
+条件がよく分からん
+要するに今i番目としてi+n(n<=1)以上にでてくる全てのL,Rで開けられるということ？
+
+しばらく悩んでやっとわかった
+Li 以上 Ri以下のカードでも開けられるということかな
+
+困ったことにNが10**5なので、L..Rのところで二重ループしてたら間に合わない
+Lの最大値とRの最小値が分かればその間の数が答えになりそう
 """
-from functools import reduce, lru_cache
-from itertools import combinations
-import math
+
+N, M = list(map(int, input().split()))
+l_max = -1
+r_min = 10 ** 5 + 3
+
+for i in range(M):
+    l, r = list(map(int, input().split()))
+    l_max = max(l_max, l)
+    r_min = min(r_min, r)
+
+ans = r_min - l_max + 1
+ans = max(0, ans)
+print(ans)
