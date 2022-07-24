@@ -1,14 +1,22 @@
 # -*- coding: utf-8 -*-
 """
-Atcoderの問題解く用
+解く前のメモ
 
-全ての組み合わせを列挙する方法
-list(0...8)から2つを抜き出す
-list(combinations(l, 2))
-
-bit全探索でフラグが立っているかチェックする
-if ((i >> j) & 1)
+- 得点を大きい方からsort
+- 市名を小さい方からsort
 """
-from functools import reduce, lru_cache
-from itertools import combinations
-import math
+from operator import itemgetter
+
+N = int(input())
+memo = []
+
+for i in range(N):
+    name, score = input().split(' ')
+    score = int(score)
+    memo.append({'name': name, 'score': score, 'i': i+1})
+
+scored_sorted = sorted(memo, key=itemgetter('score'), reverse=True)
+name_sorted = sorted(scored_sorted, key=itemgetter('name'))
+
+ig = itemgetter('i')
+[print(ig(dic)) for dic in name_sorted]
