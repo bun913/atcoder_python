@@ -1,14 +1,23 @@
 # -*- coding: utf-8 -*-
 """
-Atcoderの問題解く用
+解く前のメモ
 
-全ての組み合わせを列挙する方法
-list(0...8)から2つを抜き出す
-list(combinations(l, 2))
-
-bit全探索でフラグが立っているかチェックする
-if ((i >> j) & 1)
+一見DPの問題っぽいが、Nが20なので全探索できる
 """
-from functools import reduce, lru_cache
-from itertools import combinations
-import math
+
+N = int(input())
+V = list(map(int, input().split()))
+C = list(map(int, input().split()))
+
+ans = -1
+
+for i in range(2 ** N):
+    cost = 0
+    value = 0
+    for j in range(N):
+        if ((i >> j) & 1):
+            cost += C[j]
+            value += V[j]
+    ans = max(ans, value-cost)
+
+print(ans)
