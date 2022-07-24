@@ -9,6 +9,7 @@ list(combinations(l, 2))
 bit全探索でフラグが立っているかチェックする
 if ((i >> j) & 1)
 """
-from functools import reduce, lru_cache
-from itertools import combinations
-import math
+A, B, T = list(map(int, input().split()))
+s = int((T + 0.5) // A)
+ans = s * B
+print(ans)
