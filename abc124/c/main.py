@@ -1,14 +1,37 @@
 # -*- coding: utf-8 -*-
 """
-Atcoderの問題解く用
+解く前のメモ
 
-全ての組み合わせを列挙する方法
-list(0...8)から2つを抜き出す
-list(combinations(l, 2))
-
-bit全探索でフラグが立っているかチェックする
-if ((i >> j) & 1)
+最初の色は0,または1であり、全ての隣り合うタイルも異なる色で塗られるようにしたい
+つまり理想とする色の塗り方は
+1,0,1,0...
+0,1,0,1...
+の2パターンしかないので、両方やって塗り替える数が少ない方を使えば良いだけでは
 """
-from functools import reduce
-from itertools import combinations
-import math
+S = input()
+
+start0 = 0
+cur_color = '0'
+
+for s in S:
+    if s != cur_color:
+        start0 += 1
+    # 次のタイルの理想の色へ合わせる
+    if cur_color == '0':
+        cur_color = '1'
+        continue
+    cur_color = '0'
+
+start1 = 0
+cur_color = '1'
+
+for s in S:
+    if s != cur_color:
+        start1 += 1
+    # 次のタイルの理想の色へ合わせる
+    if cur_color == '0':
+        cur_color = '1'
+        continue
+    cur_color = '0'
+
+print(min(start0, start1))
