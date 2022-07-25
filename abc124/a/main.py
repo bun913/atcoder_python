@@ -9,6 +9,11 @@ list(combinations(l, 2))
 bit全探索でフラグが立っているかチェックする
 if ((i >> j) & 1)
 """
-from functools import reduce
-from itertools import combinations
-import math
+A, B = list(map(int, input().split()))
+ans = max(A, B)
+if max(A, B) == A:
+    A -= 1
+else:
+    B -= 1
+ans += max(A, B)
+print(ans)
