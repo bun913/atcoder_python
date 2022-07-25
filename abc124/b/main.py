@@ -1,14 +1,19 @@
 # -*- coding: utf-8 -*-
 """
-Atcoderの問題解く用
+解く前のメモ
 
-全ての組み合わせを列挙する方法
-list(0...8)から2つを抜き出す
-list(combinations(l, 2))
-
-bit全探索でフラグが立っているかチェックする
-if ((i >> j) & 1)
+一番西の旅館は海を眺められ、それ以降の旅館は自分がこれまでの旅館の中で最高の高さの場合にだけ眺められる
 """
-from functools import reduce
-from itertools import combinations
-import math
+
+N = int(input())
+H = list(map(int, input().split()))
+
+_max = H[0]
+ans = 1
+
+for i in range(1, N):
+    h = H[i]
+    if h >= _max:
+        ans += 1
+    _max = max(_max, h)
+print(ans)
