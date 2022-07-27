@@ -1,14 +1,24 @@
 # -*- coding: utf-8 -*-
 """
-Atcoderの問題解く用
+解く前のメモ
 
-全ての組み合わせを列挙する方法
-list(0...8)から2つを抜き出す
-list(combinations(l, 2))
+なんかいかにも、グループが関係してそうだなと思った
+それで各都市を回って、グループ数が最大になるところがボトルネックっぽいなと思った
 
-bit全探索でフラグが立っているかチェックする
-if ((i >> j) & 1)
+それでテストケースに当てはめてみたら全部通った
 """
-from functools import reduce, lru_cache
-from itertools import combinations
-import math
+
+N = int(input())
+cap_list = [int(input()) for _ in range(5)]
+
+max_group_cnt = -1
+for cap in cap_list:
+    q = N // cap
+    rest = N % cap
+    group_cnt = q
+    if rest > 0:
+        group_cnt += 1
+    max_group_cnt = max(max_group_cnt, group_cnt)
+
+ans = 5 + (max_group_cnt - 1)
+print(ans)
