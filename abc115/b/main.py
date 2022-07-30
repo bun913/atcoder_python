@@ -9,6 +9,8 @@ list(combinations(l, 2))
 bit全探索でフラグが立っているかチェックする
 if ((i >> j) & 1)
 """
-from functools import reduce, lru_cache
-from itertools import combinations
-import math
+N = int(input())
+P = [int(input()) for _ in range(N)]
+_max = max(P)
+ans = sum(P) - _max + (_max // 2)
+print(ans)
