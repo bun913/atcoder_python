@@ -1,14 +1,21 @@
 # -*- coding: utf-8 -*-
 """
-Atcoderの問題解く用
+解く前のメモ
 
-全ての組み合わせを列挙する方法
-list(0...8)から2つを抜き出す
-list(combinations(l, 2))
+一見すると01または10の部分を見つけては消し、見つけては消しとするだけように見える
+Sと同じリストを用意して、それをポップして回れば良さそうではある・・・・
+が、これを地道にしていくとTLEになってしまう
 
-bit全探索でフラグが立っているかチェックする
-if ((i >> j) & 1)
+答えは何個キューブを取り除けるかである・・・
+最後の状態を考えてみると、必ず0のみか1のみ、または何もないになっているはず
+1回の操作につき、1と0が1個ずつ消える
+つまり、1と0が1個ずつ存在する時、必ず1組は消せるということを考えれば良い
 """
-from functools import reduce
-from itertools import combinations
-import math
+S = input()
+N = len(S)
+
+cnt1 = S.count('1')
+cnt0 = S.count('0')
+
+ans = min(cnt1, cnt0) * 2
+print(ans)

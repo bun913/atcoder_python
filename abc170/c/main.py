@@ -1,14 +1,30 @@
 # -*- coding: utf-8 -*-
 """
-Atcoderの問題解く用
+解く前のメモ
 
-全ての組み合わせを列挙する方法
-list(0...8)から2つを抜き出す
-list(combinations(l, 2))
-
-bit全探索でフラグが立っているかチェックする
-if ((i >> j) & 1)
+実はX,pが全て100以下の数字であるので全部数えても間に合う
 """
-from functools import reduce, lru_cache
-from itertools import combinations
-import math
+X, N = list(map(int, input().split()))
+
+if N == 0:
+    print(100)
+    exit()
+
+P = list(map(int, input().split()))
+p_set = set(P)
+
+_min = 101
+
+for i in range(-200, 201):
+    if i in p_set:
+        continue
+    dif = abs(X-i)
+    _min = min(_min, dif)
+
+for i in range(-200, 201):
+    if i in p_set:
+        continue
+    dif = abs(X-i)
+    if dif == _min:
+        print(i)
+        exit()
