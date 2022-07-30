@@ -9,6 +9,6 @@ list(combinations(l, 2))
 bit全探索でフラグが立っているかチェックする
 if ((i >> j) & 1)
 """
-from functools import reduce
-from itertools import combinations
-import math
+X, Y = list(map(int, input().split()))
+ans = X + (Y // 2)
+print(ans)
