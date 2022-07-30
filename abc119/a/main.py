@@ -9,6 +9,13 @@ list(combinations(l, 2))
 bit全探索でフラグが立っているかチェックする
 if ((i >> j) & 1)
 """
-from functools import reduce, lru_cache
-from itertools import combinations
-import math
+from datetime import datetime as dt
+
+S = input()
+td = dt.strptime(S, '%Y/%m/%d')
+base = dt.strptime('2019/04/30', '%Y/%m/%d')
+
+if td <= base:
+    print('Heisei')
+    exit()
+print('TBD')
