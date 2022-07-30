@@ -9,6 +9,7 @@ list(combinations(l, 2))
 bit全探索でフラグが立っているかチェックする
 if ((i >> j) & 1)
 """
-from functools import reduce, lru_cache
-from itertools import combinations
-import math
+cands = {25: 'Christmas', 24: 'Christmas Eve',
+         23: 'Christmas Eve Eve', 22: 'Christmas Eve Eve Eve'}
+D = int(input())
+print(cands[D])
