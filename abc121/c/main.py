@@ -1,14 +1,25 @@
 # -*- coding: utf-8 -*-
 """
-Atcoderの問題解く用
+Nが最大で10**5なので線形探索はできる
 
-全ての組み合わせを列挙する方法
-list(0...8)から2つを抜き出す
-list(combinations(l, 2))
-
-bit全探索でフラグが立っているかチェックする
-if ((i >> j) & 1)
+単純に安い順に並べかえてMになるまで買えば良いだけでは
 """
-from functools import reduce, lru_cache
-from itertools import combinations
-import math
+N, M = list(map(int, input().split()))
+memo = []
+
+for i in range(N):
+    a, b = list(map(int, input().split()))
+    memo.append((a, b))
+
+
+_sorted = sorted(memo)
+cnt = 0
+ans = 0
+
+for a, b in _sorted:
+    if cnt >= M:
+        break
+    num = min(b, M-cnt)
+    cnt += num
+    ans += (a * num)
+print(ans)

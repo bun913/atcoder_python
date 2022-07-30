@@ -1,14 +1,22 @@
 # -*- coding: utf-8 -*-
 """
-Atcoderの問題解く用
+解く前のメモ
 
-全ての組み合わせを列挙する方法
-list(0...8)から2つを抜き出す
-list(combinations(l, 2))
-
-bit全探索でフラグが立っているかチェックする
-if ((i >> j) & 1)
+Ai1 * B1 + ....と全ての数を掛け合わせれば良いみたい
+NもMも20が最大だから間に合いそう
 """
-from functools import reduce, lru_cache
-from itertools import combinations
-import math
+
+N, M, C = list(map(int, input().split()))
+B = list(map(int, input().split()))
+ans = 0
+
+for i in range(N):
+    A = list(map(int, input().split()))
+    _sum = 0
+    for j in range(M):
+        a = A[j]
+        b = B[j]
+        _sum += a * b
+    if _sum + C > 0:
+        ans += 1
+print(ans)
