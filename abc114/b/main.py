@@ -9,6 +9,11 @@ list(combinations(l, 2))
 bit全探索でフラグが立っているかチェックする
 if ((i >> j) & 1)
 """
-from functools import reduce, lru_cache
-from itertools import combinations
-import math
+S = input()
+ans = float('inf')
+
+for i in range(len(S)-2):
+    s = S[i:i+3]
+    num = int(s)
+    ans = min(ans, abs(num-753))
+print(ans)
