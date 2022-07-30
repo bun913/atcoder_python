@@ -1,14 +1,17 @@
 # -*- coding: utf-8 -*-
 """
-Atcoderの問題解く用
+解く前のメモ
 
-全ての組み合わせを列挙する方法
-list(0...8)から2つを抜き出す
-list(combinations(l, 2))
-
-bit全探索でフラグが立っているかチェックする
-if ((i >> j) & 1)
+どうもこうもただ数えるだけ
+NもMも最大で30なので2重ループで余裕
 """
-from functools import reduce, lru_cache
-from itertools import combinations
-import math
+N, M = list(map(int, input().split()))
+
+favorites = [0 for _ in range(M)]
+
+for i in range(N):
+    L = list(map(int, input().split()))
+    for a in L[1:]:
+        favorites[a-1] += 1
+ans = favorites.count(N)
+print(ans)
