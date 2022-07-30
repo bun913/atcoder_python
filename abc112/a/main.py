@@ -9,6 +9,10 @@ list(combinations(l, 2))
 bit全探索でフラグが立っているかチェックする
 if ((i >> j) & 1)
 """
-from functools import reduce
-from itertools import combinations
-import math
+N = int(input())
+if N == 2:
+    A = int(input())
+    B = int(input())
+    print(A+B)
+    exit()
+print('Hello World')
