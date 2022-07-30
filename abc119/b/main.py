@@ -1,14 +1,21 @@
 # -*- coding: utf-8 -*-
 """
-Atcoderの問題解く用
+問題を解く前のメモ
 
-全ての組み合わせを列挙する方法
-list(0...8)から2つを抜き出す
-list(combinations(l, 2))
-
-bit全探索でフラグが立っているかチェックする
-if ((i >> j) & 1)
+BTCの時に与えられるのが少数なので、都度円に両替していたら誤差が出る
+BTCとYenを別に計算して最後にまとめて換金した方が良さそう
 """
-from functools import reduce, lru_cache
-from itertools import combinations
-import math
+
+N = int(input())
+yen_sum = 0
+btc_sum = 0
+
+for _ in range(N):
+    val, cur = input().split()
+    if cur == 'JPY':
+        yen_sum += int(val)
+        continue
+    btc_sum += float(val)
+
+btc_to_yen = btc_sum * 380000.0
+print(yen_sum + btc_to_yen)
