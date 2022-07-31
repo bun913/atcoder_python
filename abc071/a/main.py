@@ -9,6 +9,12 @@ list(combinations(l, 2))
 bit全探索でフラグが立っているかチェックする
 if ((i >> j) & 1)
 """
-from functools import reduce
-from itertools import combinations
-import math
+x, a, b = list(map(int, input().split()))
+
+xa = abs(x-a)
+xb = abs(x-b)
+
+if xa < xb:
+    print('A')
+    exit()
+print('B')
