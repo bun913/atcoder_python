@@ -9,6 +9,14 @@ list(combinations(l, 2))
 bit全探索でフラグが立っているかチェックする
 if ((i >> j) & 1)
 """
-from functools import reduce, lru_cache
-from itertools import combinations
-import math
+N, M, X, Y = list(map(int, input().split()))
+xl = list(map(int, input().split()))
+yl = list(map(int, input().split()))
+
+for Z in range(X+1, Y+1):
+    filterd_xl = [i for i in xl if i < Z]
+    filterd_yl = [i for i in yl if i >= Z]
+    if len(filterd_xl) == len(xl) and len(filterd_yl) == len(yl):
+        print('No War')
+        exit()
+print('War')
