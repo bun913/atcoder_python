@@ -9,6 +9,12 @@ list(combinations(l, 2))
 bit全探索でフラグが立っているかチェックする
 if ((i >> j) & 1)
 """
-from functools import reduce, lru_cache
-from itertools import combinations
-import math
+K = int(input())
+even = K // 2
+odd = K // 2
+if K % 2 != 0:
+    odd += 1
+
+ans = even * odd
+
+print(ans)
