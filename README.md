@@ -61,3 +61,4 @@ I'll solve these ploblems again later.
 
 - [068 - Number of Multiples 2](https://atcoder.jp/contests/math-and-algorithm/tasks/math_and_algorithm_be)
 - [abc250 b](https://atcoder.jp/contests/abc250/tasks/abc250_b)
+- [abc108 b - Ruined Square](https://atcoder.jp/contests/abc108/tasks/abc108_b)
