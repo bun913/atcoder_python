@@ -1,14 +1,20 @@
 # -*- coding: utf-8 -*-
 """
-Atcoderの問題解く用
+解く前のメモ
 
-全ての組み合わせを列挙する方法
-list(0...8)から2つを抜き出す
-list(combinations(l, 2))
-
-bit全探索でフラグが立っているかチェックする
-if ((i >> j) & 1)
+Nが最大で200しかないので全部数え上げでも間に合う
 """
-from functools import reduce, lru_cache
-from itertools import combinations
-import math
+from math import sqrt
+
+N = int(input())
+ans = 0
+
+for i in range(1, N+1):
+    div_set = set()
+    for j in range(1, int(sqrt(i) + 1)):
+        if i % j == 0:
+            div_set.add(j)
+            div_set.add(i // j)
+    if len(div_set) == 8 and i % 2 == 1:
+        ans += 1
+print(ans)
