@@ -1,14 +1,17 @@
 # -*- coding: utf-8 -*-
 """
-Atcoderの問題解く用
+解く前のメモ
 
-全ての組み合わせを列挙する方法
-list(0...8)から2つを抜き出す
-list(combinations(l, 2))
-
-bit全探索でフラグが立っているかチェックする
-if ((i >> j) & 1)
+Nが100なので数え上げで十分
+cをケーキの数として最大25
+dをドーナツとして最大14まで数える
 """
-from functools import reduce, lru_cache
-from itertools import combinations
-import math
+
+N = int(input())
+
+for c in range(26):
+    for d in range(15):
+        if (c * 4) + (d * 7) == N:
+            print('Yes')
+            exit()
+print('No')
