@@ -9,6 +9,25 @@ list(combinations(l, 2))
 bit全探索でフラグが立っているかチェックする
 if ((i >> j) & 1)
 """
-from functools import reduce, lru_cache
-from itertools import combinations
-import math
+S = input()
+
+cond1 = S[0] == 'A'
+extract = S[2:-1]
+cond2 = extract.count('C') == 1
+
+if cond1 is False or cond2 is False:
+    print('WA')
+    exit()
+
+# 条件3の判定
+for i in range(len(S)):
+    s = S[i]
+    if i == 0:
+        continue
+    if 2 <= i <= len(S)-2:
+        if s == 'C':
+            continue
+    if s.isupper() is True:
+        print('WA')
+        exit()
+print('AC')
