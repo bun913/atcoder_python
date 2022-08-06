@@ -9,6 +9,14 @@ list(combinations(l, 2))
 bit全探索でフラグが立っているかチェックする
 if ((i >> j) & 1)
 """
-from functools import reduce, lru_cache
-from itertools import combinations
-import math
+
+A = list(map(int, input().split()))
+S = sorted(A)
+
+ans = 0
+for i in range(3):
+    if i == 0:
+        continue
+    cost = abs(S[i] - S[i-1])
+    ans += cost
+print(ans)
