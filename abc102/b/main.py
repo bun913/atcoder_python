@@ -1,14 +1,15 @@
 # -*- coding: utf-8 -*-
 """
-Atcoderの問題解く用
+解く前のメモ
 
-全ての組み合わせを列挙する方法
-list(0...8)から2つを抜き出す
-list(combinations(l, 2))
-
-bit全探索でフラグが立っているかチェックする
-if ((i >> j) & 1)
+Nが最大100なので単純な全探索でも良い
+ただ今回は普通に最小値と最大値を取れば終わりな気がする
 """
-from functools import reduce, lru_cache
-from itertools import combinations
-import math
+N = int(input())
+A = list(map(int, input().split()))
+
+_min = min(A)
+_max = max(A)
+
+ans = abs(_max - _min)
+print(ans)
