@@ -1,14 +1,26 @@
 # -*- coding: utf-8 -*-
 """
-Atcoderの問題解く用
+解く前のメモ
 
-全ての組み合わせを列挙する方法
-list(0...8)から2つを抜き出す
-list(combinations(l, 2))
-
-bit全探索でフラグが立っているかチェックする
-if ((i >> j) & 1)
+ボールに書かれた数を変更して、ボールに書かれた数がK種類以下になるようにしたい
+単純にボールの数が少ない順にソートして、K種類以下になるまで引いていけば良くね
 """
-from functools import reduce, lru_cache
-from itertools import combinations
-import math
+from collections import defaultdict
+from operator import itemgetter
+
+N, K = list(map(int, input().split()))
+A = list(map(int, input().split()))
+
+memo = defaultdict(int)
+for a in A:
+    memo[a] += 1
+sorted_memo = sorted(memo.items(), key=itemgetter(1))
+cur_kinds = len(sorted_memo)
+ans = 0
+
+for k, v in sorted_memo:
+    if cur_kinds <= K:
+        print(ans)
+        exit()
+    ans += v
+    cur_kinds -= 1
