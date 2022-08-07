@@ -1,14 +1,20 @@
 # -*- coding: utf-8 -*-
 """
-Atcoderの問題解く用
+解く前のメモ
 
-全ての組み合わせを列挙する方法
-list(0...8)から2つを抜き出す
-list(combinations(l, 2))
-
-bit全探索でフラグが立っているかチェックする
-if ((i >> j) & 1)
+N種類を最低1は作る
+制約を守ることは可能な入力が渡される
+ということはまずmの合計から最低1種類を作るのに必要な量を求めて、そのあまりで最小のmiを持つドーナツを量産する
 """
-from functools import reduce, lru_cache
-from itertools import combinations
-import math
+
+N, X = list(map(int, input().split()))
+M = [int(input()) for _ in range(N)]
+
+# 1種類ずつ作る
+ans = len(M)
+rest = X - sum(M)
+
+# 最小のやつを作れるだけ作る
+_min = min(M)
+ans += rest // _min
+print(ans)
