@@ -9,6 +9,15 @@ list(combinations(l, 2))
 bit全探索でフラグが立っているかチェックする
 if ((i >> j) & 1)
 """
-from functools import reduce, lru_cache
-from itertools import combinations
-import math
+N = int(input())
+S = input()
+
+ans = 0
+for i in range(1, N):
+    left = S[:i]
+    right = S[i:]
+    set_l = set(left)
+    set_r = set(right)
+    inters = set_l.intersection(right)
+    ans = max(len(inters), ans)
+print(ans)
