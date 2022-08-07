@@ -1,14 +1,20 @@
 # -*- coding: utf-8 -*-
 """
-Atcoderの問題解く用
+解く前のメモ
 
-全ての組み合わせを列挙する方法
-list(0...8)から2つを抜き出す
-list(combinations(l, 2))
-
-bit全探索でフラグが立っているかチェックする
-if ((i >> j) & 1)
+X,Yが10**5なので1ループは可能
+今回の場合ABピザの枚数が決まれば残りのピザの枚数は勝手に決まる
 """
-from functools import reduce, lru_cache
-from itertools import combinations
-import math
+A, B, C, X, Y = list(map(int, input().split()))
+
+# オーバーキル気味だが十分な回数ABピザの枚数を探索
+ans = float('inf')
+for ab_cnt in range(0, 2*max(X, Y)+1):
+    ab_sum = ab_cnt * C
+    a_cnt = max(0, X - (ab_cnt // 2))
+    b_cnt = max(0, Y - (ab_cnt // 2))
+    a_sum = a_cnt * A
+    b_sum = b_cnt * B
+    s = a_sum + b_sum + ab_sum
+    ans = min(s, ans)
+print(ans)
