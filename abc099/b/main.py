@@ -1,14 +1,21 @@
 # -*- coding: utf-8 -*-
 """
-Atcoderの問題解く用
+解く前のメモ
 
-全ての組み合わせを列挙する方法
-list(0...8)から2つを抜き出す
-list(combinations(l, 2))
+雪が積もった状態での塔の高さがaとb
+雪自体の高さをxとしてxの値を求める
 
-bit全探索でフラグが立っているかチェックする
-if ((i >> j) & 1)
+違いに1メートル離れたある等のことなので仮にi番目の塔だとすると
+b = a + iである
+
+999本しかないから余裕で全探索できる
 """
-from functools import reduce, lru_cache
-from itertools import combinations
-import math
+a, b = list(map(int, input().split()))
+
+for i in range(1, 999):
+    i_height = i * (1 + i) // 2
+    j_height = (i+1) * (1 + i + 1) // 2
+    a_dif = a - i_height
+    b_dif = b - j_height
+    if a_dif == b_dif:
+        print(-a_dif)
