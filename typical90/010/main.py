@@ -5,6 +5,7 @@
 まさに区間和で俺に累積和を使えと言われているような気がする
 1組と2組の累積和を出しておけばN1の計算量で行ける
 """
+from itertools import accumulate
 # 入力から各クラスの点数を配列にセットする
 N = int(input())
 p1 = []
@@ -20,18 +21,8 @@ for i in range(N):
     p2.append(score)
     p1.append(0)
 # クラスの点数の累積和を配列で用意
-# pythonはitertools accumrateで簡単に累積和を作れるが練習のため一旦手動で作成する
-s1 = [0 for _ in range(N)]
-s2 = [0 for _ in range(N)]
-for i in range(N):
-    score = p1[i]
-    s1[i] = s1[i-1] + score if i != 0 else score
-for i in range(N):
-    score = p2[i]
-    s2[i] = s2[i-1] + score if i != 0 else score
-# 累積和の最初の要素として0を挿入
-s1.insert(0, 0)
-s2.insert(0, 0)
+s1 = list(accumulate(p1, initial=0))
+s2 = list(accumulate(p2, initial=0))
 
 Q = int(input())
 for _ in range(Q):
