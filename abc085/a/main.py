@@ -9,6 +9,8 @@ list(combinations(l, 2))
 bit全探索でフラグが立っているかチェックする
 if ((i >> j) & 1)
 """
-from functools import reduce, lru_cache
-from itertools import combinations
-import math
+S = input()
+list_s = list(S)
+list_s[3] = '8'
+
+print(*list_s, sep='')
