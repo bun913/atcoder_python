@@ -9,6 +9,12 @@ list(combinations(l, 2))
 bit全探索でフラグが立っているかチェックする
 if ((i >> j) & 1)
 """
-from functools import reduce, lru_cache
-from itertools import combinations
-import math
+A, B, C, D = list(map(int, input().split()))
+L = A + B
+R = C + D
+ans = 'Left'
+if L < R:
+    ans = 'Right'
+elif L == R:
+    ans = 'Balanced'
+print(ans)
