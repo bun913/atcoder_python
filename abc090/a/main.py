@@ -9,6 +9,7 @@ list(combinations(l, 2))
 bit全探索でフラグが立っているかチェックする
 if ((i >> j) & 1)
 """
-from functools import reduce, lru_cache
-from itertools import combinations
-import math
+G = [list(input()) for _ in range(3)]
+
+ans = G[0][0] + G[1][1] + G[2][2]
+print(ans)
