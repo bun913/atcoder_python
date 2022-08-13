@@ -1,14 +1,17 @@
 # -*- coding: utf-8 -*-
 """
-Atcoderの問題解く用
+解く前のメモ
 
-全ての組み合わせを列挙する方法
-list(0...8)から2つを抜き出す
-list(combinations(l, 2))
+不適切: 縦2,横2の4つのLEDを含む領域で点灯しているLEDが領域内に2つい上あるものが存在する
+適切なイルミのパターンのうち点灯しているLEDの個数としてありえる最大値
 
-bit全探索でフラグが立っているかチェックする
-if ((i >> j) & 1)
+i,jが両方とも奇数のところに点灯できる
 """
-from functools import reduce, lru_cache
-from itertools import combinations
-import math
+from math import ceil
+
+H, W = list(map(int, input().split()))
+if H == 1 or W == 1:
+    print(H*W)
+    exit()
+ans = ceil(H/2) * ceil(W/2)
+print(ans)
