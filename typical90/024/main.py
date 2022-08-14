@@ -1,14 +1,32 @@
 # -*- coding: utf-8 -*-
 """
-Atcoderの問題解く用
+解く前のメモ
 
-全ての組み合わせを列挙する方法
-list(0...8)から2つを抜き出す
-list(combinations(l, 2))
+ちょうどK回の操作でAをBに一致させることあgできるか
+- 1 <= i <= Nを満たすiを選び Ai を Ai-1 or Ai + 1に置き換える
 
-bit全探索でフラグが立っているかチェックする
-if ((i >> j) & 1)
+Nがたかだか1000なのに対してKが10 **9となっている
+操作をシュミレートするのは不可能
+
+ただここで気になるのが、1大きくするか1小さくするかしかできないこと
+これにより偶数・奇数が重要になってきそう
+
+AもBもサイズが一緒なのでから、それぞれの差の絶対値をとっていく
+それにより 絶対値の差の和が K以下かつ Kとの偶奇があっておけば一緒にできるのでは
 """
-from functools import reduce, lru_cache
-from itertools import combinations
-import math
+
+N, K = list(map(int, input().split()))
+A = list(map(int, input().split()))
+B = list(map(int, input().split()))
+
+abs_sum = 0
+
+for i in range(N):
+    a = A[i]
+    b = B[i]
+    abs_sum += abs(a-b)
+
+ans = 'No'
+if abs_sum <= K and abs_sum % 2 == K % 2:
+    ans = 'Yes'
+print(ans)
