@@ -1,14 +1,22 @@
 # -*- coding: utf-8 -*-
 """
-Atcoderの問題解く用
+解く前のメモ
 
-全ての組み合わせを列挙する方法
-list(0...8)から2つを抜き出す
-list(combinations(l, 2))
-
-bit全探索でフラグが立っているかチェックする
-if ((i >> j) & 1)
+8新法の数字を9新法にして、8を5に描き直す
+最後に出てくるKを8新法で出力する
+Kが100,Nが20桁くらいなので操作はできそう
+折角ライブラリがあるから使おうスタイル
 """
-from functools import reduce, lru_cache
-from itertools import combinations
-import math
+from numpy import base_repr
+
+N, K = list(map(int, input().split()))
+
+cur = int(str(N), 8)
+for i in range(K):
+    nine_base = base_repr(cur, 9)
+    replaced = nine_base.replace('8', '5', len(nine_base))
+    if i != K-1:
+        cur = int(replaced, 8)
+    else:
+        cur = int(replaced)
+print(cur)
