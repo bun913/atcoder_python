@@ -1,14 +1,30 @@
 # -*- coding: utf-8 -*-
 """
-Atcoderの問題解く用
+解く前のメモ
 
-全ての組み合わせを列挙する方法
-list(0...8)から2つを抜き出す
-list(combinations(l, 2))
+無効グラフ
+自分より頂点番号が小さい隣接頂点がちょうど1つ存在する
 
-bit全探索でフラグが立っているかチェックする
-if ((i >> j) & 1)
+普通に行けばNが10の6乗、Mも10**6なので全探索は無理
+それぞれNは線形にループしてMで自分より小さいのを探すのを二部探索で行けば間に合いそう
+(それでもPythonならpypy3でギリギリ間に合うかって感じ)
 """
-from functools import reduce, lru_cache
-from itertools import combinations
-import math
+from bisect import bisect
+
+N, M = list(map(int, input().split()))
+memo = dict([(i+1, []) for i in range(N)])
+
+# 無効グラフを作成
+for _ in range(M):
+    a, b = list(map(int, input().split()))
+    memo[a].append(b)
+    memo[b].append(a)
+
+# 各頂点から条件を満たすか二部探索
+ans = 0
+for vert, points in memo.items():
+    _sorted = sorted(points)
+    ind = bisect(_sorted, vert)
+    if ind == 1:
+        ans += 1
+print(ans)
