@@ -8,7 +8,7 @@
 Nが30万、Qが30万普通に全探索していたら間に合わない
 一目見て思った・・・二部探索使えばいいじゃないと
 """
-from bisect import bisect
+from bisect import bisect_left
 
 N = int(input())
 A = list(map(int, input().split()))
@@ -18,16 +18,12 @@ B = [int(input()) for _ in range(Q)]
 
 for b in B:
     ans = 0
-    ind = bisect(AD, b)
+    ind = bisect_left(AD, b)
     if ind == 0:
         ans = abs(AD[0]-b)
     elif ind == N:
         ans = abs(AD[ind-1]-b)
-    elif ind == N-1:
-        ans = abs(AD[ind]-b)
-        ans = min(ans, abs(AD[ind-1]-b))
     else:
         ans = abs(AD[ind]-b)
         ans = min(ans, abs(AD[ind-1]-b))
-        ans = min(ans, abs(AD[ind+1]-b))
     print(ans)
