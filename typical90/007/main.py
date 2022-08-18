@@ -1,14 +1,33 @@
 # -*- coding: utf-8 -*-
 """
-Atcoderの問題解く用
+解く前のメモ
 
-全ての組み合わせを列挙する方法
-list(0...8)から2つを抜き出す
-list(combinations(l, 2))
+対象レーティングと自分のレーティングとの差が大きいと不満
+番号jの生徒の不満どとして考えられる最小値を求める
 
-bit全探索でフラグが立っているかチェックする
-if ((i >> j) & 1)
+Nが30万、Qが30万普通に全探索していたら間に合わない
+一目見て思った・・・二部探索使えばいいじゃないと
 """
-from functools import reduce, lru_cache
-from itertools import combinations
-import math
+from bisect import bisect
+
+N = int(input())
+A = list(map(int, input().split()))
+AD = sorted(A)
+Q = int(input())
+B = [int(input()) for _ in range(Q)]
+
+for b in B:
+    ans = 0
+    ind = bisect(AD, b)
+    if ind == 0:
+        ans = abs(AD[0]-b)
+    elif ind == N:
+        ans = abs(AD[ind-1]-b)
+    elif ind == N-1:
+        ans = abs(AD[ind]-b)
+        ans = min(ans, abs(AD[ind-1]-b))
+    else:
+        ans = abs(AD[ind]-b)
+        ans = min(ans, abs(AD[ind-1]-b))
+        ans = min(ans, abs(AD[ind+1]-b))
+    print(ans)
