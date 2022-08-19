@@ -1,14 +1,14 @@
 # -*- coding: utf-8 -*-
 """
-Atcoderの問題解く用
+log2の計算を素直にやろうとすると誤差がでる
 
-全ての組み合わせを列挙する方法
-list(0...8)から2つを抜き出す
-list(combinations(l, 2))
-
-bit全探索でフラグが立っているかチェックする
-if ((i >> j) & 1)
+対数の性質でググろう
+https://manabitimes.jp/math/2046
 """
-from functools import reduce, lru_cache
-from itertools import combinations
-import math
+from math import log2
+
+a, b, c = list(map(int, input().split()))
+if a < c ** b:
+    print('Yes')
+    exit()
+print('No')
