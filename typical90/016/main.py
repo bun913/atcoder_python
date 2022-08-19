@@ -1,14 +1,25 @@
 # -*- coding: utf-8 -*-
 """
-Atcoderの問題解く用
+0枚以上使ってN円を支払う
+使う効果の枚数として考えられる最小値
 
-全ての組み合わせを列挙する方法
-list(0...8)から2つを抜き出す
-list(combinations(l, 2))
-
-bit全探索でフラグが立っているかチェックする
-if ((i >> j) & 1)
+合計9999円枚以下の効果で支払えるという親切な文言がヒント
+Cの枚数は自然と決まりそうだけど問題はPythonで10**8が間に合うかという心配
 """
-from functools import reduce, lru_cache
-from itertools import combinations
-import math
+N = int(input())
+A, B, C = list(map(int, input().split()))
+
+ans = 100001
+for a in range(10000):
+    for b in range(10000-a):
+        cur = a * A + b * B
+        rest = N-cur
+        if rest < 0:
+            break
+        if rest == 0:
+            ans = min(ans, a+b)
+            break
+        if rest % C == 0:
+            c = rest // C
+            ans = min(ans, a+b+c)
+print(ans)
