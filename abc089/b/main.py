@@ -9,6 +9,10 @@ list(combinations(l, 2))
 bit全探索でフラグが立っているかチェックする
 if ((i >> j) & 1)
 """
-from functools import reduce, lru_cache
-from itertools import combinations
-import math
+N = int(input())
+S = list(input().split())
+ans_set = set(S)
+if len(ans_set) == 3:
+    print('Three')
+    exit()
+print('Four')
