@@ -1,14 +1,19 @@
 # -*- coding: utf-8 -*-
 """
-Atcoderの問題解く用
+解く前のメモ
 
-全ての組み合わせを列挙する方法
-list(0...8)から2つを抜き出す
-list(combinations(l, 2))
+ABがそもそも非常に大きい
+gcdをlogで求めることは必須
+ユークリッドの互助法かな
 
-bit全探索でフラグが立っているかチェックする
-if ((i >> j) & 1)
+ただ最小公倍数を求める時にAとBをかけるととんでもない数になる
 """
-from functools import reduce, lru_cache
-from itertools import combinations
-import math
+from math import gcd
+
+A, B = list(map(int, input().split()))
+g = gcd(A, B)
+lcm = A//g*B
+if lcm > 10 ** 18:
+    print('Large')
+    exit()
+print(lcm)
