@@ -5,24 +5,21 @@
 N問がかなり大きいので何も考えず全探索は無理
 K分間で得られる最大値を求める
 DPでN問目までを使って得られる最適解を求め続ければいけそう?
+
+以下解説AC
+よく問題をみよう。連続した2分じゃないと満点は取れないとは書いていない。
+つまり部分店まで解いて、他の問題、さっきの問題を満点まで取るとかできる
+
+それなら単純に部分点と(満点-部分点)をソートして大きい順に取れば良い
+なぜなら部分点の方が満点の半分より大きいことが保証されているため
 """
 N, K = list(map(int, input().split()))
-DP = [[0 for _ in range(K+1)] for _ in range(N+1)]
-A = []
-B = []
-for i in range(N):
-    a, b = list(map(int, input().split()))
-    A.append(a)
-    B.append(b)
+points = []
+for _ in range(N):
+    full, part = list(map(int, input().split()))
+    points.append(full-part)
+    points.append(part)
 
-for i in range(1, N+1):
-    for j in range(1, K+1):
-        full = A[i-1]
-        part = B[i-1]
-        prev1 = DP[i-1][j-1]
-        cand1 = max(prev1 + part, DP[i-1][j])
-        cand2 = 0
-        if j - 2 >= 0:
-            cand2 = DP[i-1][j-2] + full
-        DP[i][j] = max(cand1, cand2)
-print(DP[-1][-1])
+soreted_points = sorted(points, reverse=True)
+ans = sum(soreted_points[:K])
+print(ans)
