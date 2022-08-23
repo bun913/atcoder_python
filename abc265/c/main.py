@@ -7,9 +7,12 @@
 """
 H, W = list(map(int, input().split()))
 G = [list(input()) for _ in range(H)]
+memo = [[False for _ in range(W)] for _ in range(H)]
 
 cur = [0, 0]
-for _ in range(H * W + 100):
+past_cells = set()
+same_cnt = 0
+while True:
     # 縦軸の動きを最初の要素
     s = G[cur[0]][cur[1]]
     nex = (0, 1)
@@ -19,6 +22,10 @@ for _ in range(H * W + 100):
         nex = (1, 0)
     elif s == 'L':
         nex = (0, -1)
+    if memo[cur[0]][cur[1]] is True:
+        print(-1)
+        exit()
+    memo[cur[0]][cur[1]] = True
     # 上下左右にはみ出す場合答えとなる
     nex_x = cur[0] + nex[0]
     nex_y = cur[1] + nex[1]
@@ -28,4 +35,3 @@ for _ in range(H * W + 100):
         exit()
     cur[0] = nex_x
     cur[1] = nex_y
-print(-1)
