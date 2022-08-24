@@ -6,27 +6,18 @@ NこのブロックをK種類の色で塗る
 
 ブロックの塗り方が何通りあるか
 10**9 + 7 で割ったあまり
+
+以下解説AC
+繰り返し2乗法というテクニックで乗数の計算を早くできるらしい
+pow関数ではすでにそれで実装されていて、さらに第3引数で剰余を計算してくれることも知った
 """
 N, K = list(map(int, input().split()))
-# 最初の3ブロックの塗り分け
-r = min(N, 3)
-ans = 1
-n = K
-for _ in range(r):
-    # N種類のボールを塗りきれない場合
-    if n < 0:
-        print(0)
-        exit()
-    mod = n % (10 ** 9 + 7)
-    ans *= mod
-    n -= 1
-# 最初の3ブロックだけで終わる場合
-if r == N:
-    print(ans)
+mod = 10 ** 9 + 7
+if N == 1:
+    print(K % mod)
     exit()
-# 残りの数を算出
-rest = N - r
-rest_block = (K-2) % (10 ** 9 + 7)
-ans = ans * (pow(rest_block, rest))
-ans = ans % (10 ** 9 + 7)
-print(ans)
+if N == 2:
+    print(K * (K-1) % mod)
+    exit()
+ans = K * (K-1) * pow(K-2, N-2, mod)
+print(ans % mod)
