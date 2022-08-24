@@ -1,14 +1,32 @@
 # -*- coding: utf-8 -*-
 """
-Atcoderの問題解く用
+NこのブロックをK種類の色で塗る
+1 <= abs(i-j) <=2ならブロックiとブロックjの色は異なる
+使わない色があっても良い
 
-全ての組み合わせを列挙する方法
-list(0...8)から2つを抜き出す
-list(combinations(l, 2))
-
-bit全探索でフラグが立っているかチェックする
-if ((i >> j) & 1)
+ブロックの塗り方が何通りあるか
+10**9 + 7 で割ったあまり
 """
-from functools import reduce, lru_cache
-from itertools import combinations
-import math
+N, K = list(map(int, input().split()))
+# 最初の3ブロックの塗り分け
+r = min(N, 3)
+ans = 1
+n = K
+for _ in range(r):
+    # N種類のボールを塗りきれない場合
+    if n < 0:
+        print(0)
+        exit()
+    mod = n % (10 ** 9 + 7)
+    ans *= mod
+    n -= 1
+# 最初の3ブロックだけで終わる場合
+if r == N:
+    print(ans)
+    exit()
+# 残りの数を算出
+rest = N - r
+rest_block = (K-2) % (10 ** 9 + 7)
+ans = ans * (pow(rest_block, rest))
+ans = ans % (10 ** 9 + 7)
+print(ans)
