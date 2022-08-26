@@ -1,14 +1,8 @@
 # -*- coding: utf-8 -*-
 """
-Atcoderの問題解く用
-
-全ての組み合わせを列挙する方法
-list(0...8)から2つを抜き出す
-list(combinations(l, 2))
-
-bit全探索でフラグが立っているかチェックする
-if ((i >> j) & 1)
 """
-from functools import reduce, lru_cache
-from itertools import combinations
-import math
+X, Y, Z = list(map(int, input().split()))
+trim_x = X - Z
+y_plus_rest = Y + Z
+ans = trim_x // y_plus_rest
+print(ans)
