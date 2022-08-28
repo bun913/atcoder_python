@@ -1,14 +1,29 @@
 # -*- coding: utf-8 -*-
 """
-Atcoderの問題解く用
+解く前のメモ
 
-全ての組み合わせを列挙する方法
-list(0...8)から2つを抜き出す
-list(combinations(l, 2))
+長さNの整数の数列
+aをよい数列にしたい
+各要素xについてbに値xはちょうどx個含まれる
 
-bit全探索でフラグが立っているかチェックする
-if ((i >> j) & 1)
+単純にグループ化して数を見ていけば終わりでは
 """
-from functools import reduce, lru_cache
-from itertools import combinations
-import math
+from itertools import groupby
+
+N = int(input())
+A = list(map(int, input().split()))
+AD = sorted(A)
+
+grouped = [(k, len(list(g))) for k, g in groupby(AD)]
+ans = 0
+
+for n, length in grouped:
+    # 要素数が足りない場合は全て消す
+    if length < n:
+        ans += length
+        continue
+    # 要素数が大良い場合は差分だけ消す
+    if length > n:
+        ans += length - n
+        continue
+print(ans)
