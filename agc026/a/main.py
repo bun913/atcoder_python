@@ -1,14 +1,20 @@
 # -*- coding: utf-8 -*-
 """
-Atcoderの問題解く用
+同じ色は合体してしまう
+魔法でスライムの色を変えられる
+何回魔法を唱える必要があるか
 
-全ての組み合わせを列挙する方法
-list(0...8)から2つを抜き出す
-list(combinations(l, 2))
-
-bit全探索でフラグが立っているかチェックする
-if ((i >> j) & 1)
+groupbyで2以上担っているとこを数え上げればよいだけ
 """
-from functools import reduce, lru_cache
-from itertools import combinations
-import math
+from itertools import groupby
+
+N = int(input())
+A = list(map(int, input().split()))
+
+grouped = [(k, len(list(g))) for k, g in groupby(A)]
+ans = 0
+
+for k, length in grouped:
+    if length >= 2:
+        ans += length // 2
+print(ans)
