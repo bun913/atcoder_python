@@ -1,21 +1,18 @@
 """
-Atcoderの問題解く用
-
-1行1列データ
-
-#str型で受け取るとき
-s = input() 
-#int型で受け取るとき
-s = int(input()) 
-#float型　(小数)で受け取るとき
-s = float(input())
-
-(1,N)行列データ
-s = input().split()
-# listで整数で受け取る
-l = list(map(int, input().split()))
-
-その他
-https://qiita.com/jamjamjam/items/e066b8c7bc85487c0785
+1以上N以下の整数を1度ずつ書くときコンマは合計で何回書かれるか
+コンマが描かれる条件10**3,10**6を超えるタイミングでコンマが1個ずつ増えていく
 """
+N = int(input())
 
+ans = 0
+if N >= 10 ** 3:
+    ans += N - 999
+if N >= 10 ** 6:
+    ans += N - 999999
+if N >= 10 ** 9:
+    ans += N - 999999999
+if N >= 10 ** 12:
+    ans += N - 999999999999
+if N >= 10 ** 15:
+    ans += N - 999999999999999
+print(ans)
