@@ -1,45 +1,34 @@
 # -*- coding: utf-8 -*-
 """
-Atcoderの問題解く用
-
-1行1列データ
-
-#str型で受け取るとき
-s = input()
-#int型で受け取るとき
-s = int(input())
-#float型　(小数)で受け取るとき
-s = float(input())
-
-(1,N)行列データ
-s = input().split()
-# listで整数で受け取る
-l = list(map(int, input().split()))
-
-その他
-https://qiita.com/jamjamjam/items/e066b8c7bc85487c0785
-
-全ての組み合わせを列挙する方法
-list(0...8)から2つを抜き出す
-list(combinations(l, 2))
+まずは実際に書いてみるか
+横は1ずつ異なっているのが並んでいる
+縦は7ずつ異なっているのが並んでいる
+そして各要素を7で割ったあまりが必ず 1,2,3,4,5,6,0となっているはず
 """
-from functools import reduce
-from itertools import combinations
-import math
+N, M = list(map(int, input().split()))
+B = [list(map(int, input().split())) for _ in range(N)]
+cycle = [1, 2, 3, 4, 5, 6, 0]
+first_ind = cycle.index(B[0][0] % 7)
+cycle = cycle[first_ind:]
 
-# 素数判定
-
-
-def is_prime(n: int) -> bool:
-    for i in range(2, int(math.sqrt(n))+1):
-        if n % i == 0:
-            return False
-    return True
-
-
-def permutation(n, r):
-    return math.factorial(n) // math.factorial(n-r)
-
-
-def combination(n, r):
-    return permutation(n, r) // math.factorial(r)
+befs = list(map(lambda elm: elm - 7, B[0]))
+for i in range(N):
+    for j in range(M):
+        v = B[i][j]
+        # あまりの数が違うかそもそも無い
+        mod = v % 7
+        if j > len(cycle) - 1 or mod != cycle[j]:
+            print("No")
+            exit()
+        # 前の行の要素から+7になっていない
+        if v != befs[j] + 7:
+            print("No")
+            exit()
+        # 1個左の要素から+1になっていない
+        if j > 0:
+            if B[i][j - 1] + 1 != v:
+                print("No")
+                exit()
+        # あとは数字の範囲も満たさないといけない
+        befs[j] = v
+print("Yes")
