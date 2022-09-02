@@ -1,14 +1,22 @@
 # -*- coding: utf-8 -*-
 """
-Atcoderの問題解く用
+N以下のx
+ただしNが10**12なので一つずつ求めていたら間に合わない
+Nをa*bとして表してaを平方根まで数え上げればどうか
 
-全ての組み合わせを列挙する方法
-list(0...8)から2つを抜き出す
-list(combinations(l, 2))
-
-bit全探索でフラグが立っているかチェックする
-if ((i >> j) & 1)
+以下解説AC
+手を動かしてみれば周期性があることに気づく
 """
-from functools import reduce
-from itertools import combinations
-import math
+from math import sqrt
+
+A, B, N = list(map(int, input().split()))
+
+
+def fl(x: int):
+    left = A * x // B
+    right = A * (x // B)
+    return left - right
+
+
+ans = fl(min(N, B - 1))
+print(ans)
