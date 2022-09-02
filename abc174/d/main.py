@@ -1,14 +1,21 @@
 # -*- coding: utf-8 -*-
 """
-Atcoderの問題解く用
+白か赤の石がN個
+- 石を2個選び入れ替える
+- 石を1個選び石の色を変える
+赤い石の左隣に白い石があるとダメ
+最小で何回の操作で回避できるか
 
-全ての組み合わせを列挙する方法
-list(0...8)から2つを抜き出す
-list(combinations(l, 2))
-
-bit全探索でフラグが立っているかチェックする
-if ((i >> j) & 1)
+左側に赤を
+右側に白色を寄せる
 """
-from functools import reduce, lru_cache
-from itertools import combinations
-import math
+N = int(input())
+C = list(input())
+
+R = C.count("R")
+left = C[:R]
+# 赤を左に寄せれば良いので、まず何個赤があるか考える
+# で左から順に白色があれば、それと赤を入れかれば良い
+ans = left.count("W")
+
+print(ans)
