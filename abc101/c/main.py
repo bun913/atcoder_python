@@ -1,14 +1,20 @@
 # -*- coding: utf-8 -*-
 """
-Atcoderの問題解く用
+Aは1..Nまでの要素が並び替えられた数列
+連続したK個の要素を選ぶ。選んだ要素の最小値で選んだ要素全てを置き換える。
+数列の要素を全て同じにしたい
+必要な操作の最小回数を求める
 
-全ての組み合わせを列挙する方法
-list(0...8)から2つを抜き出す
-list(combinations(l, 2))
-
-bit全探索でフラグが立っているかチェックする
-if ((i >> j) & 1)
+要するにK個ずつのグループを作っていくということだよね
 """
-from functools import reduce, lru_cache
-from itertools import combinations
-import math
+from math import ceil
+
+N, K = list(map(int, input().split()))
+A = list(map(int, input().split()))
+rest = N - K
+ans = 1
+if rest == 0:
+    print(ans)
+    exit()
+ans += ceil(rest / (K - 1))
+print(ans)
