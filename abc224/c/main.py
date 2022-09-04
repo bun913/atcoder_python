@@ -1,45 +1,27 @@
 # -*- coding: utf-8 -*-
 """
-Atcoderの問題解く用
+N =200なので3点の全ての組み合わせを全列挙することができる
+あとは3点が三角形になるかを判定する必要がある
 
-1行1列データ
-
-#str型で受け取るとき
-s = input()
-#int型で受け取るとき
-s = int(input())
-#float型　(小数)で受け取るとき
-s = float(input())
-
-(1,N)行列データ
-s = input().split()
-# listで整数で受け取る
-l = list(map(int, input().split()))
-
-その他
-https://qiita.com/jamjamjam/items/e066b8c7bc85487c0785
-
-全ての組み合わせを列挙する方法
-list(0...8)から2つを抜き出す
-list(combinations(l, 2))
+そういえばベクトルの外積が平方四辺形の面積と等しくなると聞いたことがある
+これを半分にすれば三角形の面積になるはずでは
 """
-from functools import reduce
 from itertools import combinations
-import math
 
-# 素数判定
+N = int(input())
+points = combinations([i for i in range(N)], 3)
 
+dots = [list(map(int, input().split())) for i in range(N)]
 
-def is_prime(n: int) -> bool:
-    for i in range(2, int(math.sqrt(n))+1):
-        if n % i == 0:
-            return False
-    return True
-
-
-def permutation(n, r):
-    return math.factorial(n) // math.factorial(n-r)
-
-
-def combination(n, r):
-    return permutation(n, r) // math.factorial(r)
+ans = 0
+for a, b, c in points:
+    a_dot = dots[a]
+    b_dot = dots[b]
+    c_dot = dots[c]
+    area = abs(
+        (a_dot[0] - c_dot[0]) * (b_dot[1] - c_dot[1])
+        - ((b_dot[0] - c_dot[0]) * (a_dot[1] - c_dot[1]))
+    )
+    if area > 0:
+        ans += 1
+print(ans)
