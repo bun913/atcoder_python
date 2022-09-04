@@ -10,52 +10,50 @@ bit全探索でフラグが立っているかチェックする
 if ((i >> j) & 1)
 """
 S = list(map(int, list(input())))
-pins = [[-1, -1, 2, 1, 3, -1, -1], [7, 4, 8, 5, 9, 6, 10]]
+# 各列でピンが1つでも立っているか、立っていないかを判定するためのリスト
+# 1が列に立っているピンがある・0が立っているピンが無い状態を表す
+cols = [1 for _ in range(7)]
 
-# ピン1が倒れていないのは早めにアウトにする
+# 1番目のピンが立っているか判定
 if S[0] == 1:
     print("No")
     exit()
 
-# 倒しているピンのメモ
-for i, s in enumerate(S):
-    pin = i + 1
-    is_layed = True if s == 0 else False
-    for j in range(7):
-        cand1 = pins[0][j]
-        cand2 = pins[1][j]
-        if is_layed is False:
-            continue
-        if cand1 == pin:
-            pins[0][j] = 0
-        if cand2 == pin:
-            pins[1][j] = 0
+# 同じ列に立っているピンの組と何列目かをタプルで表現# (前のピン番号, 後ろのピン番号, 列番号)
+combi_list = [(2, 8, 3), (1, 5, 4), (3, 9, 5)]
+for combi in combi_list:
+    front, back, col_num = combi
+    if S[front - 1] == 0 and S[back - 1] == 0:
+        cols[col_num - 1] = 0
+        continue
+    cols[col_num] = 1
 
-standed = []
-all_layed = []
-for i in range(7):
-    col1 = pins[0][i]
-    col2 = pins[1][i]
-    # 立っているピンがあるか調べる
-    if col1 not in (0, -1) or col2 not in (0, -1):
-        standed.append(i)
-    # 全て倒れている列か調べる
-    if col1 in (0, -1) and col2 in (0, -1):
-        all_layed.append(i)
+# ピン番号: 列番号のマップ(リストで扱いやすいように全て-1)
+pin_col_map = {7: 1, 4: 2, 6: 6, 10: 7}
+for i, v in enumerate(S):
+    # 2ピンある列は上で確認済みなので飛ばす
+    if i + 1 in set([2, 8, 1, 5, 3, 9]):
+        continue
+    col_num = pin_col_map[i + 1]
+    cols[col_num - 1] = v
 
-# print(pins, standed, all_layed)
+stand_cols, down_cols = ([], [])
+for i, v in enumerate(cols):
+    if v == 1:
+        stand_cols.append(i)
+        continue
+    down_cols.append(i)
 
-if len(standed) < 2:
+if len(stand_cols) < 2 or len(down_cols) <= 0:
     print("No")
     exit()
-if len(all_layed) <= 0:
-    print("No")
-    exit()
-_min = min(standed)
-_max = max(standed)
 
-for i in all_layed:
-    if i > _min and i < _max:
+# 立っているピンがある列の最小値・最大値を算出
+_min_stand = min(stand_cols)
+_max_stand = max(stand_cols)
+# 立っているピンとピンの間に全て倒れている列があればスプリット状態
+for down_col in down_cols:
+    if down_col > _min_stand and down_col < _max_stand:
         print("Yes")
         exit()
 print("No")
