@@ -9,6 +9,8 @@ list(combinations(l, 2))
 bit全探索でフラグが立っているかチェックする
 if ((i >> j) & 1)
 """
-from functools import reduce, lru_cache
-from itertools import combinations
-import math
+from math import sqrt
+
+N = int(input())
+ans = int(sqrt(N))
+print(ans**2)
