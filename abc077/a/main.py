@@ -9,6 +9,12 @@ list(combinations(l, 2))
 bit全探索でフラグが立っているかチェックする
 if ((i >> j) & 1)
 """
-from functools import reduce, lru_cache
-from itertools import combinations
-import math
+
+top = input()
+under = input()
+
+ans = top[::-1] == under
+if ans is True:
+    print("YES")
+    exit()
+print("NO")
