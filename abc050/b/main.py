@@ -1,14 +1,21 @@
 # -*- coding: utf-8 -*-
 """
-Atcoderの問題解く用
+N問がある時間がTi秒かかる
+M種類のドリンクがある。問題Piを解くのがXi秒になる
+いずれかのドリンク1個だけ飲める
+それぞれのドリンクを飲んだ場合最短何秒で時終わるようになるか知りたい
 
-全ての組み合わせを列挙する方法
-list(0...8)から2つを抜き出す
-list(combinations(l, 2))
-
-bit全探索でフラグが立っているかチェックする
-if ((i >> j) & 1)
+同じ問題に効果があるドリンクもあるので辞書形式は無理
+素直にタプルのリストで保持しておけばよし
 """
-from functools import reduce, lru_cache
-from itertools import combinations
-import math
+N = int(input())
+T = list(map(int, input().split()))
+M = int(input())
+P = [list(map(int, input().split())) for _ in range(M)]
+total = sum(T)
+
+for _, L in enumerate(P):
+    k = L[0]
+    v = L[1]
+    ans = total - T[k - 1] + v
+    print(ans)
