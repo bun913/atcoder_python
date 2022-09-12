@@ -1,21 +1,22 @@
 """
-Atcoderの問題解く用
+各要素同士の2乗の和を求める
 
-1行1列データ
-
-#str型で受け取るとき
-s = input() 
-#int型で受け取るとき
-s = int(input()) 
-#float型　(小数)で受け取るとき
-s = float(input())
-
-(1,N)行列データ
-s = input().split()
-# listで整数で受け取る
-l = list(map(int, input().split()))
-
-その他
-https://qiita.com/jamjamjam/items/e066b8c7bc85487c0785
+普通に全探索しようとするとNが10**5を超えるので間に合わない
+解説AC
+Aの全ての要素の差ではなく、Aがたかだか-200以上200以下なので全ての組み合わせを先に出しておけば良い
 """
+from collections import Counter
 
+N = int(input())
+A = list(map(int, input().split()))
+C = Counter(A)
+C = [(a, b) for a, b in C.items()]
+
+ans = 0
+N = len(C)
+for i in range(N):
+    a1, b1 = C[i]
+    for j in range(i + 1, N):
+        a2, b2 = C[j]
+        ans += (a1 - a2) ** 2 * (b1 * b2)
+print(ans)
