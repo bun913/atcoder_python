@@ -1,14 +1,26 @@
 # -*- coding: utf-8 -*-
 """
-Atcoderの問題解く用
+各整数に対して1足すか、引くか、何もしない
+ai = X となるiの個数を最大化する
+うまくXを選んで個数を最大化する
 
-全ての組み合わせを列挙する方法
-list(0...8)から2つを抜き出す
-list(combinations(l, 2))
-
-bit全探索でフラグが立っているかチェックする
-if ((i >> j) & 1)
+単純に全ての要素で3パターンを試して最頻値を答えにすれば良いだけでは
 """
-from functools import reduce, lru_cache
-from itertools import combinations
-import math
+from collections import defaultdict
+from operator import itemgetter
+
+N = int(input())
+A = list(map(int, input().split()))
+
+memo = defaultdict(int)
+
+for i in range(N):
+    a = A[i]
+    minus = A[i] - 1
+    plus = A[i] + 1
+    memo[a] += 1
+    memo[minus] += 1
+    memo[plus] += 1
+
+sorted_memo = sorted(memo.items(), key=itemgetter(1), reverse=True)
+print(sorted_memo[0][1])
