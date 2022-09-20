@@ -1,45 +1,27 @@
-# -*- coding: utf-8 -*-
-"""
-Atcoderの問題解く用
-
-1行1列データ
-
-#str型で受け取るとき
-s = input()
-#int型で受け取るとき
-s = int(input())
-#float型　(小数)で受け取るとき
-s = float(input())
-
-(1,N)行列データ
-s = input().split()
-# listで整数で受け取る
-l = list(map(int, input().split()))
-
-その他
-https://qiita.com/jamjamjam/items/e066b8c7bc85487c0785
-
-全ての組み合わせを列挙する方法
-list(0...8)から2つを抜き出す
-list(combinations(l, 2))
-"""
-from functools import reduce
-from itertools import combinations
-import math
-
-# 素数判定
+N, M = map(int, input().split())
+S = [input() for i in range(2 * N)]
+rank = [[0, i] for i in range(2 * N)]
 
 
-def is_prime(n: int) -> bool:
-    for i in range(2, int(math.sqrt(n))+1):
-        if n % i == 0:
-            return False
-    return True
+def judge(a, b):
+    if a == b:
+        return -1
+    if a == "G" and b == "P":
+        return 1
+    if a == "C" and b == "G":
+        return 1
+    if a == "P" and b == "C":
+        return 1
+    return 0
 
 
-def permutation(n, r):
-    return math.factorial(n) // math.factorial(n-r)
-
-
-def combination(n, r):
-    return permutation(n, r) // math.factorial(r)
+for j in range(M):
+    for i in range(N):
+        player1 = rank[2 * i][1]
+        player2 = rank[2 * i + 1][1]
+        result = judge(S[player1][j], S[player2][j])
+        if result != -1:
+            rank[2 * i + result][0] -= 1
+    rank.sort()
+for _, i in rank:
+    print(i + 1)
