@@ -9,6 +9,10 @@ list(combinations(l, 2))
 bit全探索でフラグが立っているかチェックする
 if ((i >> j) & 1)
 """
-from functools import reduce, lru_cache
-from itertools import combinations
-import math
+import numpy as np
+
+xa, ya, xb, yb, xc, yc = list(map(int, input().split()))
+vec1 = np.array([xa, ya]) - np.array([xb, yb])
+vec2 = np.array([xa, ya]) - np.array([xc, yc])
+ans = np.cross(vec1, vec2) / 2
+print(abs(ans))
