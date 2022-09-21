@@ -1,45 +1,32 @@
 # -*- coding: utf-8 -*-
 """
-Atcoderの問題解く用
+整数N
+Nの各桁の数字を取り出して並べる
+0から始めることはできない
+適切にNを分離した時分離後の2数の積の最大値
 
-1行1列データ
-
-#str型で受け取るとき
-s = input()
-#int型で受け取るとき
-s = int(input())
-#float型　(小数)で受け取るとき
-s = float(input())
-
-(1,N)行列データ
-s = input().split()
-# listで整数で受け取る
-l = list(map(int, input().split()))
-
-その他
-https://qiita.com/jamjamjam/items/e066b8c7bc85487c0785
-
-全ての組み合わせを列挙する方法
-list(0...8)から2つを抜き出す
-list(combinations(l, 2))
+Nが最高でも9桁なのでbit全探索で左辺と右辺に分ければ良い
+あとはそれぞれを降順にソートして計算すればよし
 """
-from functools import reduce
-from itertools import combinations
-import math
+from itertools import product
 
-# 素数判定
+N = int(input())
+S = str(N)
 
-
-def is_prime(n: int) -> bool:
-    for i in range(2, int(math.sqrt(n))+1):
-        if n % i == 0:
-            return False
-    return True
-
-
-def permutation(n, r):
-    return math.factorial(n) // math.factorial(n-r)
-
-
-def combination(n, r):
-    return permutation(n, r) // math.factorial(r)
+ans = -1
+for case_list in product([True, False], repeat=len(S)):
+    left = []
+    right = []
+    for i, is_left in enumerate(case_list):
+        if is_left is True:
+            left.append(S[i])
+            continue
+        right.append(S[i])
+    if len(left) == 0 or len(right) == 0:
+        continue
+    if left[0] == "0" or right[0] == "0":
+        continue
+    ls = "".join(sorted(left, reverse=True))
+    rs = "".join(sorted(right, reverse=True))
+    ans = max(ans, int(ls) * int(rs))
+print(ans)
