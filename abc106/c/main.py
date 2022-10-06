@@ -15,11 +15,6 @@ if not S.startswith("1"):
 if len(set(S)) == 1:
     print(1)
     exit()
-# # SがK文字以下の場合
-# if K <= len(S):
-#     print(S[K - 1])
-#     exit()
-# 1から始まるけどそれ以降に2以上の文字が存在する
 for i, s in enumerate(S):
     if i + 1 == K:
         print(s)
