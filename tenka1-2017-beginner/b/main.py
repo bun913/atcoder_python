@@ -2,6 +2,14 @@
 """
 解く前のメモ用
 """
-from sys import setrecursionlimit
+N = int(input())
+worst_a = -1
+worst_score = 10**10
 
-setrecursionlimit(10**7)
+
+for i in range(N):
+    A, B = list(map(int, input().split()))
+    worst_a = max(worst_a, A)
+    worst_score = min(worst_score, B)
+ans = worst_a + worst_score
+print(ans)
