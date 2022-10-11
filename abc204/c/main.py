@@ -19,7 +19,7 @@ def bfs(start: int) -> int:
     cnt = 1
     # 次の点を格納するキュー
     q = deque([start])
-    # 訪問済みの都市を格納する
+    # 訪問済みの都市を格納する(start地点ごとに訪問状態を管理)
     visited = [False for _ in range(N + 1)]
     visited[start] = True
     while q:
