@@ -6,33 +6,35 @@
 """
 from collections import deque
 
-# 経路情報を二次元配列として受け取り
 N, M = list(map(int, input().split()))
-graph = [[] for _ in range(N + 1)]
+connects = [[] for _ in range(N + 1)]
+
+# 経路を二次元配列にメモ
 for _ in range(M):
-    a, b = list(map(int, input().split()))
-    graph[a].append(b)
+    A, B = list(map(int, input().split()))
+    connects[A].append(B)
 
-
-# 幅優先探索でスタート
+# 幅優先探索の実装
 def bfs(start: int) -> int:
     cnt = 1
-    # 訪問済みの歳を管理
+    # 次の点を格納するキュー
+    q = deque([start])
+    # 訪問済みの都市を格納する
     visited = [False for _ in range(N + 1)]
     visited[start] = True
-    que = deque()
-    que.append(start)
-    while que:
-        cur = que.popleft()
-        for to in graph[cur]:
+    while q:
+        # 現在地点をfromとする
+        fr = q.popleft()
+        # frが持っている経路をforで回す
+        for to in connects[fr]:
             if visited[to] is False:
                 cnt += 1
                 visited[to] = True
-                que.append(to)
+                q.append(to)
     return cnt
 
 
 ans = 0
-for x in range(1, N + 1):
-    ans += bfs(x)
+for i in range(1, N + 1):
+    ans += bfs(i)
 print(ans)
