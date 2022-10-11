@@ -1,21 +1,38 @@
 """
-Atcoderの問題解く用
-
-1行1列データ
-
-#str型で受け取るとき
-s = input() 
-#int型で受け取るとき
-s = int(input()) 
-#float型　(小数)で受け取るとき
-s = float(input())
-
-(1,N)行列データ
-s = input().split()
-# listで整数で受け取る
-l = list(map(int, input().split()))
-
-その他
-https://qiita.com/jamjamjam/items/e066b8c7bc85487c0785
+道路Aiを通ると都市AiからBiの通行ができる
+一方通行
+スタート地点からゴール地点の年の組の総数
+幅優先探索
 """
+from collections import deque
 
+# 経路情報を二次元配列として受け取り
+N, M = list(map(int, input().split()))
+graph = [[] for _ in range(N + 1)]
+for _ in range(M):
+    a, b = list(map(int, input().split()))
+    graph[a].append(b)
+
+
+# 幅優先探索でスタート
+def bfs(start: int) -> int:
+    cnt = 1
+    # 訪問済みの歳を管理
+    visited = [False for _ in range(N + 1)]
+    visited[start] = True
+    que = deque()
+    que.append(start)
+    while que:
+        cur = que.popleft()
+        for to in graph[cur]:
+            if visited[to] is False:
+                cnt += 1
+                visited[to] = True
+                que.append(to)
+    return cnt
+
+
+ans = 0
+for x in range(1, N + 1):
+    ans += bfs(x)
+print(ans)
