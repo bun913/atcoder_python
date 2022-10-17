@@ -2,6 +2,8 @@
 """
 解く前のメモ用
 """
-from sys import setrecursionlimit
-
-setrecursionlimit(10**7)
+A, B, C = list(map(int, input().split()))
+mod = 10**9 + 7
+ans = A * B % mod
+ans = C * ans % mod
+print(ans)
