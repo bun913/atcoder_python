@@ -1,7 +1,15 @@
 # -*- coding: utf-8 -*-
 """
-解く前のメモ用
+数式をいくつか選んで0に書き換えることで0にしたい
+引算はないからx0を作っていくしかない
+足し算のところで区切ってすでに0になる計算以外を置き換える形か
+数字が一桁と分かっているから0を含んでいるかどうかで考えれば良い
 """
-from sys import setrecursionlimit
-
-setrecursionlimit(10**7)
+S = input()
+spl = S.split("+")
+ans = 0
+for s in spl:
+    if s.count("0") != 0:
+        continue
+    ans += 1
+print(ans)
