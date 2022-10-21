@@ -2,6 +2,10 @@
 """
 解く前のメモ用
 """
-from sys import setrecursionlimit
-
-setrecursionlimit(10**7)
+A = input()
+# コーナーケース
+if A == "a":
+    print(-1)
+    exit()
+# 2文字以上
+print("a")
