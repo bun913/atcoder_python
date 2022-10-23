@@ -2,6 +2,11 @@
 """
 解く前のメモ用
 """
-from sys import setrecursionlimit
+from statistics import mean
+from math import ceil
 
-setrecursionlimit(10**7)
+N = int(input())
+A = list(map(int, input().split()))
+F = filter(lambda a: a != 0, A)
+ans = ceil(mean(F))
+print(ans)
