@@ -1,7 +1,16 @@
 # -*- coding: utf-8 -*-
 """
 解く前のメモ用
-"""
-from sys import setrecursionlimit
 
-setrecursionlimit(10**7)
+サイコロを90度回転させる
+その上でx点を取るために最小の操作回数を求める
+最初に好きな面を選べる、そのあと操作で好きな方向に転がせる
+なので6と5を繰り返すのがよし
+"""
+X = int(input())
+ans = X // 11 * 2
+if X % 11 >= 1 and X % 11 <= 6:
+    ans += 1
+elif X % 11 > 6:
+    ans += 2
+print(ans)
