@@ -1,21 +1,29 @@
 """
-Atcoderの問題解く用
-
-1行1列データ
-
-#str型で受け取るとき
-s = input() 
-#int型で受け取るとき
-s = int(input()) 
-#float型　(小数)で受け取るとき
-s = float(input())
-
-(1,N)行列データ
-s = input().split()
-# listで整数で受け取る
-l = list(map(int, input().split()))
-
-その他
-https://qiita.com/jamjamjam/items/e066b8c7bc85487c0785
+答えがたかだか10の4乗なので全て数え上げれば良い
 """
-
+S = input()
+must_inc = set()
+not_inc = set()
+all_cands = [str(i) for i in range(10)]
+for i, s in enumerate(S):
+    if s == "o":
+        must_inc.add(str(i))
+    elif s == "x":
+        not_inc.add(str(i))
+ans_set = set()
+for a in all_cands:
+    for b in all_cands:
+        for c in all_cands:
+            for d in all_cands:
+                cand = a + b + c + d
+                # 含んではいけない文字を含んでいる場合
+                should_skip = False
+                for s in cand:
+                    if s in not_inc:
+                        should_skip = True
+                        break
+                if should_skip is True:
+                    continue
+                if len(set(cand).intersection(must_inc)) == len(must_inc):
+                    ans_set.add(cand)
+print(len(ans_set))
