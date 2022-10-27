@@ -9,6 +9,8 @@ list(combinations(l, 2))
 bit全探索でフラグが立っているかチェックする
 if ((i >> j) & 1)
 """
-from functools import reduce, lru_cache
-from itertools import combinations
-import math
+
+W = input()
+L = list(W)
+ans = filter(lambda w: w not in set(["a", "i", "u", "e", "o"]), L)
+print(*ans, sep="")
