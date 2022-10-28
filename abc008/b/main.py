@@ -2,6 +2,10 @@
 """
 解く前のメモ用
 """
-from sys import setrecursionlimit
+from collections import Counter
 
-setrecursionlimit(10**7)
+N = int(input())
+S = [input() for _ in range(N)]
+c = Counter(S)
+ans = c.most_common()[0][0]
+print(ans)
