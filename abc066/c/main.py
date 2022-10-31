@@ -1,14 +1,22 @@
 # -*- coding: utf-8 -*-
 """
-Atcoderの問題解く用
+操作をn回行う
+数列のi番目の要素aiをbの末尾に追加する
 
-全ての組み合わせを列挙する方法
-list(0...8)から2つを抜き出す
-list(combinations(l, 2))
-
-bit全探索でフラグが立っているかチェックする
-if ((i >> j) & 1)
+dequeで交互に入れ替え
 """
-from functools import reduce, lru_cache
-from itertools import combinations
-import math
+from collections import deque
+
+N = int(input())
+A = list(map(int, input().split()))
+B = deque()
+
+for i, a in enumerate(A):
+    if i % 2 == 0:
+        B.appendleft(a)
+        continue
+    B.append(a)
+if N % 2 != 0:
+    print(*B, sep=" ")
+    exit()
+print(*reversed(B), sep=" ")
