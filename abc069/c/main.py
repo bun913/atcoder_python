@@ -17,7 +17,13 @@ for a in A:
         cnt_four += 1
     else:
         others += 1
-if cnt_four + cnt_even >= N // 2:
+# 4の倍数の数が奇数以上の場合Ok
+if others <= cnt_four:
     print("Yes")
-else:
-    print("No")
+    exit()
+# 4の倍数ではない2の倍数がない場合
+if others + cnt_four == N:
+    if cnt_four + 1 == others:
+        print("Yes")
+        exit()
+print("No")
