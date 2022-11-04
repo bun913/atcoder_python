@@ -4,17 +4,14 @@ N個の数。Nは偶数
 i=1,2,...NからXiを除いたものの中央値をBiとする
 中央値Biを求める
 """
-from collections import deque
+N = int(input())
+X = list(map(int, input().split()))
+A = sorted(X)
+cand1 = A[N // 2 - 1]
+cand2 = A[N // 2]
 
-n = int(input())
-x = list(map(int, input().split()))
-q = deque(x)
-pushq = deque([])
-for i, x in enumerate(x):
-    q = deque(q)
-    rm = q.popleft()
-    pushq.append(rm)
-    if i != 0:
-        q.append(pushq.popleft())
-    t = sorted(q)
-    print(t[len(t) // 2])
+for i in range(N):
+    if X[i] <= cand1:
+        print(cand2)
+    else:
+        print(cand1)
