@@ -1,14 +1,20 @@
 # -*- coding: utf-8 -*-
 """
-Atcoderの問題解く用
-
-全ての組み合わせを列挙する方法
-list(0...8)から2つを抜き出す
-list(combinations(l, 2))
-
-bit全探索でフラグが立っているかチェックする
-if ((i >> j) & 1)
+N個の数。Nは偶数
+i=1,2,...NからXiを除いたものの中央値をBiとする
+中央値Biを求める
 """
-from functools import reduce, lru_cache
-from itertools import combinations
-import math
+from collections import deque
+
+n = int(input())
+x = list(map(int, input().split()))
+q = deque(x)
+pushq = deque([])
+for i, x in enumerate(x):
+    q = deque(q)
+    rm = q.popleft()
+    pushq.append(rm)
+    if i != 0:
+        q.append(pushq.popleft())
+    t = sorted(q)
+    print(t[len(t) // 2])
