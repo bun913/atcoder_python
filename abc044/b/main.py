@@ -2,6 +2,12 @@
 """
 解く前のメモ用
 """
-from sys import setrecursionlimit
+from collections import Counter
 
-setrecursionlimit(10**7)
+W = input()
+c = Counter(W)
+for p in c.most_common():
+    if p[1] % 2 != 0:
+        print("No")
+        exit()
+print("Yes")
