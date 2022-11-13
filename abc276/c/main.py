@@ -6,21 +6,37 @@ K-1番目の順列を求める
 
 Nが100だからbit全探索は無理
 """
-from math import factorial
+
+
+def findMinimalSuffix(arr):
+    index = len(arr) - 1
+    for i in range(len(arr) - 1, -1, -1):
+        index = i
+        if i == 0:
+            break
+        if arr[i] < arr[i - 1]:
+            break
+    return index
+
+
+def prev_permutation(array):
+    length = len(array)
+    maximalSuffix = findMinimalSuffix(array)
+    if maximalSuffix == 0:
+        return
+    y = maximalSuffix
+    for i in reversed(range(maximalSuffix, length)):
+        if array[i] < array[maximalSuffix - 1]:
+            y = i
+            break
+
+    if y != -1:
+        array[maximalSuffix - 1], array[y] = array[y], array[maximalSuffix - 1]
+    array[maximalSuffix:length] = sorted(array[maximalSuffix:length], reverse=True)
+    return array
+
 
 N = int(input())
 P = list(map(int, input().split()))
-
-ind = 0
-omomi = N - 1
-s = set(P)
-# まずPが何番目に大きい順列か求める
-for i, p in enumerate(P):
-    if i == N - 1:
-        ind += 1
-    else:
-        n = sorted(list(s)).index(p)
-        ind += n * factorial(omomi)
-        s.remove(p)
-        omomi -= 1
-ans_ind = ind
+ans = prev_permutation(P)
+print(*ans)
