@@ -6,37 +6,23 @@ K-1番目の順列を求める
 
 Nが100だからbit全探索は無理
 """
-
-
-def findMinimalSuffix(arr):
-    index = len(arr) - 1
-    for i in range(len(arr) - 1, -1, -1):
-        index = i
-        if i == 0:
-            break
-        if arr[i] < arr[i - 1]:
-            break
-    return index
-
-
-def prev_permutation(array):
-    length = len(array)
-    maximalSuffix = findMinimalSuffix(array)
-    if maximalSuffix == 0:
-        return
-    y = maximalSuffix
-    for i in reversed(range(maximalSuffix, length)):
-        if array[i] < array[maximalSuffix - 1]:
-            y = i
-            break
-
-    if y != -1:
-        array[maximalSuffix - 1], array[y] = array[y], array[maximalSuffix - 1]
-    array[maximalSuffix:length] = sorted(array[maximalSuffix:length], reverse=True)
-    return array
-
+from collections import deque
 
 N = int(input())
 P = list(map(int, input().split()))
-ans = prev_permutation(P)
-print(*ans)
+
+usable = []
+rest = deque(P)
+
+# 末尾を消してストックに追加。取り出した数より小さい数があったら終わり
+while True:
+    p = rest.pop()
+    usable.append(p)
+    if sorted(usable)[0] < p:
+        break
+# usableの最後の要素より小さい中で最も大きい数をおく
+a = sorted(filter(lambda x: x < usable[-1], usable))[-1]
+rest.append(a)
+usable.remove(a)
+# 後は大きい順に配置するだけ
+print(*rest, *sorted(usable, reverse=True))
