@@ -2,6 +2,9 @@
 """
 解く前のメモ用
 """
-from sys import setrecursionlimit
-
-setrecursionlimit(10**7)
+a = int(input())
+b = int(input())
+cand1 = abs(b - a)
+cand2 = a + (9 - b) + 1
+cand3 = (9 - a) + b + 1
+print(min([cand1, cand2, cand3]))
