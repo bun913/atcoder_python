@@ -2,6 +2,6 @@
 """
 解く前のメモ用
 """
-from sys import setrecursionlimit
-
-setrecursionlimit(10**7)
+C = [input().split() for _ in range(4)]
+for r in reversed(C):
+    print(*reversed(r))
