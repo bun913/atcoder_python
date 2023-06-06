@@ -2,6 +2,6 @@
 """
 解く前のメモ用
 """
-from sys import setrecursionlimit
-
-setrecursionlimit(10**7)
+L, R, d = list(map(int, input().split()))
+ans = R // d - (L-1) // d
+print(ans)
