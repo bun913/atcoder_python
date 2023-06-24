@@ -1,31 +1,31 @@
 # -*- coding: utf-8 -*-
 """
 Atcoderの問題解く用
-
-かたむきが同じか判定する
-y1/x1 = y2/x2
-x2*y1 = x1*y2
+N個の3点で同一直線上にあるもの同一直線上にあるものは存在するか
+Nが少ないので3点は問題なく全探索できる
+傾きが同じか考える
+x2- x1 / y2 -y1 = x3 - x2 / y3 - y2
+x2 - x1 * y3 - y2 = x3 - x2 * y2 - y1
 """
-from itertools import combinations
 
 
-def is_on_line(a, b, c):
-    ax, ay = a[0], a[1]
-    bx, by = b[0], b[1]
-    cx, cy = c[0], c[1]
-    fx, fy = bx - ax, by - ay
-    sx, sy = cx - ax, cy - ay
-    if fx * sy == sx * fy:
-        return True
-    return False
+def is_same_line(a: tuple(), b: tuple(), c: tuple()) -> bool:
+    x1, y1 = a
+    x2, y2 = b
+    x3, y3 = c
+    is_same = (x2 - x1) * (y3 - y2) == (x3 - x2) * (y2 - y1)
+    return is_same
 
 
 N = int(input())
-XY = [list(map(int, input().split())) for _ in range(N)]
+xy = []
+for _ in range(N):
+    xy.append(tuple(map(int, input().split())))
 
-for a, b, c in combinations([i for i in range(N)], 3):
-    # 3点が同じか判定する
-    if is_on_line(XY[a], XY[b], XY[c]) is True:
-        print("Yes")
-        exit()
-print("No")
+for i in range(N):
+    for j in range(i+1, N):
+        for k in range(j+1, N):
+            if is_same_line(xy[i], xy[j], xy[k]):
+                print('Yes')
+                exit()
+print('No')
