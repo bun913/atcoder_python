@@ -1,30 +1,14 @@
 # -*- coding: utf-8 -*-
 """
-Atcoderの問題解く用
-
-全ての組み合わせを列挙する方法
-list(0...8)から2つを抜き出す
-list(combinations(l, 2))
-
-bit全探索でフラグが立っているかチェックする
-if ((i >> j) & 1)
+N個のシュークリームを平等に分けることができる人数
+つまり約数を列挙すれば良いだけ。
+普通にNを**0.5まで数え上げる方法で間に合う
 """
-from functools import reduce, lru_cache
-from itertools import combinations
-import math
-
-# 約数列挙の問題
-# Nが10 ** 12なので全部列挙は間に合わない
-# 約数は平方根まで計算すれば十分である性質を利用すれば余裕
-
 N = int(input())
-sqr = math.sqrt(N)
-divs = set()
-
-for i in range(1, int(sqr) + 1):
+ans_set = set()
+for i in range(1, int(N ** 0.5)+1):
     if N % i == 0:
-        divs.add(i)
-        divs.add(N // i)
-
-ans_list = sorted(list(divs))
-print(*ans_list, sep="\n")
+        ans_set.add(i)
+        ans_set.add(N // i)
+for s in sorted(list(ans_set)):
+    print(s)
