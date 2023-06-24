@@ -1,31 +1,28 @@
 """
-解く前のメモ
-
-村が10**100という膨大すぎる数がある
+Nの方で全探索する
 """
-from collections import defaultdict
-
-N, K = list(map(int, input().split()))
-memo = defaultdict(int)
-
-for i in range(N):
-    A, B = list(map(int, input().split()))
-    memo[A] += B
-
-sorted_memo = sorted(memo.items())
-cur = 0
+N, K = map(int, input().split())
 rest = K
-
-for villege, point in sorted_memo:
-    if cur + rest < villege:
-        # 次の村に辿りつけない場合
-        print(cur+rest)
+cur = 0
+visited = set()
+ab = []
+for i in range(N):
+    a, b = map(int, input().split())
+    ab.append((a, b))
+ab = sorted(ab)
+for i in range(N):
+    a, b = ab[i]
+    # 減らすべき数
+    des = a - cur
+    if a in visited:
+        des = 0
+    # a番目の村に到達できない場合
+    if rest - des < 0:
+        print(cur + rest)
         exit()
-    # restを減らす
-    rest = rest - (villege - cur)
-    rest += point
-    cur = villege
-    # 友達からポイントをもらう
-# 友達からポイントをもらい切った場合
-ans = cur + rest
-print(min(ans, (10 ** 100) + 1))
+    rest += b
+    rest -= des
+    cur = a
+    visited.add(a)
+# さらにちょっと余った場合
+print(cur + rest)
