@@ -1,22 +1,17 @@
-# -*- coding: utf-8 -*-
 """
-Nが2*10**5と大きい
-1 <=j <= Nを満たす全ての組のAi*Ajの和をmodする
-
-以下解説AC
-求めるものを式変形したら累積和だった
+Nが10**5なので、普通にi,jを全て探索すると間に合わない
+式を一般化しておけばかなり楽に計算できる
+実際に計算してみると式を一般化できることに気づく
 """
-from itertools import accumulate
-
 N = int(input())
 A = list(map(int, input().split()))
-AD = list(accumulate(A))
-AD.insert(0, 0)
-mod = 10 ** 9 + 7
-
 ans = 0
-for i in range(1, N):
-    rest_sum = AD[-1]
-    rest_sum -= AD[i]
-    ans += A[i-1] * rest_sum % mod
-print(ans % mod)
+MOD = 10**9 + 7
+s = sum(A)
+s -= A[0]
+
+for i in range(N-1):
+    cnt = A[i] * s % MOD
+    ans += cnt
+    s -= A[i+1]
+print(ans % MOD)
