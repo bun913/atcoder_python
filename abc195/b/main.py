@@ -1,40 +1,29 @@
 """
-Atcoderの問題解く用
+Aグラム以上、Bg以下のみかんがある
+みかんの重さは整数とは限らず、少数になることもある
+いくつかの重さのみかんを組み合わせてちょうどWキログラムにできるか
+また、できるなら、選んだみかんの個数として考えられる最小値と最大値を求める
 
-1行1列データ
-
-#str型で受け取るとき
-s = input() 
-#int型で受け取るとき
-s = int(input()) 
-#float型　(小数)で受け取るとき
-s = float(input())
-
-(1,N)行列データ
-s = input().split()
-# listで整数で受け取る
-l = list(map(int, input().split()))
-
-その他
-https://qiita.com/jamjamjam/items/e066b8c7bc85487c0785
+条件の中の最小値と最大値を求める場合は全探索を考える
+答えの候補となる数について条件を満たすかどうかを考える
+Xを探索範囲として考えると、最小値は1個
+条件を満たしうる最大の個数は？みかん1個あたりの重さが最小かつ、重さの合計が最大となるとき
+Wが1000以下という制約がある。
+つまり、B=1かつWが1000の時なので1000*1000となる。
+X個が条件を満たすかどうか？を判定する
+1個あたりの重さはAグラム以上Bグラム以下
+つまりX個あたりの重さは AXグラム以上BXグラム以下となる
+だから、これがWグラムを満たしているか考えれば良い
 """
-
-A, B, W = list(map(int, input().split()))
-# 数え上げでありえる最大個数
-_max = 1000 * W
-# A*個数 ~ B*個数ならこの範囲は全て作れるはず
-# だって重さは小数点刻みで良いんだから、みかんを少しだけづつ大きくすれば
-# 理論上全ての数が作れるはず！！
-ans_min = float('inf')
-ans_max = 0
-
-# みかんの個数を1個から1000*W(グラムに直している)まで試す
-for i in range(1, 1000*W+1):
-    if i*A <= 1000*W <= i*B:
-        ans_max = i
-        if i < ans_min:
-            ans_min = i
-if ans_max == 0:
-    print('UNSATISFIABLE')
-else:
-    print("{} {}".format(ans_min, ans_max))
+A, B, W = map(int, input().split())
+W *= 1000  # 単位を合わせる
+min_ans = 10 ** 9
+max_ans = -1
+for x in range(1, 10**6+10):
+    if A * x <= W and W <= B * x:
+        min_ans = min(min_ans, x)
+        max_ans = max(max_ans, x)
+if min_ans == 10**9:
+    print("UNSATISFIABLE")
+    exit()
+print(min_ans, max_ans)
