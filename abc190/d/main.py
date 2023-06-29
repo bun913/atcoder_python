@@ -1,7 +1,23 @@
 # -*- coding: utf-8 -*-
 """
-解く前のメモ用
+整数1からなる公差1の等差数列のうち、総和がNであるものはいくつあるか
+まず等差数列の和の公式による初項をl, 末項をrとするとこうなる。
+N = (l + r) * (r - l + 1) / 2
+さらに整数の問題に帰結すると
+2N = (l + r) * (r - l + 1) となる。
+a * b = (l+r) * (r-l+1)となるいう考えにすると
+約数は高々O(√N)なので、全体でO(√N)で解ける
 """
-from sys import setrecursionlimit
-
-setrecursionlimit(10**7)
+N = int(input())
+ans = 0
+i = 1
+while i * i <= 2 * N:
+    if 2 * N % i == 0:
+        x = i
+        y = 2 * N // i
+        # y-x+1とx+y-1がともに偶数になるにはxとyの偶奇が異なる必要がある
+        if x % 2 != y % 2:
+            # x,yが逆のパターンがあるので2倍足す
+            ans += 2
+    i += 1
+print(ans)
