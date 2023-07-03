@@ -22,6 +22,6 @@ for bools in product([True, False], repeat=N-1):
         # bools[i]がTrueの時に仕切りがあるので計算結果の格納と初期化
         if i == N-1 or bools[i]:
             or_list.append(cur_or)
-            x = 0
+            cur_or = 0
     ans = min(ans, reduce(lambda x, y: x ^ y, or_list))
 print(ans)
