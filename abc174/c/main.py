@@ -1,14 +1,21 @@
 # -*- coding: utf-8 -*-
 """
-Atcoderの問題解く用
-
-全ての組み合わせを列挙する方法
-list(0...8)から2つを抜き出す
-list(combinations(l, 2))
-
-bit全探索でフラグが立っているかチェックする
-if ((i >> j) & 1)
+鳩の巣理論
+Kで割ったあまりのパターンはK通りしかない。
+0,1,2,...,K-1しか存在しない
+だからK回までにあまりが0にならないとそれは絶対に周期が来ない
+そして、あまりも直接計算するのではなく10倍して7を足すと効率的に前の結果を利用できる
 """
-from functools import reduce, lru_cache
-from itertools import combinations
-import math
+K = int(input())
+cur = 7 % K
+rests = []
+for i in range(K):
+    # 途中であまりが0になったら終了
+    if cur == 0:
+        print(i+1)
+        exit()
+    rests.append(cur)
+    cur = cur*10 + 7
+    cur %= K
+# K回までにあまりが0にならなかったらあとは同じパターンを繰り返すだけで絶対に周期は来ない
+print(-1)
