@@ -9,33 +9,35 @@ from functools import reduce
 
 N = int(input())
 A = list(map(int, input().split()))
+# D[i] = iの最小の素因数
+D = [0] * (10 ** 6 + 10)
+# 最大の数までその数の最小の素因数を持っていれば、簡単に素因数分解ができるのか
+for i in range(2, 10**6 + 10):
+    if D[i] != 0:
+        continue
+    for k in range(1, 10**6):
+        if i * k < 10 ** 6 + 10:
+            if D[i*k] == 0:
+                D[i*k] = i
+        else:
+            break
 
 
-def factorization(n):
-    arr = []
-    temp = n
-    for i in range(2, int(-(-n**0.5//1))+1):
-        if temp % i == 0:
-            cnt = 0
-            while temp % i == 0:
-                cnt += 1
-                temp //= i
-            arr.append([i, cnt])
-
-    if temp != 1:
-        arr.append([temp, 1])
-
-    if arr == []:
-        arr.append([n, 1])
-
-    return arr
+# 高速で素因数分解
+def fast_prime_fuct(x):
+    prime = []
+    while 1 < x:
+        prime.append(D[x])
+        # なるほどxの最小の素因数すらも持っているから高速で素因数分解できるのか
+        x //= D[x]
+    return prime
 
 
 pairwise = True
 prime_used = set()
 for i in range(N):
-    prime_list = factorization(A[i])
-    prime_set = set([i[0] for i in prime_list])
+    prime_list = fast_prime_fuct(A[i])
+    prime_set = set(prime_list)
     for i in prime_set:
         if i in prime_used:
             pairwise = False
