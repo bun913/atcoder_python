@@ -1,29 +1,17 @@
 """
-Aグラム以上、Bg以下のみかんがある
-みかんの重さは整数とは限らず、少数になることもある
-いくつかの重さのみかんを組み合わせてちょうどWキログラムにできるか
-また、できるなら、選んだみかんの個数として考えられる最小値と最大値を求める
-
-条件の中の最小値と最大値を求める場合は全探索を考える
-答えの候補となる数について条件を満たすかどうかを考える
-Xを探索範囲として考えると、最小値は1個
-条件を満たしうる最大の個数は？みかん1個あたりの重さが最小かつ、重さの合計が最大となるとき
-Wが1000以下という制約がある。
-つまり、B=1かつWが1000の時なので1000*1000となる。
-X個が条件を満たすかどうか？を判定する
-1個あたりの重さはAグラム以上Bグラム以下
-つまりX個あたりの重さは AXグラム以上BXグラム以下となる
-だから、これがWグラムを満たしているか考えれば良い
+個数の方を全探索すればいけそう
 """
 A, B, W = map(int, input().split())
-W *= 1000  # 単位を合わせる
-min_ans = 10 ** 9
-max_ans = -1
-for x in range(1, 10**6+10):
-    if A * x <= W and W <= B * x:
-        min_ans = min(min_ans, x)
-        max_ans = max(max_ans, x)
-if min_ans == 10**9:
-    print("UNSATISFIABLE")
+W *= 1000
+
+max_cnt = -1
+min_cnt = float('inf')
+for x in range(1, 1000001):
+    # 最小の重さA * xがW以下かつ、最大の重さB * xがW以上でないと条件を満たせない
+    if A * x <= W <= B * x:
+        max_cnt = max(max_cnt, x)
+        min_cnt = min(min_cnt, x)
+if max_cnt != -1 and min_cnt != float('inf'):
+    print(min_cnt, max_cnt)
     exit()
-print(min_ans, max_ans)
+print('UNSATISFIABLE')
