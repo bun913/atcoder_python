@@ -1,22 +1,20 @@
-# -*- coding: utf-8 -*-
 """
-解く前のメモ用
-0と9を含む数列の数を数える
-数列全部の数から条件を満たさないものを引いた方が簡単
+条件を全て満たす数を探るより、条件を満たさない数を探す方が早い
 """
 N = int(input())
-# Nが1のエッジケース
 if N == 1:
-    print(0)
+    print(1)
     exit()
-# N**10乗が全体の数だが
-mod = 10**9+7
-al = pow(10, N, mod)
-# 0または9を含まない数列の数を数える
-# 0を含まない数列の数
-dec0 = pow(9, N, mod)
-dec9 = pow(9, N, mod)
-# 0も9も含まない数列の数
-dec09 = pow(8, N, mod)
-ans = (al - dec0 - dec9 + dec09) % mod
+if N == 2:
+    print(2)
+    exit()
+mod = 10 ** 9 + 7
+alL_cnt = pow(10, N, mod)
+# 0だけは存在しない配列の数
+not_zero_cnt = pow(9, N, mod)
+# 9だけは存在しない配列の数
+not_nin_cnt = pow(9, N, mod)
+# 0と9だけは存在しない配列の数
+not_zero_nin_cnt = pow(8, N, mod)
+ans = alL_cnt - not_zero_cnt - not_nin_cnt + not_zero_nin_cnt
 print(ans)
