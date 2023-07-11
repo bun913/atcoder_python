@@ -1,13 +1,15 @@
-# -*- coding: utf-8 -*-
 """
+lとrは全探索してもギリギリ間に合う
+てことはlからrの距離は絶対にどんどん離れていく（全てとおる）
+ので最小のaは随時更新していけば良いということ
 """
 N = int(input())
 A = list(map(int, input().split()))
 
-ans = -10**15
+ans = -1
 for l in range(N):
-    mina = A[l]
+    mini_a = A[l]
     for r in range(l, N):
-        mina = min(mina, A[r])
-        ans = max(ans, mina * (r-l + 1))
+        mini_a = min(mini_a, A[r])
+        ans = max(ans, mini_a * (r - l + 1))
 print(ans)
