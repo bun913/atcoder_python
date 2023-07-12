@@ -1,40 +1,27 @@
 """
-道路Aiを通ると都市AiからBiの通行ができる
-一方通行
-スタート地点からゴール地点の年の組の総数
-幅優先探索
 """
 from collections import deque
 
-N, M = list(map(int, input().split()))
-connects = [[] for _ in range(N + 1)]
+N, M = map(int, input().split())
+G = [[] for _ in range(N)]
 
-# 経路を二次元配列にメモ
 for _ in range(M):
-    A, B = list(map(int, input().split()))
-    connects[A].append(B)
+    a, b = map(int, input().split())
+    G[a-1].append(b-1)
 
-# 幅優先探索の実装
-def bfs(start: int) -> int:
-    cnt = 1
-    # 次の点を格納するキュー
+# 答えには自分自身を含む
+ans = 0
+for start in range(N):
     q = deque([start])
-    # 訪問済みの都市を格納する(start地点ごとに訪問状態を管理)
-    visited = [False for _ in range(N + 1)]
+    visited = [False] * N
     visited[start] = True
     while q:
-        # 現在地点をfromとする
-        fr = q.popleft()
-        # frが持っている経路をforで回す
-        for to in connects[fr]:
-            if visited[to] is False:
-                cnt += 1
-                visited[to] = True
-                q.append(to)
-    return cnt
-
-
-ans = 0
-for i in range(1, N + 1):
-    ans += bfs(i)
+        cur = q.popleft()
+        for to in G[cur]:
+            # すでに訪問済みの場合はスキップ
+            if visited[to] is True:
+                continue
+            visited[to] = True
+            q.append(to)
+    ans += sum(visited)
 print(ans)
