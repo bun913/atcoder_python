@@ -1,30 +1,33 @@
-N, K = list(map(int, input().split()))
+"""
+N個の町のテレポーター
+K回使うとどの街に到着するか
+ループに辿り着くまでのステップ数と
+ループの周期がわかれば良い
+"""
+N, K = map(int, input().split())
 A = list(map(int, input().split()))
 
-rest = K
-# 各街に到達した回数を保持する配列
+# 2回目に訪れた街とステップ数を記録する
 visited = [-1] * N
-now_cnt = 0
-iter_cnt = 0
-pos = 0
+step = 0
+nex = 0
 while True:
-    # ループより先に到達する場合
-    if rest == 0:
-        print(pos + 1)
+    if visited[nex] != -1:
+        break
+    visited[nex] = step
+    nex = A[nex] - 1
+    step += 1
+    # ループに入る前に終了する場合
+    if step == K:
+        print(nex + 1)
         exit()
-    # まだ未到達だった場合
-    if visited[pos] == -1:
-        visited[pos] = now_cnt
-        now_cnt += 1
-        rest -= 1
-        pos = A[pos] - 1
-        continue
-    # 2回目の到達の場合
-    iter_cnt = now_cnt - visited[pos]
-    break
-rest %= iter_cnt
+
+until_loop_step = visited[nex]
+loop_period = step - until_loop_step
+
+# ループに入ってから終了する場合
+k = (K - until_loop_step) % loop_period
 for i in range(N):
-    # 現在のポジションからrest回移動したポジションとひとしければ、その街が答え
-    if visited[i] == visited[pos] + rest:
+    if visited[i] == until_loop_step + k:
         print(i + 1)
         exit()
