@@ -2,6 +2,15 @@
 """
 解く前のメモ用
 """
-from sys import setrecursionlimit
+from collections import Counter
 
-setrecursionlimit(10**7)
+N, X = map(int, input().split())
+A = list(map(int, input().split()))
+C = Counter(A)
+
+for a in A:
+    rest = a - X
+    if C[rest] >= 1:
+        print("Yes")
+        exit()
+print("No")
