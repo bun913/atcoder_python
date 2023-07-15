@@ -1,71 +1,41 @@
-# -*- coding: utf-8 -*-
 """
-各部屋から1の部屋までにまず繋がっているか
-1: 全ての部屋（ノード）が1と同じ隣接成分にあるかどうか
-2: そうなら、各部屋から1の部屋までの距離を求める
+部屋にある道標を見てそれが指す部屋に移動する
+部屋1に最小の移動回数でたどり着くように道標を配置する
+経路を記録しておけば良い
 """
 from collections import deque
 
-
-class UnionFind:
-    def __init__(self, n):
-        self.n = n
-        self.parent_size = [-1]*n
-
-    def leader(self, a):
-        if self.parent_size[a] < 0:
-            return a
-        self.parent_size[a] = self.leader(self.parent_size[a])
-        return self.parent_size[a]
-
-    def merge(self, a, b):
-        x, y = self.leader(a), self.leader(b)
-        if x == y:
-            return
-        if abs(self.parent_size[x]) < abs(self.parent_size[y]):
-            x, y = y, x
-        self.parent_size[x] += self.parent_size[y]
-        self.parent_size[y] = x
-
-    def same(self, a, b):
-        return self.leader(a) == self.leader(b)
-
-    def size(self, a):
-        return abs(self.parent_size[self.leader(a)])
-
-    def groups(self):
-        result = [[] for _ in range(self.n)]
-        for i in range(self.n):
-            result[self.leader(i)].append(i)
-        return [r for r in result if r != []]
-
-
+# 入力の受け取り
 N, M = map(int, input().split())
-uf = UnionFind(N)
-G = [[] for _ in range(N+1)]
+G = [[] for _ in range(N)]
 for _ in range(M):
     a, b = map(int, input().split())
-    # ユニオンファインド木を作りつつ、グラフも作る
-    uf.merge(a-1, b-1)
-    G[a].append(b)
-    G[b].append(a)
-# 1と全ての部屋がつながっているので、距離を求める
-for i in range(1, N):
-    if not uf.same(0, i):
+    G[a-1].append(b-1)
+    G[b-1].append(a-1)
+
+dist = [-1] * N
+dist[0] = 0
+prev_routes = [0] * N
+q = deque([0])
+
+while q:
+    cur = q.popleft()
+    for nex in G[cur]:
+        # 訪問済みならスキップ
+        if dist[nex] != -1:
+            continue
+        dist[nex] = dist[cur] + 1
+        prev_routes[nex] = cur
+        q.append(nex)
+# 部屋1にたどり着けない場合
+for min_dist in dist:
+    if min_dist == -1:
         print("No")
         exit()
+
+# 最小距離の出力
 print("Yes")
-# 訪問済みかを管理する配列
-visited = [False]*(N+1)
-visited[1] = True
-# 答えを格納する配列
-ans = [0]*(N+1)
-q = deque([1])
-while len(q) > 0:
-    from_room = q.popleft()
-    for to_room in G[from_room]:
-        if visited[to_room] is False:
-            visited[to_room] = True
-            ans[to_room] = from_room
-            q.append(to_room)
-print(*ans[2:], sep="\n")
+for i, prev_route in enumerate(prev_routes):
+    if i == 0:
+        continue
+    print(prev_route + 1)
