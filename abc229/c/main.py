@@ -1,29 +1,24 @@
 # -*- coding: utf-8 -*-
 """
-DPの典型みたいな問題だと思った
-
-が、どうも考えてみたら罠っぽかった
-というのもチーズは普通にどれを何グラム使っても良いわけなのでコスパの良い順に並べて余った文を付け足していけば良いだけ
+N種類のチーズ
+ピザの美味しさはピザに載せたチーズの美味しさの総和で決まる
+載せたチーズの重さは合計でW[g]以下である必要
+可能なピザの美味しさの最大値をもとめる
+コスパのよいチーズを選び続ける
 """
-from operator import itemgetter
+N, W = map(int, input().split())
+c_list = []
+for _ in range(N):
+    c, w = map(int, input().split())
+    c_list.append((c, w))
+c_list.sort(reverse=True)
 
-N, W = list(map(int, input().split()))
-memo = []
-for i in range(N):
-    a, b = list(map(int, input().split()))
-    dic = {'value': a, 'weight': b, 'cosp': a / b}
-    memo.append(dic)
-
-_sorted = sorted(memo, key=itemgetter('value'), reverse=True)
 ans = 0
-
-for dic in _sorted:
-    if W == 0:
+for score, weight in c_list:
+    if W >= weight:
+        W -= weight
+        ans += score * weight
+    else:
+        ans += score * W
         break
-    a = dic['value']
-    b = dic['weight']
-    # bとWの残りの最小値文だけ入れる
-    g = min(b, W)
-    ans += a * g
-    W -= g
 print(ans)
