@@ -1,21 +1,37 @@
 """
-Nは最低でも10**5ある
-数の書かれたカードを含まない行があるとき、その行のカードを消して、上へ詰める
-数の書かれたカードを含まない列があるとき、その列のカードをのぞき、左へ詰める
-座表圧縮とかいう奴と同じ結果になるのでは
+H行、W列のますが最初にあるとする
+マスは最初全て*だが
+そのあとますのどの座標にカードがあるか情報が与えられる
+そのあとカードが一枚もない行と列を消す
+最終的に残るますを表示する
+座標の圧縮を行う
+行と列をそれぞれ圧縮する
 """
-H, W, N = list(map(int, input().split()))
-AB = [list(map(int, input().split())) for _ in range(N)]
-A = list(map(lambda ab: ab[0], AB))
-B = list(map(lambda ab: ab[1], AB))
+H, W, N = map(int, input().split())
+A, B = [], []
+AB = []
 
-a_temp = sorted(set(A))
-ad = {v: i for i, v in enumerate(a_temp)}
-ans_a = list(map(lambda v: ad[v] + 1, A))
+for _ in range(N):
+    a, b = map(int, input().split())
+    A.append(a-1)
+    B.append(b-1)
+    AB.append((a-1, b-1))
 
-b_temp = sorted(set(B))
-bd = {v: i for i, v in enumerate(b_temp)}
-ans_b = list(map(lambda v: bd[v] + 1, B))
+# 重複の排除
+A = sorted(list(set(A)))
+a_dic = {}
+# 座標圧縮
+for i, a in enumerate(A):
+    a_dic[a] = i+1
 
-for i in range(N):
-    print(ans_a[i], ans_b[i])
+# 列の座標圧縮
+B = sorted(list(set(B)))
+b_dic = {}
+for i, b in enumerate(B):
+    b_dic[b] = i+1
+
+# 座標圧縮したものを元の座標に戻す
+for row, col in AB:
+    ans_row = a_dic[row]
+    ans_col = b_dic[col]
+    print(ans_row, ans_col)
