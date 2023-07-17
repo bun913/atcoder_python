@@ -1,18 +1,24 @@
-# -*- coding: utf-8 -*-
 """
-先頭K項のうちK番目に大きい値は先頭Kで最小の値
-queをK個に保つことで、最小を取り出せばK番目に大きい値が求められる
+Pの数列をどんどん更新していきK番目に大きい値を出力する
+要素数をKとするヒープキューを使って、Pの数列をどんどん更新していく
 """
 import heapq
 
-N, K = list(map(int, input().split()))
+N, K = map(int, input().split())
 P = list(map(int, input().split()))
-que = P[:K]
-heapq.heapify(que)
-print(que[0])
 
-for i in range(K, N):
-    rm = heapq.heappop(que)
-    n = P[i]
-    heapq.heappush(que, max(rm, n))
-    print(que[0])
+# 要素数をKとするヒープキューを作成
+q = P[:K]
+heapq.heapify(q)
+# K番目に大きい値を出力する
+for i in range(K-1, N):
+    if i == K-1:
+        print(q[0])
+        continue
+    p = P[i]
+    min_val = heapq.heappop(q)
+    if p > min_val:
+        heapq.heappush(q, p)
+    else:
+        heapq.heappush(q, min_val)
+    print(q[0])
