@@ -1,21 +1,25 @@
 """
-1以上N以下の人は時刻tに宝石をもらうとSi時間後にi+1の人に渡す
-高橋はTiにi番目のすぬけくんに宝石を渡す
-
-つまり前の人から宝石をもらう時間か、高橋くんからもらう時間か早い方を答えるということ
-回した場合と高橋からもらう場合の最小値を求める
+動的計画法というか漸化式のような形で自分より一個前の人が
+最短で宝石をもらう時間を求め続ければOKでは
 """
 N = int(input())
 S = list(map(int, input().split()))
 T = list(map(int, input().split()))
 
-# 高橋くんから宝石がもらえる時間を初期値としてメモ
-results = [T[i] for i in range(N)]
-# 2周回して各人の最小値の結果を反映してあげる
-for i in range(2 * N):
-    cur = i % N
-    bef = (i + N - 1) % N
-    # 前の人から渡ってくる時間をcandとして、高橋くんからもらえる時間との最小値を取る
-    cand = results[bef] + S[bef]
-    results[cur] = min(cand, results[cur])
-print(*results, sep="\n")
+# ただし最初に宝石をもらうタイミングを考える必要があるので
+# 2周して考える
+
+dp = [float('inf')] * N
+for i in range(2*N):
+    idx = i % N
+    prev_idx = (i-1) % N
+    # まだ前の人の情報が確定していない場合は一旦仮の値を入れる
+    if prev_idx == float('inf'):
+        dp[idx] = T[idx]
+        continue
+    cand1 = T[idx]
+    cand2 = dp[prev_idx] + S[prev_idx]
+    dp[idx] = min(cand1, cand2)
+
+for ans in dp:
+    print(ans)
