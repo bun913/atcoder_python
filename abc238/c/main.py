@@ -1,25 +1,29 @@
 # -*- coding: utf-8 -*-
 """
-f(x) = x以下の正の整数でxと桁数が同じものの数
-f(1) + f(2) + .. + f(N)を998244353で割ったあまりを求める
 """
+
+
+def sum_to(a, b):
+    return (b-a+1) * (a+b) // 2
+
+
 N = int(input())
-
-
-def s(A: int, B: int) -> int:
-    """
-    AからBまでの和を求める(和の公式)
-    """
-    return (B - A + 1) * (A + B) // 2
-
-
+mod = 998244353
+dig = len(str(N))
+# 一つ前の桁までを等差数列の和の公式で求める
 ans = 0
-for x in range(1, 19):
-    if 10**x <= N:
-        ans += s(1, 9 * 10 ** (x - 1))
-        ans %= 998244353
-    else:
-        ans += s(1, N - 10 ** (x - 1) + 1)
-        ans %= 998244353
-        break
+for e in range(1, dig):
+    # aが初項
+    a = 1
+    # bが末項
+    b = 9 * 10**(e-1)
+    cnt = sum_to(a, b)
+    ans += cnt
+    ans %= mod
+# Nと同じ桁数の数を求める
+a = 1  # 初項
+b = N-10**(dig-1) + 1  # 末項
+cnt = sum_to(a, b)
+ans += cnt
+ans %= mod
 print(ans)
