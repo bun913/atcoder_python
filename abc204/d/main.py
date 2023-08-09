@@ -1,21 +1,24 @@
 """
-Atcoderの問題解く用
-
-1行1列データ
-
-#str型で受け取るとき
-s = input() 
-#int型で受け取るとき
-s = int(input()) 
-#float型　(小数)で受け取るとき
-s = float(input())
-
-(1,N)行列データ
-s = input().split()
-# listで整数で受け取る
-l = list(map(int, input().split()))
-
-その他
-https://qiita.com/jamjamjam/items/e066b8c7bc85487c0785
 """
+from collections import deque
 
+N = int(input())
+T = list(map(int, input().split()))
+L = sorted(T, reverse=True)
+q = deque(L)
+
+o1 = []
+o2 = []
+
+cur1 = 0
+cur2 = 0
+while q:
+    t = q.popleft()
+    if cur1 <= cur2:
+        o1.append(t)
+        cur1 += t
+    else:
+        o2.append(t)
+        cur2 += t
+ans = max(cur1, cur2)
+print(ans)
