@@ -1,45 +1,26 @@
 # -*- coding: utf-8 -*-
 """
-Atcoderの問題解く用
-
-1行1列データ
-
-#str型で受け取るとき
-s = input()
-#int型で受け取るとき
-s = int(input())
-#float型　(小数)で受け取るとき
-s = float(input())
-
-(1,N)行列データ
-s = input().split()
-# listで整数で受け取る
-l = list(map(int, input().split()))
-
-その他
-https://qiita.com/jamjamjam/items/e066b8c7bc85487c0785
-
-全ての組み合わせを列挙する方法
-list(0...8)から2つを抜き出す
-list(combinations(l, 2))
+区間スケジューリング問題というものになるらしい
+https://algo-method.com/tasks/363/editorial
+↑の問題では終了時刻が早い順に選ぶのが最適になっている
+終了時間が早い者を選ぶことで、その後の選択肢が増えるから
+最後にパンチした壁の位置を覚えておく
 """
-from functools import reduce
-from itertools import combinations
-import math
+N, D = map(int, input().split())
+walls = [list(map(int, input().split())) for _ in range(N)]
+# 右の位置を基準にソートする
+walls = sorted(walls, key=lambda x: x[1])
 
-# 素数判定
+ans = 0
+last = -1 #初期状態
+for l,r in walls:
+    if last == -1:
+        last = r
+        ans += 1
+        continue
+    # 最後のパンチからD以上離れていたらパンチをする
+    if last + D <= l:
+        last = r
+        ans += 1
 
-
-def is_prime(n: int) -> bool:
-    for i in range(2, int(math.sqrt(n))+1):
-        if n % i == 0:
-            return False
-    return True
-
-
-def permutation(n, r):
-    return math.factorial(n) // math.factorial(n-r)
-
-
-def combination(n, r):
-    return permutation(n, r) // math.factorial(r)
+print(ans)
