@@ -2,6 +2,11 @@
 """
 解く前のメモ用
 """
-from sys import setrecursionlimit
+N, K = map(int, input().split())
+L = []
 
-setrecursionlimit(10**7)
+for _ in range(N):
+    L.append(input())
+filterd = L[:K]
+filterd.sort()
+print(*filterd, sep='\n')

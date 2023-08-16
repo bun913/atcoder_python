@@ -2,6 +2,7 @@
 """
 解く前のメモ用
 """
-from sys import setrecursionlimit
-
-setrecursionlimit(10**7)
+N = int(input())
+for _ in range(N):
+    a, b = map(int, input().split())
+    print(a + b)
