@@ -20,7 +20,6 @@ class BinaryTree:
     def size(self):
         return self.cnt[0]
 
-    # xの個数
     def count(self, x):
         pt = 0
         for i in range(self.bitlen-1, -1, -1):
@@ -30,7 +29,6 @@ class BinaryTree:
             pt = self.nodes[2*pt+y]
         return self.cnt[pt]
 
-    # xの挿入
     def insert(self, x):
         pt = 0
         for i in range(self.bitlen-1, -1, -1):
@@ -42,8 +40,6 @@ class BinaryTree:
             pt = self.nodes[2*pt+y]
         self.cnt[pt] += 1
 
-    # xの削除
-    # xが存在しないときは何もしない
     def erase(self, x):
         if self.count(x) == 0:
             return
@@ -54,7 +50,6 @@ class BinaryTree:
             pt = self.nodes[2*pt+y]
         self.cnt[pt] -= 1
 
-    # 昇順x番目の値(1-indexed)
     def kth_elm(self, x):
         assert 1 <= x <= self.size()
         pt, ans = 0, 0
@@ -72,8 +67,6 @@ class BinaryTree:
                 ans += 1
         return ans
 
-    # x以上の最小要素が昇順何番目か(1-indexed)
-    # x以上の要素がない時はsize+1を返す
     def lower_bound(self, x):
         pt, ans = 0, 1
         for i in range(self.bitlen-1, -1, -1):
@@ -97,5 +90,4 @@ for _ in range(Q):
         continue
     # 二分探索でx以上の最小要素を探す
     p = bt.lower_bound(x)
-    # kth_elmでp番目の要素の値がわかるので、前後を求める
     print(bt.kth_elm(p) - bt.kth_elm(p-1))
