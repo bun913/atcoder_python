@@ -1,14 +1,31 @@
 # -*- coding: utf-8 -*-
 """
-Atcoderの問題解く用
+N本の棒がある
+i番目の棒の長さはAi
+4本の異なる棒を選びそれらの棒を変として長方形を作る
+最大の長方形の面積を求める
 
-全ての組み合わせを列挙する方法
-list(0...8)から2つを抜き出す
-list(combinations(l, 2))
-
-bit全探索でフラグが立っているかチェックする
-if ((i >> j) & 1)
+制約
+N <= 10^5
 """
-from functools import reduce
-from itertools import combinations
-import math
+from collections import Counter
+
+N = int(input())
+A = list(map(int, input().split()))
+C = Counter(A)
+items = C.items()
+# まず長さの大きい順にソート
+long_orderd = sorted(items, reverse=True)
+# 次に2本以上ある棒を長さの大きい順にソート
+two_or_more = [i for i in long_orderd if i[1] >= 2]
+
+# 作れない場合
+if len(two_or_more) <= 1:
+    print(0)
+    exit()
+# 一番長い棒が4本以上
+if two_or_more[0][1] >= 4:
+    print(two_or_more[0][0]**2)
+    exit()
+ans = two_or_more[0][0] * two_or_more[1][0]
+print(ans)
