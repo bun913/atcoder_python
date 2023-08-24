@@ -1,14 +1,23 @@
 # -*- coding: utf-8 -*-
 """
-Atcoderの問題解く用
-
-全ての組み合わせを列挙する方法
-list(0...8)から2つを抜き出す
-list(combinations(l, 2))
-
-bit全探索でフラグが立っているかチェックする
-if ((i >> j) & 1)
 """
-from functools import reduce, lru_cache
-from itertools import combinations
-import math
+N = int(input())
+S = list(input())
+
+ans_list = [0 for _ in range(N)]
+
+# 一番左から順番に自分より右にいるEの数を数える
+sum_e = S.count('E')
+for i, s in enumerate(S):
+    if s == 'E':
+        sum_e -= 1
+    ans_list[i] += sum_e
+
+# 一番右から順に自分より左にいるWの数を数える
+sum_w = S.count('W')
+for i in range(N-1, -1, -1):
+    if S[i] == 'W':
+        sum_w -= 1
+    ans_list[i] += sum_w
+
+print(min(ans_list))
