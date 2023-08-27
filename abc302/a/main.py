@@ -2,6 +2,10 @@
 """
 解く前のメモ用
 """
-from sys import setrecursionlimit
+from math import ceil
 
-setrecursionlimit(10**7)
+A, B = map(int, input().split())
+div = A // B
+if A % B != 0:
+    div += 1
+print(div)
