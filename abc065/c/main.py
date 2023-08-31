@@ -1,21 +1,27 @@
 """
-Atcoderの問題解く用
 
-1行1列データ
-
-#str型で受け取るとき
-s = input() 
-#int型で受け取るとき
-s = int(input()) 
-#float型　(小数)で受け取るとき
-s = float(input())
-
-(1,N)行列データ
-s = input().split()
-# listで整数で受け取る
-l = list(map(int, input().split()))
-
-その他
-https://qiita.com/jamjamjam/items/e066b8c7bc85487c0785
 """
 
+
+def fact(n):
+    result = 1
+    for i in range(1, n + 1):
+        result = result * i % MOD
+    return result
+
+
+N, M = map(int, input().split())
+MOD = 10 ** 9 + 7
+
+# 多い方をaとする
+a, b = max(N, M), min(N, M)
+
+if abs(a-b) >= 2:
+    print(0)
+    exit()
+
+if abs(a-b) == 1:
+    print(fact(a) * fact(b) % MOD)
+    exit()
+
+print(fact(a) * fact(b) * 2 % MOD)
