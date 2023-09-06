@@ -1,14 +1,22 @@
 # -*- coding: utf-8 -*-
 """
-Atcoderの問題解く用
-
-全ての組み合わせを列挙する方法
-list(0...8)から2つを抜き出す
-list(combinations(l, 2))
-
-bit全探索でフラグが立っているかチェックする
-if ((i >> j) & 1)
 """
-from functools import reduce
-from itertools import combinations
-import math
+
+N = int(input())
+dp = [[0 for _ in range(9)] for _ in range(N)]
+mod = 998244353
+# dpのわかるところから埋める
+# dp[1]の行は全部1になる
+for i in range(9):
+    dp[0][i] = 1
+
+for i in range(N):
+    if i == 0:
+        continue
+    for j in range(9):
+        left_up = dp[i-1][j-1] if j-1 >= 0 else 0
+        up = dp[i-1][j]
+        right_up = dp[i-1][j+1] if j+1 <= 8 else 0
+        cur = (left_up + up + right_up) % mod
+        dp[i][j] = cur
+print(sum(dp[-1]) % mod)
