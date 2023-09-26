@@ -2,6 +2,16 @@
 """
 解く前のメモ用
 """
-from sys import setrecursionlimit
+from itertools import accumulate
 
-setrecursionlimit(10**7)
+N, K = map(int, input().split())
+A = list(map(int, input().split()))
+
+# 累積和の準備
+sums = list(accumulate(A))
+sums.insert(0, 0)
+
+ans = 0
+for i in range(N - K + 1):
+    ans += sums[i + K] - sums[i]
+print(ans)
