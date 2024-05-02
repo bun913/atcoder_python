@@ -40,13 +40,9 @@ while q:
     if cnt == 1:
         q.append((now, parent, 2))
         for to in G[now]:
-            if to == parent:
-                continue
             q.append((to, now, 1))
     else:
         for to in G[now]:
-            if to == parent:
-                continue
             if visited[to]:
                 continue
             visited[to] = True
