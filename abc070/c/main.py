@@ -1,21 +1,30 @@
+# -*- coding: utf-8 -*-
 """
-Atcoderの問題解く用
-
-1行1列データ
-
-#str型で受け取るとき
-s = input() 
-#int型で受け取るとき
-s = int(input()) 
-#float型　(小数)で受け取るとき
-s = float(input())
-
-(1,N)行列データ
-s = input().split()
-# listで整数で受け取る
-l = list(map(int, input().split()))
-
-その他
-https://qiita.com/jamjamjam/items/e066b8c7bc85487c0785
+解く前のメモ用
 """
+from sys import setrecursionlimit
+from math import lcm
+from functools import reduce
 
+setrecursionlimit(10**8)
+
+
+def solve():
+    N, T = arrange()
+    act(N, T)
+
+
+def arrange():
+    N = int(input())
+    T = [int(input()) for _ in range(N)]
+    return N, T
+
+
+def act(N, T):
+    lc = T[0]
+    for i in range(1, N):
+        lc = lcm(lc, T[i])
+    print(lc)
+
+
+solve()
