@@ -1,14 +1,34 @@
 # -*- coding: utf-8 -*-
 """
-Atcoderの問題解く用
-
-全ての組み合わせを列挙する方法
-list(0...8)から2つを抜き出す
-list(combinations(l, 2))
-
-bit全探索でフラグが立っているかチェックする
-if ((i >> j) & 1)
+解く前のメモ用
 """
-from functools import reduce, lru_cache
-from itertools import combinations
-import math
+from sys import setrecursionlimit
+
+setrecursionlimit(10**8)
+
+
+def solve():
+    act()
+
+
+def act():
+    N = int(input())
+    A = list(map(int, input().split()))
+    ans = 0
+    # Nが小さいの素直に全探索する
+    while True:
+        is_all_even = True
+        for i in range(N):
+            a = A[i]
+            if a % 2 == 1:
+                is_all_even = False
+                break
+        if is_all_even is False:
+            break
+        for i in range(N):
+            A[i] = A[i] // 2
+        ans += 1
+    print(ans)
+
+
+solve()
