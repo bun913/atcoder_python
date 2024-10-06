@@ -1,20 +1,26 @@
 # -*- coding: utf-8 -*-
 """
-解く前のメモ
-
-X,Yが10**5なので1ループは可能
-今回の場合ABピザの枚数が決まれば残りのピザの枚数は勝手に決まる
+解く前のメモ用
 """
-A, B, C, X, Y = list(map(int, input().split()))
+from sys import setrecursionlimit
 
-# オーバーキル気味だが十分な回数ABピザの枚数を探索
-ans = float('inf')
-for ab_cnt in range(0, 2*max(X, Y)+1):
-    ab_sum = ab_cnt * C
-    a_cnt = max(0, X - (ab_cnt // 2))
-    b_cnt = max(0, Y - (ab_cnt // 2))
-    a_sum = a_cnt * A
-    b_sum = b_cnt * B
-    s = a_sum + b_sum + ab_sum
-    ans = min(s, ans)
-print(ans)
+setrecursionlimit(10**8)
+
+
+def solve():
+    act()
+
+
+def act():
+    A, B, C, X, Y = map(int, input().split())
+    ans = float("inf")
+    for ab in range(max(X, Y) * 2 + 1):
+        # abピザを買う枚数をabとして全探索する
+        a = max(X - (ab // 2), 0)
+        b = max(0, Y - (ab // 2))
+        price = a * A + b * B + ab * C
+        ans = min(ans, price)
+    print(ans)
+
+
+solve()
