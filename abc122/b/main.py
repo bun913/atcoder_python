@@ -1,29 +1,35 @@
 # -*- coding: utf-8 -*-
 """
-Atcoderの問題解く用
-
-全ての組み合わせを列挙する方法
-list(0...8)から2つを抜き出す
-list(combinations(l, 2))
-
-bit全探索でフラグが立っているかチェックする
-if ((i >> j) & 1)
+解く前のメモ用
 """
-S = input()
-ans = 0
+from sys import setrecursionlimit
+
+setrecursionlimit(10**8)
 
 
-def is_acgt(s: str) -> bool:
-    if s in set(['A', 'C', 'G', 'T']):
-        return True
-    return False
+def solve():
+    S = arrange()
+    act(S)
 
 
-c_cnt = 0
-for s in S:
-    if is_acgt(s) is False:
-        c_cnt = 0
-        continue
-    c_cnt += 1
-    ans = max(c_cnt, ans)
-print(ans)
+def arrange():
+    return input()
+
+
+def act(S):
+    ans = 0
+    n = len(S)
+    for i in range(n):
+        for j in range(n):
+            l = S[i:j+1]
+            ok = True
+            for s in l:
+                if s not in set('ACGT'):
+                    ok = False
+                    break
+            if ok:
+                ans = max(ans, len(l))
+    print(ans)
+
+
+solve()
