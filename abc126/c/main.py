@@ -1,14 +1,36 @@
 # -*- coding: utf-8 -*-
 """
-Atcoderの問題解く用
-
-全ての組み合わせを列挙する方法
-list(0...8)から2つを抜き出す
-list(combinations(l, 2))
-
-bit全探索でフラグが立っているかチェックする
-if ((i >> j) & 1)
+解く前のメモ用
 """
-from functools import reduce, lru_cache
-from itertools import combinations
-import math
+from sys import setrecursionlimit
+from math import log2, ceil
+from decimal import *
+
+setrecursionlimit(10**8)
+
+
+def solve():
+    N, K = arrange()
+    act(N, K)
+
+
+def arrange():
+    return map(int, input().split())
+
+
+def act(N, K):
+    # まずは普通に計算してみる
+    ans = Decimal(0)
+    for i in range(N):
+        a = i + 1
+        if a >= K:
+            prob = Decimal(1) / Decimal(N)
+            ans += prob
+            continue
+        si = ceil(log2(K/a))
+        prob = Decimal(1) / Decimal(N) * Decimal(0.5) ** si
+        ans += prob
+    print("{:.12f}".format(ans))
+
+
+solve()
