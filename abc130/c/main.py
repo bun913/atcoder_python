@@ -1,14 +1,29 @@
 # -*- coding: utf-8 -*-
 """
-Atcoderの問題解く用
-
-全ての組み合わせを列挙する方法
-list(0...8)から2つを抜き出す
-list(combinations(l, 2))
-
-bit全探索でフラグが立っているかチェックする
-if ((i >> j) & 1)
+解く前のメモ用
 """
-from functools import reduce, lru_cache
-from itertools import combinations
-import math
+from sys import setrecursionlimit
+
+setrecursionlimit(10**8)
+
+
+def solve():
+    W, H, x, y = arrange()
+    act(W, H, x, y)
+
+
+def arrange():
+    return map(int, input().split())
+
+
+def act(W, H, x, y):
+    # 中心を求める
+    center_x = W / 2
+    center_y = H / 2
+    if center_x == x and center_y == y:
+        print(W * H / 2, 1)
+        exit()
+    print(W * H / 2, 0)
+
+
+solve()
