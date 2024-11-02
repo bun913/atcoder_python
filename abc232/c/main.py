@@ -1,45 +1,53 @@
 # -*- coding: utf-8 -*-
 """
-Atcoderの問題解く用
-
-1行1列データ
-
-#str型で受け取るとき
-s = input()
-#int型で受け取るとき
-s = int(input())
-#float型　(小数)で受け取るとき
-s = float(input())
-
-(1,N)行列データ
-s = input().split()
-# listで整数で受け取る
-l = list(map(int, input().split()))
-
-その他
-https://qiita.com/jamjamjam/items/e066b8c7bc85487c0785
-
-全ての組み合わせを列挙する方法
-list(0...8)から2つを抜き出す
-list(combinations(l, 2))
+解く前のメモ用
 """
-from functools import reduce
-from itertools import combinations
-import math
+from sys import setrecursionlimit
+from itertools import permutations
 
-# 素数判定
-
-
-def is_prime(n: int) -> bool:
-    for i in range(2, int(math.sqrt(n))+1):
-        if n % i == 0:
-            return False
-    return True
+setrecursionlimit(10**8)
 
 
-def permutation(n, r):
-    return math.factorial(n) // math.factorial(n-r)
+def solve():
+    N, M, ga, gb = arrange()
+    act(N, M, ga, gb)
 
 
-def combination(n, r):
-    return permutation(n, r) // math.factorial(r)
+def arrange():
+    N, M = map(int, input().split())
+    # 隣接行列の形式でグラフを作る
+    ga = [[False]*N for _ in range(N)]
+    gb = [[False]*N for _ in range(N)]
+    for _ in range(M):
+        a, b = map(int, input().split())
+        a, b = a-1, b-1
+        ga[a][b] = True
+        ga[b][a] = True
+
+    for _ in range(M):
+        a, b = map(int, input().split())
+        a, b = a-1, b-1
+        gb[a][b] = True
+        gb[b][a] = True
+
+    return N, M, ga, gb
+
+
+def act(N, M, ga, gb):
+    for map_table in permutations(range(N)):
+        # 青木くんのボールと高橋くんのボールの対応するリストを全パターン作る
+        is_ok = True
+        for i in range(N):
+            for j in range(N):
+                aoki_i = map_table[i]
+                aoki_j = map_table[j]
+                if ga[i][j] != gb[aoki_i][aoki_j]:
+                    is_ok = False
+                    break
+        if is_ok is True:
+            print("Yes")
+            exit()
+    print("No")
+
+
+solve()
